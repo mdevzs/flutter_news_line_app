@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_line_app/app_colors.dart';
+import 'package:news_line_app/application/pages/sign_in_page/bloc/sign_in_bloc.dart';
 import 'package:sizer_pro/sizer.dart';
 
 Widget customText(String text,
@@ -80,3 +82,65 @@ Widget appIconButton({
     ),
   );
 }
+
+final _textFieldBorder = OutlineInputBorder(
+  borderSide: BorderSide.none,
+  borderRadius: BorderRadius.circular(4.sp),
+);
+
+Widget appTextFormField({
+  required Icon icon,
+  required String hintText,
+  required Function(String value) onChangeValue,
+  required String? Function(String? value) validator,
+}) {
+  return TextFormField(
+    decoration: InputDecoration(
+      prefixIcon: icon,
+      prefixIconColor: Colors.grey,
+      hintText: hintText,
+      enabledBorder: _textFieldBorder,
+      focusedBorder: _textFieldBorder,
+      filled: true,
+      fillColor: AppColors.bgTextFieldColor,
+    ),
+    onChanged: (value) => onChangeValue(value),
+    validator: (value) => validator(value),
+  );
+}
+
+Widget appPasswordTextFormField(
+  BuildContext context,
+  SignInState state, {
+  required Function(String value) onChangeValue,
+  required String? Function(String? value) validator,
+}) {
+  return TextFormField(
+    decoration: InputDecoration(
+      prefixIcon: const Icon(Icons.lock),
+      prefixIconColor: Colors.grey,
+      suffixIcon: IconButton(
+        onPressed: () {
+          context
+              .read<SignInBloc>()
+              .add(const SignInEvent.obsecurePasswordToggle());
+        },
+        icon: state.obscurePassword
+            ? const Icon(Icons.visibility_off)
+            : const Icon(Icons.visibility),
+      ),
+      hintText: 'Password',
+      enabledBorder: _textFieldBorder,
+      focusedBorder: _textFieldBorder,
+      filled: true,
+      fillColor: AppColors.bgTextFieldColor,
+    ),
+    obscureText: state.obscurePassword,
+    autocorrect: false,
+    enableSuggestions: false,
+    onChanged: (value) => onChangeValue(value),
+    validator: (value) => validator(value),
+  );
+}
+
+

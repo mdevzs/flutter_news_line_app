@@ -1,6 +1,10 @@
 part of 'sign_in_bloc.dart';
 
-@immutable
-sealed class SignInState {}
-
-final class SignInInitial extends SignInState {}
+@freezed
+class SignInState with _$SignInState {
+  const factory SignInState({
+    @Default(true) bool obscurePassword,
+    @Default(false) bool rememberMe,
+    @Default(false) bool isSubmitting,    
+  }) = _SignInState;  
+}
