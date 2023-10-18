@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:news_line_app/app_colors.dart';
-import 'package:news_line_app/application/core/gaps.dart';
-import 'package:news_line_app/application/core/widgets/widgets.dart';
-import 'package:news_line_app/application/pages/sign_in_page/bloc/sign_in_bloc.dart';
+import 'package:news_line_app/config/app_colors.dart';
+import 'package:news_line_app/core/utils/gaps.dart';
+import 'package:news_line_app/core/widgets/widgets.dart';
 import 'package:sizer_pro/sizer.dart';
+
+import 'bloc/sign_in_bloc.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_line_app/app_colors.dart';
-import 'package:news_line_app/application/pages/sign_in_page/bloc/sign_in_bloc.dart';
+import 'package:news_line_app/config/app_colors.dart';
 import 'package:sizer_pro/sizer.dart';
+
+import '../../features/auth_feature/presentation/pages/sign_in_page/bloc/sign_in_bloc.dart';
 
 Widget customText(String text,
     {Color color = Colors.black,

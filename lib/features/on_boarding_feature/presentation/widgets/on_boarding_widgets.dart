@@ -2,10 +2,11 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_constraintlayout/flutter_constraintlayout.dart';
-import 'package:news_line_app/app_constants.dart';
-import 'package:news_line_app/application/core/widgets/widgets.dart';
-import 'package:news_line_app/application/pages/on_boarding_page/bloc/on_boarding_bloc.dart';
+import 'package:news_line_app/core/utils/app_constants.dart';
+import 'package:news_line_app/core/widgets/widgets.dart';
 import 'package:sizer_pro/sizer.dart';
+
+import '../pages/on_boarding_page/bloc/on_boarding_bloc.dart';
 
 ConstraintId imageOnBoardingCId = ConstraintId('imageOnBoardingCId');
 ConstraintId titleOnBoardingCId = ConstraintId('titleOnBoardingCId');

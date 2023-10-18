@@ -1,10 +1,10 @@
 //import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_line_app/app_colors.dart';
-import 'package:news_line_app/application/core/routes/pages.dart';
+import 'package:news_line_app/config/app_colors.dart';
+import 'package:news_line_app/core/routes/pages.dart';
 //import 'package:news_line_app/application/pages/sign_in_page/sign_in_page.dart';
-import 'package:news_line_app/injection.dart';
+import 'package:news_line_app/core/utils/injection.dart';
 import 'package:sizer_pro/sizer.dart';
 
 void main() async {

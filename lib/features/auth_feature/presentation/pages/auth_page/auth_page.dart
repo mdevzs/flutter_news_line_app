@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_constraintlayout/flutter_constraintlayout.dart';
-import 'package:news_line_app/app_colors.dart';
-import 'package:news_line_app/application/core/routes/names.dart';
-import 'package:news_line_app/application/core/widgets/widgets.dart';
+import 'package:news_line_app/config/app_colors.dart';
+import 'package:news_line_app/core/routes/names.dart';
+import 'package:news_line_app/core/widgets/widgets.dart';
 import 'package:sizer_pro/sizer.dart';
 
 ConstraintId logoAuthCId = ConstraintId('logoAuthCId');

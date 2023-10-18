@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:news_line_app/app_constants.dart';
+import 'package:news_line_app/core/utils/app_constants.dart';
 
 abstract class StorageService {
   void storeUserToken(String token);

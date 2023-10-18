@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:news_line_app/application/core/services/storage_service.dart';
+import 'package:news_line_app/core/services/storage_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final sl = GetIt.I;
