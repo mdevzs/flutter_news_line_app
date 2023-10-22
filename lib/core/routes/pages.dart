@@ -31,7 +31,7 @@ class AppPages {
         route: AppRoutes.SIGN_IN_ROUTE,
         page: const SignInPage(),
         bloc: BlocProvider(
-          create: (context) => SignInBloc(),
+          create: (context) => sl.get<SignInBloc>(),
         ),
       ),
     ];

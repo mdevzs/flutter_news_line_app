@@ -27,6 +27,7 @@ Widget appButton(
   String text, {
   required double width,
   required double height,
+  bool isLoading = false,
   EdgeInsetsGeometry padding = const EdgeInsets.all(4),
   double fontSize = 12,
   Color bgColor = AppColors.primaryColor,
@@ -43,13 +44,22 @@ Widget appButton(
       padding: padding,
     ),
     onPressed: onButtonPress,
-    child: Text(
-      text,
-      style: TextStyle(
-        fontSize: fontSize.f,
-        color: textColor,
-      ),
-    ),
+    child: isLoading
+        ? SizedBox(
+            width: 10.sp,
+            height: 10.sp,
+            child: const CircularProgressIndicator(
+              strokeWidth: 3,
+              color: Colors.white,
+            ),
+          )
+        : Text(
+            text,
+            style: TextStyle(
+              fontSize: fontSize.f,
+              color: textColor,
+            ),
+          ),
   );
 }
 
@@ -90,12 +100,14 @@ final _textFieldBorder = OutlineInputBorder(
 );
 
 Widget appTextFormField({
+  TextEditingController? controller,
   required Icon icon,
   required String hintText,
   required Function(String value) onChangeValue,
   required String? Function(String? value) validator,
 }) {
   return TextFormField(
+    controller: controller,
     decoration: InputDecoration(
       prefixIcon: icon,
       prefixIconColor: Colors.grey,
@@ -113,10 +125,12 @@ Widget appTextFormField({
 Widget appPasswordTextFormField(
   BuildContext context,
   SignInState state, {
+  TextEditingController? controller,
   required Function(String value) onChangeValue,
   required String? Function(String? value) validator,
 }) {
   return TextFormField(
+    controller: controller,
     decoration: InputDecoration(
       prefixIcon: const Icon(Icons.lock),
       prefixIconColor: Colors.grey,
@@ -143,5 +157,3 @@ Widget appPasswordTextFormField(
     validator: (value) => validator(value),
   );
 }
-
-

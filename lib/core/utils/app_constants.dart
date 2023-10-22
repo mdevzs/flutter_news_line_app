@@ -1,11 +1,11 @@
 // ignore_for_file: constant_identifier_names
 
 class AppConstatns {
+  static const BASE_URL = 'http://192.168.0.103:3000';
   static const SHARED_KEY_STORAGE_FIRST_TIME_Use_APP =
       'sharedKeyStorageFirstTimeUseApp';
 
-  static const SHARED_KEY_STORAGE_USER_TOKEN =
-      'sharedKeyStorageUserToken';    
+  static const SHARED_KEY_STORAGE_USER_TOKEN = 'sharedKeyStorageUserToken';
 
   static const onBoardingList = <Map<String, String>>[
     {

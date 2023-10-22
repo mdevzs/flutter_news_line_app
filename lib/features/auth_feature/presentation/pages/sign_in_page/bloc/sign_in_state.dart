@@ -5,6 +5,7 @@ class SignInState with _$SignInState {
   const factory SignInState({
     @Default(true) bool obscurePassword,
     @Default(false) bool rememberMe,
-    @Default(false) bool isSubmitting,    
-  }) = _SignInState;  
+    @Default(false) bool isSignInSubmittedLoading,
+    SignInSubmittedState? signInSubmittedState,
+  }) = _SignInState;
 }

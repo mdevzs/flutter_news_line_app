@@ -20,18 +20,25 @@ mixin _$SignInEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() obsecurePasswordToggle,
     required TResult Function() rememberMeToggle,
+    required TResult Function(Map<String, dynamic> signInParams)
+        signInSubmitted,
+    required TResult Function() dispose,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? obsecurePasswordToggle,
     TResult? Function()? rememberMeToggle,
+    TResult? Function(Map<String, dynamic> signInParams)? signInSubmitted,
+    TResult? Function()? dispose,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? obsecurePasswordToggle,
     TResult Function()? rememberMeToggle,
+    TResult Function(Map<String, dynamic> signInParams)? signInSubmitted,
+    TResult Function()? dispose,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -40,18 +47,24 @@ mixin _$SignInEvent {
     required TResult Function(_ObsecurePasswordToggle value)
         obsecurePasswordToggle,
     required TResult Function(_RememberMeToggle value) rememberMeToggle,
+    required TResult Function(_SignInSubmitted value) signInSubmitted,
+    required TResult Function(_Dispose value) dispose,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ObsecurePasswordToggle value)? obsecurePasswordToggle,
     TResult? Function(_RememberMeToggle value)? rememberMeToggle,
+    TResult? Function(_SignInSubmitted value)? signInSubmitted,
+    TResult? Function(_Dispose value)? dispose,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ObsecurePasswordToggle value)? obsecurePasswordToggle,
     TResult Function(_RememberMeToggle value)? rememberMeToggle,
+    TResult Function(_SignInSubmitted value)? signInSubmitted,
+    TResult Function(_Dispose value)? dispose,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -118,6 +131,9 @@ class _$ObsecurePasswordToggleImpl implements _ObsecurePasswordToggle {
   TResult when<TResult extends Object?>({
     required TResult Function() obsecurePasswordToggle,
     required TResult Function() rememberMeToggle,
+    required TResult Function(Map<String, dynamic> signInParams)
+        signInSubmitted,
+    required TResult Function() dispose,
   }) {
     return obsecurePasswordToggle();
   }
@@ -127,6 +143,8 @@ class _$ObsecurePasswordToggleImpl implements _ObsecurePasswordToggle {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? obsecurePasswordToggle,
     TResult? Function()? rememberMeToggle,
+    TResult? Function(Map<String, dynamic> signInParams)? signInSubmitted,
+    TResult? Function()? dispose,
   }) {
     return obsecurePasswordToggle?.call();
   }
@@ -136,6 +154,8 @@ class _$ObsecurePasswordToggleImpl implements _ObsecurePasswordToggle {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? obsecurePasswordToggle,
     TResult Function()? rememberMeToggle,
+    TResult Function(Map<String, dynamic> signInParams)? signInSubmitted,
+    TResult Function()? dispose,
     required TResult orElse(),
   }) {
     if (obsecurePasswordToggle != null) {
@@ -150,6 +170,8 @@ class _$ObsecurePasswordToggleImpl implements _ObsecurePasswordToggle {
     required TResult Function(_ObsecurePasswordToggle value)
         obsecurePasswordToggle,
     required TResult Function(_RememberMeToggle value) rememberMeToggle,
+    required TResult Function(_SignInSubmitted value) signInSubmitted,
+    required TResult Function(_Dispose value) dispose,
   }) {
     return obsecurePasswordToggle(this);
   }
@@ -159,6 +181,8 @@ class _$ObsecurePasswordToggleImpl implements _ObsecurePasswordToggle {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ObsecurePasswordToggle value)? obsecurePasswordToggle,
     TResult? Function(_RememberMeToggle value)? rememberMeToggle,
+    TResult? Function(_SignInSubmitted value)? signInSubmitted,
+    TResult? Function(_Dispose value)? dispose,
   }) {
     return obsecurePasswordToggle?.call(this);
   }
@@ -168,6 +192,8 @@ class _$ObsecurePasswordToggleImpl implements _ObsecurePasswordToggle {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ObsecurePasswordToggle value)? obsecurePasswordToggle,
     TResult Function(_RememberMeToggle value)? rememberMeToggle,
+    TResult Function(_SignInSubmitted value)? signInSubmitted,
+    TResult Function(_Dispose value)? dispose,
     required TResult orElse(),
   }) {
     if (obsecurePasswordToggle != null) {
@@ -221,6 +247,9 @@ class _$RememberMeToggleImpl implements _RememberMeToggle {
   TResult when<TResult extends Object?>({
     required TResult Function() obsecurePasswordToggle,
     required TResult Function() rememberMeToggle,
+    required TResult Function(Map<String, dynamic> signInParams)
+        signInSubmitted,
+    required TResult Function() dispose,
   }) {
     return rememberMeToggle();
   }
@@ -230,6 +259,8 @@ class _$RememberMeToggleImpl implements _RememberMeToggle {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? obsecurePasswordToggle,
     TResult? Function()? rememberMeToggle,
+    TResult? Function(Map<String, dynamic> signInParams)? signInSubmitted,
+    TResult? Function()? dispose,
   }) {
     return rememberMeToggle?.call();
   }
@@ -239,6 +270,8 @@ class _$RememberMeToggleImpl implements _RememberMeToggle {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? obsecurePasswordToggle,
     TResult Function()? rememberMeToggle,
+    TResult Function(Map<String, dynamic> signInParams)? signInSubmitted,
+    TResult Function()? dispose,
     required TResult orElse(),
   }) {
     if (rememberMeToggle != null) {
@@ -253,6 +286,8 @@ class _$RememberMeToggleImpl implements _RememberMeToggle {
     required TResult Function(_ObsecurePasswordToggle value)
         obsecurePasswordToggle,
     required TResult Function(_RememberMeToggle value) rememberMeToggle,
+    required TResult Function(_SignInSubmitted value) signInSubmitted,
+    required TResult Function(_Dispose value) dispose,
   }) {
     return rememberMeToggle(this);
   }
@@ -262,6 +297,8 @@ class _$RememberMeToggleImpl implements _RememberMeToggle {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ObsecurePasswordToggle value)? obsecurePasswordToggle,
     TResult? Function(_RememberMeToggle value)? rememberMeToggle,
+    TResult? Function(_SignInSubmitted value)? signInSubmitted,
+    TResult? Function(_Dispose value)? dispose,
   }) {
     return rememberMeToggle?.call(this);
   }
@@ -271,6 +308,8 @@ class _$RememberMeToggleImpl implements _RememberMeToggle {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ObsecurePasswordToggle value)? obsecurePasswordToggle,
     TResult Function(_RememberMeToggle value)? rememberMeToggle,
+    TResult Function(_SignInSubmitted value)? signInSubmitted,
+    TResult Function(_Dispose value)? dispose,
     required TResult orElse(),
   }) {
     if (rememberMeToggle != null) {
@@ -285,10 +324,285 @@ abstract class _RememberMeToggle implements SignInEvent {
 }
 
 /// @nodoc
+abstract class _$$SignInSubmittedImplCopyWith<$Res> {
+  factory _$$SignInSubmittedImplCopyWith(_$SignInSubmittedImpl value,
+          $Res Function(_$SignInSubmittedImpl) then) =
+      __$$SignInSubmittedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Map<String, dynamic> signInParams});
+}
+
+/// @nodoc
+class __$$SignInSubmittedImplCopyWithImpl<$Res>
+    extends _$SignInEventCopyWithImpl<$Res, _$SignInSubmittedImpl>
+    implements _$$SignInSubmittedImplCopyWith<$Res> {
+  __$$SignInSubmittedImplCopyWithImpl(
+      _$SignInSubmittedImpl _value, $Res Function(_$SignInSubmittedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? signInParams = null,
+  }) {
+    return _then(_$SignInSubmittedImpl(
+      null == signInParams
+          ? _value._signInParams
+          : signInParams // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SignInSubmittedImpl implements _SignInSubmitted {
+  const _$SignInSubmittedImpl(final Map<String, dynamic> signInParams)
+      : _signInParams = signInParams;
+
+  final Map<String, dynamic> _signInParams;
+  @override
+  Map<String, dynamic> get signInParams {
+    if (_signInParams is EqualUnmodifiableMapView) return _signInParams;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_signInParams);
+  }
+
+  @override
+  String toString() {
+    return 'SignInEvent.signInSubmitted(signInParams: $signInParams)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SignInSubmittedImpl &&
+            const DeepCollectionEquality()
+                .equals(other._signInParams, _signInParams));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_signInParams));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SignInSubmittedImplCopyWith<_$SignInSubmittedImpl> get copyWith =>
+      __$$SignInSubmittedImplCopyWithImpl<_$SignInSubmittedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() obsecurePasswordToggle,
+    required TResult Function() rememberMeToggle,
+    required TResult Function(Map<String, dynamic> signInParams)
+        signInSubmitted,
+    required TResult Function() dispose,
+  }) {
+    return signInSubmitted(signInParams);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? obsecurePasswordToggle,
+    TResult? Function()? rememberMeToggle,
+    TResult? Function(Map<String, dynamic> signInParams)? signInSubmitted,
+    TResult? Function()? dispose,
+  }) {
+    return signInSubmitted?.call(signInParams);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? obsecurePasswordToggle,
+    TResult Function()? rememberMeToggle,
+    TResult Function(Map<String, dynamic> signInParams)? signInSubmitted,
+    TResult Function()? dispose,
+    required TResult orElse(),
+  }) {
+    if (signInSubmitted != null) {
+      return signInSubmitted(signInParams);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ObsecurePasswordToggle value)
+        obsecurePasswordToggle,
+    required TResult Function(_RememberMeToggle value) rememberMeToggle,
+    required TResult Function(_SignInSubmitted value) signInSubmitted,
+    required TResult Function(_Dispose value) dispose,
+  }) {
+    return signInSubmitted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ObsecurePasswordToggle value)? obsecurePasswordToggle,
+    TResult? Function(_RememberMeToggle value)? rememberMeToggle,
+    TResult? Function(_SignInSubmitted value)? signInSubmitted,
+    TResult? Function(_Dispose value)? dispose,
+  }) {
+    return signInSubmitted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ObsecurePasswordToggle value)? obsecurePasswordToggle,
+    TResult Function(_RememberMeToggle value)? rememberMeToggle,
+    TResult Function(_SignInSubmitted value)? signInSubmitted,
+    TResult Function(_Dispose value)? dispose,
+    required TResult orElse(),
+  }) {
+    if (signInSubmitted != null) {
+      return signInSubmitted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SignInSubmitted implements SignInEvent {
+  const factory _SignInSubmitted(final Map<String, dynamic> signInParams) =
+      _$SignInSubmittedImpl;
+
+  Map<String, dynamic> get signInParams;
+  @JsonKey(ignore: true)
+  _$$SignInSubmittedImplCopyWith<_$SignInSubmittedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DisposeImplCopyWith<$Res> {
+  factory _$$DisposeImplCopyWith(
+          _$DisposeImpl value, $Res Function(_$DisposeImpl) then) =
+      __$$DisposeImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DisposeImplCopyWithImpl<$Res>
+    extends _$SignInEventCopyWithImpl<$Res, _$DisposeImpl>
+    implements _$$DisposeImplCopyWith<$Res> {
+  __$$DisposeImplCopyWithImpl(
+      _$DisposeImpl _value, $Res Function(_$DisposeImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$DisposeImpl implements _Dispose {
+  const _$DisposeImpl();
+
+  @override
+  String toString() {
+    return 'SignInEvent.dispose()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$DisposeImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() obsecurePasswordToggle,
+    required TResult Function() rememberMeToggle,
+    required TResult Function(Map<String, dynamic> signInParams)
+        signInSubmitted,
+    required TResult Function() dispose,
+  }) {
+    return dispose();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? obsecurePasswordToggle,
+    TResult? Function()? rememberMeToggle,
+    TResult? Function(Map<String, dynamic> signInParams)? signInSubmitted,
+    TResult? Function()? dispose,
+  }) {
+    return dispose?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? obsecurePasswordToggle,
+    TResult Function()? rememberMeToggle,
+    TResult Function(Map<String, dynamic> signInParams)? signInSubmitted,
+    TResult Function()? dispose,
+    required TResult orElse(),
+  }) {
+    if (dispose != null) {
+      return dispose();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ObsecurePasswordToggle value)
+        obsecurePasswordToggle,
+    required TResult Function(_RememberMeToggle value) rememberMeToggle,
+    required TResult Function(_SignInSubmitted value) signInSubmitted,
+    required TResult Function(_Dispose value) dispose,
+  }) {
+    return dispose(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ObsecurePasswordToggle value)? obsecurePasswordToggle,
+    TResult? Function(_RememberMeToggle value)? rememberMeToggle,
+    TResult? Function(_SignInSubmitted value)? signInSubmitted,
+    TResult? Function(_Dispose value)? dispose,
+  }) {
+    return dispose?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ObsecurePasswordToggle value)? obsecurePasswordToggle,
+    TResult Function(_RememberMeToggle value)? rememberMeToggle,
+    TResult Function(_SignInSubmitted value)? signInSubmitted,
+    TResult Function(_Dispose value)? dispose,
+    required TResult orElse(),
+  }) {
+    if (dispose != null) {
+      return dispose(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Dispose implements SignInEvent {
+  const factory _Dispose() = _$DisposeImpl;
+}
+
+/// @nodoc
 mixin _$SignInState {
   bool get obscurePassword => throw _privateConstructorUsedError;
   bool get rememberMe => throw _privateConstructorUsedError;
-  bool get isSubmitting => throw _privateConstructorUsedError;
+  bool get isSignInSubmittedLoading => throw _privateConstructorUsedError;
+  SignInSubmittedState? get signInSubmittedState =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SignInStateCopyWith<SignInState> get copyWith =>
@@ -301,7 +615,13 @@ abstract class $SignInStateCopyWith<$Res> {
           SignInState value, $Res Function(SignInState) then) =
       _$SignInStateCopyWithImpl<$Res, SignInState>;
   @useResult
-  $Res call({bool obscurePassword, bool rememberMe, bool isSubmitting});
+  $Res call(
+      {bool obscurePassword,
+      bool rememberMe,
+      bool isSignInSubmittedLoading,
+      SignInSubmittedState? signInSubmittedState});
+
+  $SignInSubmittedStateCopyWith<$Res>? get signInSubmittedState;
 }
 
 /// @nodoc
@@ -319,7 +639,8 @@ class _$SignInStateCopyWithImpl<$Res, $Val extends SignInState>
   $Res call({
     Object? obscurePassword = null,
     Object? rememberMe = null,
-    Object? isSubmitting = null,
+    Object? isSignInSubmittedLoading = null,
+    Object? signInSubmittedState = freezed,
   }) {
     return _then(_value.copyWith(
       obscurePassword: null == obscurePassword
@@ -330,11 +651,28 @@ class _$SignInStateCopyWithImpl<$Res, $Val extends SignInState>
           ? _value.rememberMe
           : rememberMe // ignore: cast_nullable_to_non_nullable
               as bool,
-      isSubmitting: null == isSubmitting
-          ? _value.isSubmitting
-          : isSubmitting // ignore: cast_nullable_to_non_nullable
+      isSignInSubmittedLoading: null == isSignInSubmittedLoading
+          ? _value.isSignInSubmittedLoading
+          : isSignInSubmittedLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      signInSubmittedState: freezed == signInSubmittedState
+          ? _value.signInSubmittedState
+          : signInSubmittedState // ignore: cast_nullable_to_non_nullable
+              as SignInSubmittedState?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SignInSubmittedStateCopyWith<$Res>? get signInSubmittedState {
+    if (_value.signInSubmittedState == null) {
+      return null;
+    }
+
+    return $SignInSubmittedStateCopyWith<$Res>(_value.signInSubmittedState!,
+        (value) {
+      return _then(_value.copyWith(signInSubmittedState: value) as $Val);
+    });
   }
 }
 
@@ -346,7 +684,14 @@ abstract class _$$SignInStateImplCopyWith<$Res>
       __$$SignInStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool obscurePassword, bool rememberMe, bool isSubmitting});
+  $Res call(
+      {bool obscurePassword,
+      bool rememberMe,
+      bool isSignInSubmittedLoading,
+      SignInSubmittedState? signInSubmittedState});
+
+  @override
+  $SignInSubmittedStateCopyWith<$Res>? get signInSubmittedState;
 }
 
 /// @nodoc
@@ -362,7 +707,8 @@ class __$$SignInStateImplCopyWithImpl<$Res>
   $Res call({
     Object? obscurePassword = null,
     Object? rememberMe = null,
-    Object? isSubmitting = null,
+    Object? isSignInSubmittedLoading = null,
+    Object? signInSubmittedState = freezed,
   }) {
     return _then(_$SignInStateImpl(
       obscurePassword: null == obscurePassword
@@ -373,10 +719,14 @@ class __$$SignInStateImplCopyWithImpl<$Res>
           ? _value.rememberMe
           : rememberMe // ignore: cast_nullable_to_non_nullable
               as bool,
-      isSubmitting: null == isSubmitting
-          ? _value.isSubmitting
-          : isSubmitting // ignore: cast_nullable_to_non_nullable
+      isSignInSubmittedLoading: null == isSignInSubmittedLoading
+          ? _value.isSignInSubmittedLoading
+          : isSignInSubmittedLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      signInSubmittedState: freezed == signInSubmittedState
+          ? _value.signInSubmittedState
+          : signInSubmittedState // ignore: cast_nullable_to_non_nullable
+              as SignInSubmittedState?,
     ));
   }
 }
@@ -387,7 +737,8 @@ class _$SignInStateImpl implements _SignInState {
   const _$SignInStateImpl(
       {this.obscurePassword = true,
       this.rememberMe = false,
-      this.isSubmitting = false});
+      this.isSignInSubmittedLoading = false,
+      this.signInSubmittedState});
 
   @override
   @JsonKey()
@@ -397,11 +748,13 @@ class _$SignInStateImpl implements _SignInState {
   final bool rememberMe;
   @override
   @JsonKey()
-  final bool isSubmitting;
+  final bool isSignInSubmittedLoading;
+  @override
+  final SignInSubmittedState? signInSubmittedState;
 
   @override
   String toString() {
-    return 'SignInState(obscurePassword: $obscurePassword, rememberMe: $rememberMe, isSubmitting: $isSubmitting)';
+    return 'SignInState(obscurePassword: $obscurePassword, rememberMe: $rememberMe, isSignInSubmittedLoading: $isSignInSubmittedLoading, signInSubmittedState: $signInSubmittedState)';
   }
 
   @override
@@ -413,13 +766,16 @@ class _$SignInStateImpl implements _SignInState {
                 other.obscurePassword == obscurePassword) &&
             (identical(other.rememberMe, rememberMe) ||
                 other.rememberMe == rememberMe) &&
-            (identical(other.isSubmitting, isSubmitting) ||
-                other.isSubmitting == isSubmitting));
+            (identical(
+                    other.isSignInSubmittedLoading, isSignInSubmittedLoading) ||
+                other.isSignInSubmittedLoading == isSignInSubmittedLoading) &&
+            (identical(other.signInSubmittedState, signInSubmittedState) ||
+                other.signInSubmittedState == signInSubmittedState));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, obscurePassword, rememberMe, isSubmitting);
+  int get hashCode => Object.hash(runtimeType, obscurePassword, rememberMe,
+      isSignInSubmittedLoading, signInSubmittedState);
 
   @JsonKey(ignore: true)
   @override
@@ -432,14 +788,17 @@ abstract class _SignInState implements SignInState {
   const factory _SignInState(
       {final bool obscurePassword,
       final bool rememberMe,
-      final bool isSubmitting}) = _$SignInStateImpl;
+      final bool isSignInSubmittedLoading,
+      final SignInSubmittedState? signInSubmittedState}) = _$SignInStateImpl;
 
   @override
   bool get obscurePassword;
   @override
   bool get rememberMe;
   @override
-  bool get isSubmitting;
+  bool get isSignInSubmittedLoading;
+  @override
+  SignInSubmittedState? get signInSubmittedState;
   @override
   @JsonKey(ignore: true)
   _$$SignInStateImplCopyWith<_$SignInStateImpl> get copyWith =>

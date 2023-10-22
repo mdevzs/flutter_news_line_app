@@ -7,6 +7,8 @@ import 'package:news_line_app/core/routes/pages.dart';
 import 'package:news_line_app/core/utils/injection.dart';
 import 'package:sizer_pro/sizer.dart';
 
+import 'core/widgets/show_snackbar.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initDependencies();
@@ -28,6 +30,7 @@ class MyApp extends StatelessWidget {
           child: MaterialApp(
             //locale: DevicePreview.locale(context),
             //builder: DevicePreview.appBuilder,
+            scaffoldMessengerKey: globalScaffoldKey,
             debugShowCheckedModeBanner: false,
             title: 'NewsLine',
             theme: ThemeData(
