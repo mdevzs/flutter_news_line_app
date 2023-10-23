@@ -21,9 +21,13 @@ class _AuthApiProvider implements AuthApiProvider {
   String? baseUrl;
 
   @override
-  Future<UserModel> signIn(Map<String, dynamic> body) async {
+  Future<UserModel> signIn(
+    Map<String, dynamic> body,
+    CancelToken? cancelToken,
+  ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body);
@@ -38,6 +42,7 @@ class _AuthApiProvider implements AuthApiProvider {
               '/auth/signin',
               queryParameters: queryParameters,
               data: _data,
+              cancelToken: cancelToken,
             )
             .copyWith(
                 baseUrl: _combineBaseUrls(

@@ -12,5 +12,6 @@ abstract class AuthApiProvider {
   @POST('/auth/signin')
   Future<UserModel> signIn(
     @Body() Map<String, dynamic> body,
+    @CancelRequest() CancelToken? cancelToken,   
   );
 }

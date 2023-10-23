@@ -133,6 +133,14 @@ class _$$SignInSubmittedStateLoadedImpl
     return 'SignInSubmittedState.loaded(user: $user)';
   }
 
+  // @override
+  // bool operator ==(dynamic other) {
+  //   return identical(this, other) ||
+  //       (other.runtimeType == runtimeType &&
+  //           other is _$$SignInSubmittedStateLoadedImpl &&
+  //           (identical(other.user, user) || other.user == user));
+  // }
+
   @override
   int get hashCode => Object.hash(runtimeType, user);
 
@@ -261,7 +269,15 @@ class _$$SignInSubmittedStateErrorImpl implements _$SignInSubmittedStateError {
   @override
   String toString() {
     return 'SignInSubmittedState.error(message: $message)';
-  }  
+  }
+
+  // @override
+  // bool operator ==(dynamic other) {
+  //   return identical(this, other) ||
+  //       (other.runtimeType == runtimeType &&
+  //           other is _$$SignInSubmittedStateErrorImpl &&
+  //           (identical(other.message, message) || other.message == message));
+  // }
 
   @override
   int get hashCode => Object.hash(runtimeType, message);
