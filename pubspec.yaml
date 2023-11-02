@@ -50,6 +50,7 @@ dependencies:
   retrofit: ^4.0.3  
   dio: ^5.3.3
   internet_connection_checker_plus: ^2.1.0
+  getwidget: ^4.0.0
 
 dependency_overrides:
   device_preview:

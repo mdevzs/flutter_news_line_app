@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_line_app/config/app_colors.dart';
 import 'package:news_line_app/core/routes/pages.dart';
-//import 'package:news_line_app/application/pages/sign_in_page/sign_in_page.dart';
 import 'package:news_line_app/core/utils/injection.dart';
+import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_select_country_page/sign_up_select_country_page.dart';
 import 'package:sizer_pro/sizer.dart';
 
 import 'core/widgets/show_snackbar.dart';
+//import 'package:device_preview/device_preview.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,8 +40,8 @@ class MyApp extends StatelessWidget {
                   ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
               useMaterial3: true,
             ),
-            onGenerateRoute: AppPages.generateRouteSettings,
-            //home: const SignInPage(),
+            //onGenerateRoute: AppPages.generateRouteSettings,
+            home: const SignUpSelectCountryPage(),
           ),
         );
       },

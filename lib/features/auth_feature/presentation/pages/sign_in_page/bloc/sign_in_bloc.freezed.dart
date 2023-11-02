@@ -757,21 +757,21 @@ class _$SignInStateImpl implements _SignInState {
     return 'SignInState(obscurePassword: $obscurePassword, rememberMe: $rememberMe, isSignInSubmittedLoading: $isSignInSubmittedLoading, signInSubmittedState: $signInSubmittedState)';
   }
 
-  // @override
-  // bool operator ==(dynamic other) {
-  //   return identical(this, other) ||
-  //       (other.runtimeType == runtimeType &&
-  //           other is _$SignInStateImpl &&
-  //           (identical(other.obscurePassword, obscurePassword) ||
-  //               other.obscurePassword == obscurePassword) &&
-  //           (identical(other.rememberMe, rememberMe) ||
-  //               other.rememberMe == rememberMe) &&
-  //           (identical(
-  //                   other.isSignInSubmittedLoading, isSignInSubmittedLoading) ||
-  //               other.isSignInSubmittedLoading == isSignInSubmittedLoading) &&
-  //           (identical(other.signInSubmittedState, signInSubmittedState) ||
-  //               other.signInSubmittedState == signInSubmittedState));
-  // }
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SignInStateImpl &&
+            (identical(other.obscurePassword, obscurePassword) ||
+                other.obscurePassword == obscurePassword) &&
+            (identical(other.rememberMe, rememberMe) ||
+                other.rememberMe == rememberMe) &&
+            (identical(
+                    other.isSignInSubmittedLoading, isSignInSubmittedLoading) ||
+                other.isSignInSubmittedLoading == isSignInSubmittedLoading) &&
+            (identical(other.signInSubmittedState, signInSubmittedState) ||
+                other.signInSubmittedState == signInSubmittedState));
+  }
 
   @override
   int get hashCode => Object.hash(runtimeType, obscurePassword, rememberMe,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_line_app/config/app_colors.dart';
+import 'package:news_line_app/core/utils/gaps.dart';
 import 'package:sizer_pro/sizer.dart';
 
 import '../../features/auth_feature/presentation/pages/sign_in_page/bloc/sign_in_bloc.dart';
@@ -103,14 +104,26 @@ Widget appTextFormField({
   TextEditingController? controller,
   required Icon icon,
   required String hintText,
+  bool showClearIcon = false,
   required Function(String value) onChangeValue,
   required String? Function(String? value) validator,
+  Function()? onClearedButtonPressed,
 }) {
   return TextFormField(
     controller: controller,
     decoration: InputDecoration(
       prefixIcon: icon,
       prefixIconColor: Colors.grey,
+      suffixIcon: showClearIcon && controller!.text.isNotEmpty
+          ? IconButton(
+              icon: const Icon(Icons.clear),
+              onPressed: () {
+                controller.clear();
+                onClearedButtonPressed?.call();
+              },
+            )
+          : null,
+      suffixIconColor: Colors.black,
       hintText: hintText,
       enabledBorder: _textFieldBorder,
       focusedBorder: _textFieldBorder,
@@ -124,7 +137,7 @@ Widget appTextFormField({
 
 Widget appPasswordTextFormField(
   BuildContext context,
-  SignInState state, {
+  bool obscurePassword, {
   TextEditingController? controller,
   required Function(String value) onChangeValue,
   required String? Function(String? value) validator,
@@ -140,7 +153,7 @@ Widget appPasswordTextFormField(
               .read<SignInBloc>()
               .add(const SignInEvent.obsecurePasswordToggle());
         },
-        icon: state.obscurePassword
+        icon: obscurePassword
             ? const Icon(Icons.visibility_off)
             : const Icon(Icons.visibility),
       ),
@@ -150,10 +163,76 @@ Widget appPasswordTextFormField(
       filled: true,
       fillColor: AppColors.bgTextFieldColor,
     ),
-    obscureText: state.obscurePassword,
+    obscureText: obscurePassword,
     autocorrect: false,
     enableSuggestions: false,
     onChanged: (value) => onChangeValue(value),
     validator: (value) => validator(value),
+  );
+}
+
+Widget textWithIcon({
+  required String text,
+  required String icon,
+  double fontSize = 16,
+  double iconSize = 20,
+}) {
+  return RichText(
+    text: TextSpan(
+      children: [
+        TextSpan(
+          text: text,
+          style: TextStyle(
+            fontSize: fontSize.f,
+            color: Colors.black,
+          ),
+        ),
+        WidgetSpan(
+          alignment: PlaceholderAlignment.middle,
+          child: Padding(
+            padding: EdgeInsets.only(left: 3.sp, bottom: 5.sp),
+            child: Image.asset(
+              icon,
+              width: iconSize.sp,
+            ),
+          ),
+        )
+      ],
+    ),
+  );
+}
+
+Widget errorWidget({
+  required String errorMessage,
+  double errorFontSize = 4,
+  double tryAgainWith = 20,
+  double tryAgainHeight = 12,
+  String tryAgainText = 'try again',
+  double tryAgainFontSize = 4,
+  Function()? onTryAgainPressed,
+}) {
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      customText(
+        errorMessage,
+        fontSize: errorFontSize.f,
+        fontWeight: FontWeight.bold,
+        textAlign: TextAlign.center,
+      ),
+      gapH4,
+      ElevatedButton(
+        onPressed: onTryAgainPressed,
+        style: ElevatedButton.styleFrom(
+          minimumSize: Size(tryAgainWith.w, tryAgainHeight.w),
+          backgroundColor: AppColors.primaryColor,
+        ),
+        child: customText(
+          tryAgainText,
+          fontSize: tryAgainFontSize.f,
+          color: Colors.white,
+        ),
+      )
+    ],
   );
 }

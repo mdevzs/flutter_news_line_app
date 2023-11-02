@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:news_line_app/config/app_colors.dart';
+import 'package:news_line_app/core/routes/names.dart';
 import 'package:news_line_app/core/utils/gaps.dart';
 import 'package:news_line_app/core/widgets/widgets.dart';
 import 'package:sizer_pro/sizer.dart';
@@ -105,7 +106,7 @@ class SignInPage extends StatelessWidget {
                               gapH4,
                               appPasswordTextFormField(
                                 context,
-                                state,
+                                state.obscurePassword,
                                 controller: passwordController,
                                 onChangeValue: (value) {},
                                 validator: FormBuilderValidators.required(),
@@ -162,7 +163,10 @@ class SignInPage extends StatelessWidget {
                               fontSize: 7,
                             ),
                             TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .popAndPushNamed(AppRoutes.SIGN_UP_ROUTE);
+                              },
                               child: customText(
                                 'Sign Up',
                                 fontSize: 7,

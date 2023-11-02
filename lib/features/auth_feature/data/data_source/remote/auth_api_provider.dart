@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:news_line_app/core/utils/app_constants.dart';
+import 'package:news_line_app/features/auth_feature/data/models/countries_model.dart';
 import 'package:news_line_app/features/auth_feature/data/models/user_model.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -12,6 +13,13 @@ abstract class AuthApiProvider {
   @POST('/auth/signin')
   Future<UserModel> signIn(
     @Body() Map<String, dynamic> body,
-    @CancelRequest() CancelToken? cancelToken,   
+    @CancelRequest() CancelToken? cancelToken,
+  );
+
+  @GET('/public/countries')
+  Future<CountriesModel> getAllCountries(
+    @Query('page') String? page,
+    @Query('perPage') String? perPage,
+    @Query('q') String? q,
   );
 }

@@ -105,7 +105,9 @@ class AuthPage extends StatelessWidget {
             children: [
               customText('Don\'t have an account?', fontSize: 8),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed(AppRoutes.SIGN_UP_ROUTE);
+                },
                 child: customText(
                   'Sign Up',
                   fontSize: 8,
