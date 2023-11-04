@@ -16,13 +16,13 @@ class SignUpSelectCountryPage extends StatelessWidget {
     final debouncer = Debouncer(milliseconds: 500);
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: progressAppbar(percentage: 0.25),
+      appBar: progressAppbar(percentage: 0.2),
       body: BlocBuilder<SignUpSelectCountryBloc, SignUpSelectCountryState>(
         builder: (context, state) {
           return Stack(
             children: [
               Padding(
-                padding: const EdgeInsets.all(16),
+                padding: EdgeInsets.all(8.sp),
                 child: Column(
                   children: [
                     textWithIcon(
@@ -87,7 +87,8 @@ class SignUpSelectCountryPage extends StatelessWidget {
                                 .scrollController,
                             itemCount: state.hasReachedEnd
                                 ? state.countries.length
-                                : state.countries.length + 1, //* increase the length of itemCount to show the loadingProgressBar or ErrorWidget
+                                : state.countries.length +
+                                    1, //* increase the length of itemCount to show the loadingProgressBar or ErrorWidget
                             itemBuilder: (context, index) {
                               if (index >= state.countries.length) {
                                 return state.loadingMore.when(
@@ -180,19 +181,8 @@ class SignUpSelectCountryPage extends StatelessWidget {
                 visible: state.countrySelectedId != -1,
                 child: Positioned(
                   bottom: 0,
-                  child: Container(
-                    width: 100.w,
-                    height: 8.h,
-                    color: Colors.white,
-                    child: Center(
-                      child: appButton(
-                        'Continue',
-                        fontSize: 8,
-                        width: 95,
-                        height: 5,
-                        onButtonPress: () {},
-                      ),
-                    ),
+                  child: continueSection(
+                    onButtonPressed: () {},
                   ),
                 ),
               ),

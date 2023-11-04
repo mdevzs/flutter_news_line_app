@@ -5,10 +5,11 @@ import 'package:news_line_app/features/auth_feature/domain/entities/countries_en
 
 import '../../repository/auth_repository.dart';
 
-class SignUpUsecase extends UseCase<Either<Failure, CountriesEntity>,
+class SignUpSelectCountryUsecase extends UseCase<
+    Either<Failure, CountriesEntity>,
     (String? page, String? perPage, String? q)> {
   final AuthRepository authRepository;
-  SignUpUsecase(this.authRepository);
+  SignUpSelectCountryUsecase(this.authRepository);
 
   @override
   Future<Either<Failure, CountriesEntity>> call(

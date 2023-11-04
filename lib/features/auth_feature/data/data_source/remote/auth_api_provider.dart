@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:news_line_app/core/utils/app_constants.dart';
 import 'package:news_line_app/features/auth_feature/data/models/countries_model.dart';
+import 'package:news_line_app/features/auth_feature/data/models/tags_model.dart';
 import 'package:news_line_app/features/auth_feature/data/models/user_model.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -22,4 +23,7 @@ abstract class AuthApiProvider {
     @Query('perPage') String? perPage,
     @Query('q') String? q,
   );
+
+  @GET('/public/tags')
+  Future<List<TagsModel>> getAllTags();
 }

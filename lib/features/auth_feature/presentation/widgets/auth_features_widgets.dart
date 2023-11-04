@@ -61,3 +61,25 @@ PreferredSizeWidget progressAppbar({required double percentage}) {
     centerTitle: true,
   );
 }
+
+Widget continueSection({required Function() onButtonPressed}) {
+  return Container(
+    width: 100.w,
+    height: 8.h,
+    decoration: BoxDecoration(
+      color: Colors.white,
+      border: Border.symmetric(
+        horizontal: BorderSide(color: AppColors.primaryColor.withOpacity(0.15)),
+      ),
+    ),
+    child: Center(
+      child: appButton(
+        'Continue',
+        fontSize: 8,
+        width: 95,
+        height: 5,
+        onButtonPress: onButtonPressed,
+      ),
+    ),
+  );
+}

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:news_line_app/features/auth_feature/domain/entities/countries_data_entity.dart';
-import 'package:news_line_app/features/auth_feature/domain/usecases/sign_up/sign_up_usecase.dart';
+import 'package:news_line_app/features/auth_feature/domain/usecases/sign_up/sign_up_select_country_usecase.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_select_country_page/bloc/sign_up_get_all_countries_state.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_select_country_page/bloc/sign_up_loading_more.dart';
 
@@ -13,7 +13,7 @@ part 'sign_up_select_country_bloc.freezed.dart';
 
 class SignUpSelectCountryBloc
     extends Bloc<SignUpSelectCountryEvent, SignUpSelectCountryState> {
-  final SignUpUsecase signUpUsecase;
+  final SignUpSelectCountryUsecase signUpUsecase;
   ScrollController scrollController = ScrollController();
   int page = 1;
   List<CountriesDataEntity> oldCountries = [];

@@ -209,7 +209,7 @@ Widget errorWidget({
   double tryAgainHeight = 12,
   String tryAgainText = 'try again',
   double tryAgainFontSize = 4,
-  Function()? onTryAgainPressed,
+  required Function() onTryAgainPressed,
 }) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.center,
