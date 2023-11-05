@@ -17,7 +17,7 @@ class UserModel with _$UserModel {
     String? bio,
     String? profileImage,
     required String userType,
-    required String token,
+    String? token,
   }) = _UserModel;
 
   const UserModel._();
@@ -36,6 +36,6 @@ class UserModel with _$UserModel {
         profileImage: profileImage,
         dateOfBirth: dateOfBirth,
         userType: userType,
-        token: token,
+        token: token ?? '',
       );
 }

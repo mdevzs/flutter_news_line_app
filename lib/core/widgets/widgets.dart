@@ -11,13 +11,16 @@ Widget customText(String text,
     double fontSize = 16,
     FontWeight fontWeight = FontWeight.normal,
     int? maxLines,
-    TextAlign? textAlign}) {
+    TextAlign? textAlign,
+    TextOverflow? overflow,
+    }) {
   return Text(
     text,
     style: TextStyle(
       color: color,
       fontSize: fontSize.f,
       fontWeight: fontWeight,
+      overflow: overflow,
     ),
     textAlign: textAlign,
     maxLines: maxLines,

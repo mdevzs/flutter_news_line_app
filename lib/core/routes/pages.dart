@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_line_app/core/routes/names.dart';
 import 'package:news_line_app/core/services/storage_service.dart';
 import 'package:news_line_app/core/utils/injection.dart';
+import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_follow_official_author/bloc/sign_up_follow_official_author_bloc.dart';
+import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_follow_official_author/sign_up_follow_official_author_page.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_page/sign_up_page.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_select_country_page/bloc/sign_up_select_country_bloc.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_select_country_page/sign_up_select_country_page.dart';
@@ -61,6 +63,13 @@ class AppPages {
           create: (context) => sl.get<SignUpSelectIntrestedTagBloc>(),
         ),
       ),
+      PageEntity(
+        route: AppRoutes.SIGN_UP_Follow_Official_Author_ROUTE,
+        page: const SignUpFollowOfficialAuthorPage(),
+        bloc: BlocProvider(
+          create: (context) => sl.get<SignUpFollowOfficialAuthorBloc>(),
+        ),
+      ),
     ];
   }
 
@@ -77,12 +86,12 @@ class AppPages {
       (p) => p.route == settings.name,
     );
     final isFirstTimeUseApp = sl.get<StorageService>().isFirstTimeAppUsed();
-    if(isFirstTimeUseApp){
+    if (isFirstTimeUseApp) {
       return MaterialPageRoute(builder: (context) => const OnBoardingPage());
-    }  
+    }
     if (page.isNotEmpty) {
       return MaterialPageRoute(builder: (context) => page.first.page);
-    }  
+    }
     return MaterialPageRoute(builder: (context) => const AuthPage());
   }
 }

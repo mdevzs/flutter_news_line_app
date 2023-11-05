@@ -68,4 +68,23 @@ class AuthRepositoryImpl implements AuthRepository {
     );
     return failureOrEntity;
   }
+  
+  @override
+  Future<Either<Failure, List<UserEntity>>> getAllOfficialAuthors() async{
+    late Either<Failure, List<UserEntity>> failureOrEntity;
+    await apiResponseHandler<List<UserModel>>(
+      future: apiProvider.getAllOfficialAuthors(),
+      right: (result) {
+        final officialAuthors = <UserEntity>[];
+        for (var author in result) {
+          officialAuthors.add(author.toEntity());
+        }
+        failureOrEntity = Right(officialAuthors);
+      },
+      left: (failure) {
+        failureOrEntity = Left(failure);
+      },
+    );
+    return failureOrEntity;
+  }
 }

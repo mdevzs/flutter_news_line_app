@@ -30,7 +30,7 @@ mixin _$UserModel {
   String? get bio => throw _privateConstructorUsedError;
   String? get profileImage => throw _privateConstructorUsedError;
   String get userType => throw _privateConstructorUsedError;
-  String get token => throw _privateConstructorUsedError;
+  String? get token => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,7 +54,7 @@ abstract class $UserModelCopyWith<$Res> {
       String? bio,
       String? profileImage,
       String userType,
-      String token});
+      String? token});
 }
 
 /// @nodoc
@@ -80,7 +80,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? bio = freezed,
     Object? profileImage = freezed,
     Object? userType = null,
-    Object? token = null,
+    Object? token = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -123,10 +123,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.userType
           : userType // ignore: cast_nullable_to_non_nullable
               as String,
-      token: null == token
+      token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -150,7 +150,7 @@ abstract class _$$UserModelImplCopyWith<$Res>
       String? bio,
       String? profileImage,
       String userType,
-      String token});
+      String? token});
 }
 
 /// @nodoc
@@ -174,7 +174,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? bio = freezed,
     Object? profileImage = freezed,
     Object? userType = null,
-    Object? token = null,
+    Object? token = freezed,
   }) {
     return _then(_$UserModelImpl(
       id: null == id
@@ -217,10 +217,10 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.userType
           : userType // ignore: cast_nullable_to_non_nullable
               as String,
-      token: null == token
+      token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -239,7 +239,7 @@ class _$UserModelImpl extends _UserModel {
       this.bio,
       this.profileImage,
       required this.userType,
-      required this.token})
+      this.token})
       : super._();
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -266,7 +266,7 @@ class _$UserModelImpl extends _UserModel {
   @override
   final String userType;
   @override
-  final String token;
+  final String? token;
 
   @override
   String toString() {
@@ -327,7 +327,7 @@ abstract class _UserModel extends UserModel {
       final String? bio,
       final String? profileImage,
       required final String userType,
-      required final String token}) = _$UserModelImpl;
+      final String? token}) = _$UserModelImpl;
   const _UserModel._() : super._();
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
@@ -354,7 +354,7 @@ abstract class _UserModel extends UserModel {
   @override
   String get userType;
   @override
-  String get token;
+  String? get token;
   @override
   @JsonKey(ignore: true)
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>

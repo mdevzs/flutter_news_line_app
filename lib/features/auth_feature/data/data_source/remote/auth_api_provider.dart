@@ -26,4 +26,7 @@ abstract class AuthApiProvider {
 
   @GET('/public/tags')
   Future<List<TagsModel>> getAllTags();
+
+  @GET('/public/official-authors')
+  Future<List<UserModel>> getAllOfficialAuthors();
 }

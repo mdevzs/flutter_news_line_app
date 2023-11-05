@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:news_line_app/core/usecase/usecase.dart';
-import 'package:news_line_app/features/auth_feature/domain/usecases/sign_up/sign_up_select_intrested_tag.dart';
+import 'package:news_line_app/features/auth_feature/domain/usecases/sign_up/sign_up_select_intrested_tag_usecase.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_select_intrested_tag_page/bloc/get_all_tags_state.dart';
 
 part 'sign_up_select_intrested_tag_event.dart';

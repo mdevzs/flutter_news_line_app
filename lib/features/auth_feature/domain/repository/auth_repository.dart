@@ -14,4 +14,6 @@ abstract class AuthRepository {
     String? q,
   });
   Future<Either<Failure, List<TagsEntity>>> getAllTags();
+  Future<Either<Failure, List<UserEntity>>> getAllOfficialAuthors();
+
 }
