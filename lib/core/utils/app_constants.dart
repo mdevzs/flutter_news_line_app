@@ -27,4 +27,34 @@ class AppConstatns {
           'Join our vibrant community of news enthusiasts. Share your thoughts, and engage in meaningful discussions.'
     },
   ];
+
+  static const enableNotifications = <Map<String, bool>>[
+    {
+      'Breaking news notifications': true,
+    },
+    {
+      'News recommendations': true,
+    },
+    {
+      'Top story notifications': true,
+    },
+    {
+      'Trending stories': true,
+    },
+    {
+      'Daily or weekly digest': true,
+    },
+    {
+      'Stories from those I follow': true,
+    },
+    {
+      'Someone is following me': true,
+    },
+    {
+      'Someone commented on my story': true,
+    },
+    {
+      'Someone replied to my comment': true,
+    },
+  ];
 }

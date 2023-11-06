@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_line_app/core/routes/names.dart';
 import 'package:news_line_app/core/services/storage_service.dart';
 import 'package:news_line_app/core/utils/injection.dart';
+import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_enable_notification_page/bloc/sign_up_enable_notification_bloc.dart';
+import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_enable_notification_page/sign_up_enable_notification_page.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_follow_official_author/bloc/sign_up_follow_official_author_bloc.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_follow_official_author/sign_up_follow_official_author_page.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_page/sign_up_page.dart';
@@ -68,6 +70,13 @@ class AppPages {
         page: const SignUpFollowOfficialAuthorPage(),
         bloc: BlocProvider(
           create: (context) => sl.get<SignUpFollowOfficialAuthorBloc>(),
+        ),
+      ),
+      PageEntity(
+        route: AppRoutes.SIGN_UP_Enable_Notification_ROUTE,
+        page: const SignUpEnableNotificationPage(),
+        bloc: BlocProvider(
+          create: (context) => SignUpEnableNotificationBloc(),
         ),
       ),
     ];
