@@ -29,7 +29,8 @@ class SignUpSelectCountryBloc
       await event.when<FutureOr<void>>(
         getCountries: (q) => _getAllCountries(emit, q),
         loadMore: (isTryAgin, q) => _loadMore(emit, isTryAgin, q),
-        selectCountry: (id) => _selectCountry(emit, id),
+        selectCountry: (id, countryName) =>
+            _selectCountry(emit, id, countryName),
       );
     });
 
@@ -113,7 +114,11 @@ class SignUpSelectCountryBloc
     }
   }
 
-  void _selectCountry(Emitter<SignUpSelectCountryState> emit, int id) {
-    emit(state.copyWith(countrySelectedId: id));
+  void _selectCountry(
+      Emitter<SignUpSelectCountryState> emit, int id, String countryName) {
+    emit(state.copyWith(
+      countrySelectedId: id,
+      countrySelectedName: countryName,
+    ));
   }
 }

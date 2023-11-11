@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_line_app/config/app_colors.dart';
+import 'package:news_line_app/core/routes/names.dart';
 import 'package:news_line_app/core/utils/gaps.dart';
 import 'package:news_line_app/core/widgets/widgets.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_select_intrested_tag_page/bloc/sign_up_select_intrested_tag_bloc.dart';
@@ -23,6 +24,7 @@ class SignUpSelectIntrestedTagPage extends StatelessWidget {
                 textWithIcon(
                   text: 'Customize your news feed',
                   icon: 'assets/icons/glowing_star.png',
+                  iconSize: 12,
                 ),
                 customText(
                   'Tell us what you\'re interested in to tailor your news experience. Dont worry. you can always update your preferences later.',
@@ -120,7 +122,10 @@ class SignUpSelectIntrestedTagPage extends StatelessWidget {
           Positioned(
             bottom: 0,
             child: continueSection(
-              onButtonPressed: () {},
+              onButtonPressed: () {
+                Navigator.of(context)
+                    .pushNamed(AppRoutes.SIGN_UP_Follow_Official_Author_ROUTE);
+              },
             ),
           ),
         ],

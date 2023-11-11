@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_line_app/config/app_colors.dart';
 import 'package:news_line_app/core/utils/gaps.dart';
 import 'package:sizer_pro/sizer.dart';
 
-import '../../features/auth_feature/presentation/pages/sign_in_page/bloc/sign_in_bloc.dart';
-
-Widget customText(String text,
-    {Color color = Colors.black,
-    double fontSize = 16,
-    FontWeight fontWeight = FontWeight.normal,
-    int? maxLines,
-    TextAlign? textAlign,
-    TextOverflow? overflow,
-    }) {
+Widget customText(
+  String text, {
+  Color color = Colors.black,
+  double fontSize = 16,
+  FontWeight fontWeight = FontWeight.normal,
+  int? maxLines,
+  TextAlign? textAlign,
+  TextOverflow? overflow,
+}) {
   return Text(
     text,
     style: TextStyle(
@@ -98,41 +96,57 @@ Widget appIconButton({
   );
 }
 
-final _textFieldBorder = OutlineInputBorder(
+final textFieldBorder = OutlineInputBorder(
   borderSide: BorderSide.none,
   borderRadius: BorderRadius.circular(4.sp),
 );
 
 Widget appTextFormField({
   TextEditingController? controller,
-  required Icon icon,
+  Icon? icon,
+  Icon? sufficxIcon,
   required String hintText,
   bool showClearIcon = false,
+  bool readOnly = false,
+  int maxLine = 1,
+  Color? suffixHighlightColor,
   required Function(String value) onChangeValue,
   required String? Function(String? value) validator,
+  Function()? onTap,
   Function()? onClearedButtonPressed,
+  Function()? onSuffixButtonPressed,
 }) {
   return TextFormField(
     controller: controller,
+    readOnly: readOnly,
+    onTap: onTap,
     decoration: InputDecoration(
       prefixIcon: icon,
       prefixIconColor: Colors.grey,
-      suffixIcon: showClearIcon && controller!.text.isNotEmpty
+      suffixIcon: (showClearIcon && controller!.text.isNotEmpty) ||
+              (sufficxIcon != null)
           ? IconButton(
-              icon: const Icon(Icons.clear),
+              highlightColor: suffixHighlightColor,
+              icon: sufficxIcon ?? const Icon(Icons.clear),
               onPressed: () {
-                controller.clear();
-                onClearedButtonPressed?.call();
+                if (showClearIcon) {
+                  controller?.clear();
+                  onClearedButtonPressed?.call();
+                } else {
+                  onSuffixButtonPressed?.call();
+                }
               },
             )
           : null,
       suffixIconColor: Colors.black,
       hintText: hintText,
-      enabledBorder: _textFieldBorder,
-      focusedBorder: _textFieldBorder,
+      enabledBorder: textFieldBorder,
+      focusedBorder: textFieldBorder,
       filled: true,
       fillColor: AppColors.bgTextFieldColor,
     ),
+    minLines: maxLine,
+    maxLines: maxLine,
     onChanged: (value) => onChangeValue(value),
     validator: (value) => validator(value),
   );
@@ -142,6 +156,7 @@ Widget appPasswordTextFormField(
   BuildContext context,
   bool obscurePassword, {
   TextEditingController? controller,
+  required Function() onTogglePasswordIconPressed,
   required Function(String value) onChangeValue,
   required String? Function(String? value) validator,
 }) {
@@ -151,18 +166,14 @@ Widget appPasswordTextFormField(
       prefixIcon: const Icon(Icons.lock),
       prefixIconColor: Colors.grey,
       suffixIcon: IconButton(
-        onPressed: () {
-          context
-              .read<SignInBloc>()
-              .add(const SignInEvent.obsecurePasswordToggle());
-        },
+        onPressed: onTogglePasswordIconPressed,
         icon: obscurePassword
             ? const Icon(Icons.visibility_off)
             : const Icon(Icons.visibility),
       ),
       hintText: 'Password',
-      enabledBorder: _textFieldBorder,
-      focusedBorder: _textFieldBorder,
+      enabledBorder: textFieldBorder,
+      focusedBorder: textFieldBorder,
       filled: true,
       fillColor: AppColors.bgTextFieldColor,
     ),

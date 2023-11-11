@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:news_line_app/core/params/sign_up_params.dart';
 import 'package:news_line_app/core/utils/api_response_handler.dart';
 import 'package:news_line_app/core/utils/failure.dart';
 import 'package:news_line_app/features/auth_feature/data/data_source/remote/auth_api_provider.dart';
@@ -68,9 +69,9 @@ class AuthRepositoryImpl implements AuthRepository {
     );
     return failureOrEntity;
   }
-  
+
   @override
-  Future<Either<Failure, List<UserEntity>>> getAllOfficialAuthors() async{
+  Future<Either<Failure, List<UserEntity>>> getAllOfficialAuthors() async {
     late Either<Failure, List<UserEntity>> failureOrEntity;
     await apiResponseHandler<List<UserModel>>(
       future: apiProvider.getAllOfficialAuthors(),
@@ -80,6 +81,34 @@ class AuthRepositoryImpl implements AuthRepository {
           officialAuthors.add(author.toEntity());
         }
         failureOrEntity = Right(officialAuthors);
+      },
+      left: (failure) {
+        failureOrEntity = Left(failure);
+      },
+    );
+    return failureOrEntity;
+  }
+
+  @override
+  Future<Either<Failure, UserEntity>> signUp(SignUpParams signUpParams) async {
+    late Either<Failure, UserEntity> failureOrEntity;
+    await apiResponseHandler<UserModel>(
+      future: apiProvider.signUp(
+        signUpParams.email,
+        signUpParams.password,
+        signUpParams.fullName,
+        signUpParams.country,
+        signUpParams.username,
+        signUpParams.dateOfBirth,
+        signUpParams.gender,
+        signUpParams.phone,
+        signUpParams.bio,
+        signUpParams.profileImage,
+        signUpParams.intrestedTags,
+        signUpParams.following,        
+      ),
+      right: (result) {
+        failureOrEntity = Right(result.toEntity());
       },
       left: (failure) {
         failureOrEntity = Left(failure);

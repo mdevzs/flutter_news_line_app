@@ -24,7 +24,9 @@ Future apiResponseHandler<T>({
       }
       left(
         Failure.serverFailure(
-          message: ErrorModel.fromJson(dioException.response?.data).message,
+          message: ErrorModel.fromJson(dioException.response?.data)
+              .message
+              .toString(),
         ),
       );
     } catch (e) {

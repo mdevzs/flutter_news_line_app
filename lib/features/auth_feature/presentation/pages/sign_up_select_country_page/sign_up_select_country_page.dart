@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_line_app/core/routes/names.dart';
 import 'package:news_line_app/core/utils/debouncer.dart';
 import 'package:news_line_app/core/utils/gaps.dart';
 import 'package:news_line_app/core/widgets/widgets.dart';
@@ -28,6 +29,7 @@ class SignUpSelectCountryPage extends StatelessWidget {
                     textWithIcon(
                       text: 'Where do you come from?',
                       icon: 'assets/icons/world_map.png',
+                      iconSize: 12,
                     ),
                     customText(
                       'Select your country of origin. This will help us to make the best recommendations for you.',
@@ -144,6 +146,8 @@ class SignUpSelectCountryPage extends StatelessWidget {
                                             SignUpSelectCountryEvent
                                                 .selectCountry(
                                               id: state.countries[index].id,
+                                              countryName:
+                                                  state.countries[index].name,
                                             ),
                                           );
                                       debugPrint('selected index is:$index');
@@ -182,7 +186,10 @@ class SignUpSelectCountryPage extends StatelessWidget {
                 child: Positioned(
                   bottom: 0,
                   child: continueSection(
-                    onButtonPressed: () {},
+                    onButtonPressed: () {
+                      Navigator.of(context).pushNamed(
+                          AppRoutes.SIGN_UP_Select_Intrested_Tag_ROUTE);
+                    },
                   ),
                 ),
               ),

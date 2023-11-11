@@ -20,21 +20,21 @@ mixin _$SignUpSelectCountryEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String? q) getCountries,
     required TResult Function(bool isTryAgain, String q) loadMore,
-    required TResult Function(int id) selectCountry,
+    required TResult Function(int id, String countryName) selectCountry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? q)? getCountries,
     TResult? Function(bool isTryAgain, String q)? loadMore,
-    TResult? Function(int id)? selectCountry,
+    TResult? Function(int id, String countryName)? selectCountry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? q)? getCountries,
     TResult Function(bool isTryAgain, String q)? loadMore,
-    TResult Function(int id)? selectCountry,
+    TResult Function(int id, String countryName)? selectCountry,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -147,7 +147,7 @@ class _$GetCountriesImpl implements _GetCountries {
   TResult when<TResult extends Object?>({
     required TResult Function(String? q) getCountries,
     required TResult Function(bool isTryAgain, String q) loadMore,
-    required TResult Function(int id) selectCountry,
+    required TResult Function(int id, String countryName) selectCountry,
   }) {
     return getCountries(q);
   }
@@ -157,7 +157,7 @@ class _$GetCountriesImpl implements _GetCountries {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? q)? getCountries,
     TResult? Function(bool isTryAgain, String q)? loadMore,
-    TResult? Function(int id)? selectCountry,
+    TResult? Function(int id, String countryName)? selectCountry,
   }) {
     return getCountries?.call(q);
   }
@@ -167,7 +167,7 @@ class _$GetCountriesImpl implements _GetCountries {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? q)? getCountries,
     TResult Function(bool isTryAgain, String q)? loadMore,
-    TResult Function(int id)? selectCountry,
+    TResult Function(int id, String countryName)? selectCountry,
     required TResult orElse(),
   }) {
     if (getCountries != null) {
@@ -295,7 +295,7 @@ class _$LoadMoreImpl implements _LoadMore {
   TResult when<TResult extends Object?>({
     required TResult Function(String? q) getCountries,
     required TResult Function(bool isTryAgain, String q) loadMore,
-    required TResult Function(int id) selectCountry,
+    required TResult Function(int id, String countryName) selectCountry,
   }) {
     return loadMore(isTryAgain, q);
   }
@@ -305,7 +305,7 @@ class _$LoadMoreImpl implements _LoadMore {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? q)? getCountries,
     TResult? Function(bool isTryAgain, String q)? loadMore,
-    TResult? Function(int id)? selectCountry,
+    TResult? Function(int id, String countryName)? selectCountry,
   }) {
     return loadMore?.call(isTryAgain, q);
   }
@@ -315,7 +315,7 @@ class _$LoadMoreImpl implements _LoadMore {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? q)? getCountries,
     TResult Function(bool isTryAgain, String q)? loadMore,
-    TResult Function(int id)? selectCountry,
+    TResult Function(int id, String countryName)? selectCountry,
     required TResult orElse(),
   }) {
     if (loadMore != null) {
@@ -377,7 +377,7 @@ abstract class _$$SelectCountryImplCopyWith<$Res> {
           _$SelectCountryImpl value, $Res Function(_$SelectCountryImpl) then) =
       __$$SelectCountryImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int id});
+  $Res call({int id, String countryName});
 }
 
 /// @nodoc
@@ -392,12 +392,17 @@ class __$$SelectCountryImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? countryName = null,
   }) {
     return _then(_$SelectCountryImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      countryName: null == countryName
+          ? _value.countryName
+          : countryName // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -405,14 +410,16 @@ class __$$SelectCountryImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SelectCountryImpl implements _SelectCountry {
-  const _$SelectCountryImpl({required this.id});
+  const _$SelectCountryImpl({required this.id, required this.countryName});
 
   @override
   final int id;
+  @override
+  final String countryName;
 
   @override
   String toString() {
-    return 'SignUpSelectCountryEvent.selectCountry(id: $id)';
+    return 'SignUpSelectCountryEvent.selectCountry(id: $id, countryName: $countryName)';
   }
 
   @override
@@ -420,11 +427,13 @@ class _$SelectCountryImpl implements _SelectCountry {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SelectCountryImpl &&
-            (identical(other.id, id) || other.id == id));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.countryName, countryName) ||
+                other.countryName == countryName));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id);
+  int get hashCode => Object.hash(runtimeType, id, countryName);
 
   @JsonKey(ignore: true)
   @override
@@ -437,9 +446,9 @@ class _$SelectCountryImpl implements _SelectCountry {
   TResult when<TResult extends Object?>({
     required TResult Function(String? q) getCountries,
     required TResult Function(bool isTryAgain, String q) loadMore,
-    required TResult Function(int id) selectCountry,
+    required TResult Function(int id, String countryName) selectCountry,
   }) {
-    return selectCountry(id);
+    return selectCountry(id, countryName);
   }
 
   @override
@@ -447,9 +456,9 @@ class _$SelectCountryImpl implements _SelectCountry {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? q)? getCountries,
     TResult? Function(bool isTryAgain, String q)? loadMore,
-    TResult? Function(int id)? selectCountry,
+    TResult? Function(int id, String countryName)? selectCountry,
   }) {
-    return selectCountry?.call(id);
+    return selectCountry?.call(id, countryName);
   }
 
   @override
@@ -457,11 +466,11 @@ class _$SelectCountryImpl implements _SelectCountry {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? q)? getCountries,
     TResult Function(bool isTryAgain, String q)? loadMore,
-    TResult Function(int id)? selectCountry,
+    TResult Function(int id, String countryName)? selectCountry,
     required TResult orElse(),
   }) {
     if (selectCountry != null) {
-      return selectCountry(id);
+      return selectCountry(id, countryName);
     }
     return orElse();
   }
@@ -502,9 +511,12 @@ class _$SelectCountryImpl implements _SelectCountry {
 }
 
 abstract class _SelectCountry implements SignUpSelectCountryEvent {
-  const factory _SelectCountry({required final int id}) = _$SelectCountryImpl;
+  const factory _SelectCountry(
+      {required final int id,
+      required final String countryName}) = _$SelectCountryImpl;
 
   int get id;
+  String get countryName;
   @JsonKey(ignore: true)
   _$$SelectCountryImplCopyWith<_$SelectCountryImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -513,6 +525,7 @@ abstract class _SelectCountry implements SignUpSelectCountryEvent {
 /// @nodoc
 mixin _$SignUpSelectCountryState {
   int get countrySelectedId => throw _privateConstructorUsedError;
+  String get countrySelectedName => throw _privateConstructorUsedError;
   bool get hasReachedEnd => throw _privateConstructorUsedError;
   bool get isLoadingMoreError => throw _privateConstructorUsedError;
   List<CountriesDataEntity> get countries => throw _privateConstructorUsedError;
@@ -533,6 +546,7 @@ abstract class $SignUpSelectCountryStateCopyWith<$Res> {
   @useResult
   $Res call(
       {int countrySelectedId,
+      String countrySelectedName,
       bool hasReachedEnd,
       bool isLoadingMoreError,
       List<CountriesDataEntity> countries,
@@ -558,6 +572,7 @@ class _$SignUpSelectCountryStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? countrySelectedId = null,
+    Object? countrySelectedName = null,
     Object? hasReachedEnd = null,
     Object? isLoadingMoreError = null,
     Object? countries = null,
@@ -569,6 +584,10 @@ class _$SignUpSelectCountryStateCopyWithImpl<$Res,
           ? _value.countrySelectedId
           : countrySelectedId // ignore: cast_nullable_to_non_nullable
               as int,
+      countrySelectedName: null == countrySelectedName
+          ? _value.countrySelectedName
+          : countrySelectedName // ignore: cast_nullable_to_non_nullable
+              as String,
       hasReachedEnd: null == hasReachedEnd
           ? _value.hasReachedEnd
           : hasReachedEnd // ignore: cast_nullable_to_non_nullable
@@ -621,6 +640,7 @@ abstract class _$$SignUpSelectCountryStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {int countrySelectedId,
+      String countrySelectedName,
       bool hasReachedEnd,
       bool isLoadingMoreError,
       List<CountriesDataEntity> countries,
@@ -647,6 +667,7 @@ class __$$SignUpSelectCountryStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? countrySelectedId = null,
+    Object? countrySelectedName = null,
     Object? hasReachedEnd = null,
     Object? isLoadingMoreError = null,
     Object? countries = null,
@@ -658,6 +679,10 @@ class __$$SignUpSelectCountryStateImplCopyWithImpl<$Res>
           ? _value.countrySelectedId
           : countrySelectedId // ignore: cast_nullable_to_non_nullable
               as int,
+      countrySelectedName: null == countrySelectedName
+          ? _value.countrySelectedName
+          : countrySelectedName // ignore: cast_nullable_to_non_nullable
+              as String,
       hasReachedEnd: null == hasReachedEnd
           ? _value.hasReachedEnd
           : hasReachedEnd // ignore: cast_nullable_to_non_nullable
@@ -687,6 +712,7 @@ class __$$SignUpSelectCountryStateImplCopyWithImpl<$Res>
 class _$SignUpSelectCountryStateImpl implements _SignUpSelectCountryState {
   const _$SignUpSelectCountryStateImpl(
       {this.countrySelectedId = -1,
+      this.countrySelectedName = '',
       this.hasReachedEnd = false,
       this.isLoadingMoreError = false,
       required final List<CountriesDataEntity> countries,
@@ -697,6 +723,9 @@ class _$SignUpSelectCountryStateImpl implements _SignUpSelectCountryState {
   @override
   @JsonKey()
   final int countrySelectedId;
+  @override
+  @JsonKey()
+  final String countrySelectedName;
   @override
   @JsonKey()
   final bool hasReachedEnd;
@@ -719,7 +748,7 @@ class _$SignUpSelectCountryStateImpl implements _SignUpSelectCountryState {
 
   @override
   String toString() {
-    return 'SignUpSelectCountryState(countrySelectedId: $countrySelectedId, hasReachedEnd: $hasReachedEnd, isLoadingMoreError: $isLoadingMoreError, countries: $countries, getAllCountriesState: $getAllCountriesState, loadingMore: $loadingMore)';
+    return 'SignUpSelectCountryState(countrySelectedId: $countrySelectedId, countrySelectedName: $countrySelectedName, hasReachedEnd: $hasReachedEnd, isLoadingMoreError: $isLoadingMoreError, countries: $countries, getAllCountriesState: $getAllCountriesState, loadingMore: $loadingMore)';
   }
 
   @override
@@ -729,6 +758,8 @@ class _$SignUpSelectCountryStateImpl implements _SignUpSelectCountryState {
             other is _$SignUpSelectCountryStateImpl &&
             (identical(other.countrySelectedId, countrySelectedId) ||
                 other.countrySelectedId == countrySelectedId) &&
+            (identical(other.countrySelectedName, countrySelectedName) ||
+                other.countrySelectedName == countrySelectedName) &&
             (identical(other.hasReachedEnd, hasReachedEnd) ||
                 other.hasReachedEnd == hasReachedEnd) &&
             (identical(other.isLoadingMoreError, isLoadingMoreError) ||
@@ -745,6 +776,7 @@ class _$SignUpSelectCountryStateImpl implements _SignUpSelectCountryState {
   int get hashCode => Object.hash(
       runtimeType,
       countrySelectedId,
+      countrySelectedName,
       hasReachedEnd,
       isLoadingMoreError,
       const DeepCollectionEquality().hash(_countries),
@@ -762,6 +794,7 @@ class _$SignUpSelectCountryStateImpl implements _SignUpSelectCountryState {
 abstract class _SignUpSelectCountryState implements SignUpSelectCountryState {
   const factory _SignUpSelectCountryState(
       {final int countrySelectedId,
+      final String countrySelectedName,
       final bool hasReachedEnd,
       final bool isLoadingMoreError,
       required final List<CountriesDataEntity> countries,
@@ -770,6 +803,8 @@ abstract class _SignUpSelectCountryState implements SignUpSelectCountryState {
 
   @override
   int get countrySelectedId;
+  @override
+  String get countrySelectedName;
   @override
   bool get hasReachedEnd;
   @override

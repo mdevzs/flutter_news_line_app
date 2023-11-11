@@ -59,7 +59,13 @@ class OnBoardingPage extends StatelessWidget {
                           fontSize: 8,
                           bgColor: AppColors.bgButtonColor,
                           textColor: AppColors.primaryColor,
-                          onButtonPress: () {},
+                          onButtonPress: () {
+                            storageService.setIsFirstTimeUseTheApp(false);
+                            Navigator.of(context).pushNamedAndRemoveUntil(
+                              AppRoutes.AUTH_ROUTE,
+                              (route) => false,
+                            );
+                          },
                         ),
                         appButton(
                           'Continue',
@@ -97,8 +103,10 @@ class OnBoardingPage extends StatelessWidget {
                           textColor: Colors.white,
                           onButtonPress: () {
                             storageService.setIsFirstTimeUseTheApp(false);
-                            Navigator.of(context)
-                                .pushNamedAndRemoveUntil(AppRoutes.AUTH_ROUTE,(route) => false,);
+                            Navigator.of(context).pushNamedAndRemoveUntil(
+                              AppRoutes.AUTH_ROUTE,
+                              (route) => false,
+                            );
                           },
                         ),
                       ],

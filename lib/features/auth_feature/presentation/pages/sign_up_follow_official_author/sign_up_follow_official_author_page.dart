@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_line_app/core/routes/names.dart';
 import 'package:news_line_app/core/widgets/widgets.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_follow_official_author/bloc/sign_up_follow_official_author_bloc.dart';
 import 'package:news_line_app/features/auth_feature/presentation/widgets/auth_features_widgets.dart';
@@ -23,7 +24,7 @@ class SignUpFollowOfficialAuthorPage extends StatelessWidget {
                 textWithIcon(
                   text: 'Follow some official publicshers',
                   icon: 'assets/icons/heart.png',
-                  iconSize: 18,
+                  iconSize: 12,
                 ),
                 customText(
                   'Follow some official publishers that you may know and like to get updates on their stories.',
@@ -98,7 +99,10 @@ class SignUpFollowOfficialAuthorPage extends StatelessWidget {
           Positioned(
             bottom: 0,
             child: continueSection(
-              onButtonPressed: () {},
+              onButtonPressed: () {
+                Navigator.of(context)
+                    .pushNamed(AppRoutes.SIGN_UP_Enable_Notification_ROUTE);
+              },
             ),
           )
         ],

@@ -15,9 +15,7 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
-    final emailController = TextEditingController();
-    final passwordController = TextEditingController();
-
+    
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
@@ -41,7 +39,7 @@ class SignUpPage extends StatelessWidget {
                           ),
                           Image.asset(
                             'assets/icons/woman_laptop.png',
-                            width: 10.sp,
+                            width: 12.sp,
                           ),
                         ],
                       ),
@@ -63,7 +61,8 @@ class SignUpPage extends StatelessWidget {
                             ),
                             gapH4,
                             appTextFormField(
-                              controller: emailController,
+                              controller:
+                                  context.read<SignUpBloc>().emailController,
                               icon: const Icon(Icons.email),
                               hintText: 'Email',
                               onChangeValue: (value) {},
@@ -82,9 +81,14 @@ class SignUpPage extends StatelessWidget {
                             appPasswordTextFormField(
                               context,
                               state.obscurePassword,
-                              controller: passwordController,
+                              controller:
+                                  context.read<SignUpBloc>().passwordController,
                               onChangeValue: (value) {},
-                              validator: FormBuilderValidators.required(),
+                              onTogglePasswordIconPressed: () {
+                                context.read<SignUpBloc>().add(
+                                    const SignUpEvent.obscurePasswordToggled());
+                              },
+                              validator: FormBuilderValidators.minLength(6),
                             ),
                           ],
                         ),
@@ -105,6 +109,13 @@ class SignUpPage extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                               ),
                               value: state.agreeToTerms,
+                              subtitle: !state.agreeToTerms && state.isSubmited
+                                  ? customText(
+                                      'Required Field',
+                                      fontSize: 6,
+                                      color: const Color(0xFFe53935),
+                                    )
+                                  : null,
                               onChanged: (value) {
                                 context.read<SignUpBloc>().add(
                                     const SignUpEvent.agreeToTermsToggled());
@@ -156,8 +167,13 @@ class SignUpPage extends StatelessWidget {
                         width: 100,
                         height: 5,
                         onButtonPress: () {
-                          if (formKey.currentState!.validate()) {
-                            debugPrint('button onPressed');
+                          context
+                              .read<SignUpBloc>()
+                              .add(const SignUpEvent.submit());
+                          if (formKey.currentState!.validate() &&
+                              state.agreeToTerms) {
+                            Navigator.of(context).pushNamed(
+                                AppRoutes.SIGN_UP_Select_Country_ROUTE);
                           }
                         },
                       )

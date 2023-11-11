@@ -7,6 +7,8 @@ import 'package:news_line_app/core/utils/gaps.dart';
 import 'package:news_line_app/core/widgets/widgets.dart';
 import 'package:sizer_pro/sizer.dart';
 
+import '../../../../../core/services/storage_service.dart';
+import '../../../../../core/utils/injection.dart';
 import '../../../../../core/widgets/show_snackbar.dart';
 import 'bloc/sign_in_bloc.dart';
 
@@ -15,6 +17,7 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final storageService = sl.get<StorageService>();
     final formKey = GlobalKey<FormState>();
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
@@ -30,8 +33,9 @@ class SignInPage extends StatelessWidget {
           padding: EdgeInsets.all(8.sp),
           child: BlocConsumer<SignInBloc, SignInState>(
             listenWhen: (previous, current) {
-              if (previous.signInSubmittedState !=
-                  current.signInSubmittedState) {
+              if (previous.obscurePassword == current.obscurePassword &&
+                  previous.rememberMe == current.rememberMe &&
+                  previous.isSignInSubmittedLoading) {
                 return true;
               }
               return false;
@@ -39,7 +43,9 @@ class SignInPage extends StatelessWidget {
             listener: (context, state) {
               state.signInSubmittedState?.when(
                 loaded: (user) {
-                  showSnackBar(user.phone.toString());
+                  storageService.storeUserToken(user.token);
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      AppRoutes.Home_ROUTE, (route) => false);
                 },
                 error: (message) {
                   showSnackBar(message);
@@ -108,6 +114,12 @@ class SignInPage extends StatelessWidget {
                                 context,
                                 state.obscurePassword,
                                 controller: passwordController,
+                                onTogglePasswordIconPressed: () {
+                                  context.read<SignInBloc>().add(
+                                        const SignInEvent
+                                            .obsecurePasswordToggle(),
+                                      );
+                                },
                                 onChangeValue: (value) {},
                                 validator: FormBuilderValidators.required(),
                               ),

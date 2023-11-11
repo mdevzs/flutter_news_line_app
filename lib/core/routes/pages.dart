@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_line_app/core/routes/names.dart';
 import 'package:news_line_app/core/services/storage_service.dart';
 import 'package:news_line_app/core/utils/injection.dart';
+import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_create_prfile_page/bloc/sign_up_create_prfile_bloc.dart';
+import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_create_prfile_page/sign_up_create_profile_page.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_enable_notification_page/bloc/sign_up_enable_notification_bloc.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_enable_notification_page/sign_up_enable_notification_page.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_follow_official_author/bloc/sign_up_follow_official_author_bloc.dart';
@@ -11,6 +13,8 @@ import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_p
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_select_country_page/bloc/sign_up_select_country_bloc.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_select_country_page/sign_up_select_country_page.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_select_intrested_tag_page/sign_up_select_intrested_tag_page.dart';
+import 'package:news_line_app/features/home_feature/presentation/home_page/bloc/home_bloc.dart';
+import 'package:news_line_app/features/home_feature/presentation/home_page/home_page.dart';
 import '../../features/auth_feature/presentation/pages/auth_page/auth_page.dart';
 import '../../features/auth_feature/presentation/pages/auth_page/bloc/auth_bloc.dart';
 import '../../features/auth_feature/presentation/pages/sign_in_page/bloc/sign_in_bloc.dart';
@@ -79,6 +83,20 @@ class AppPages {
           create: (context) => SignUpEnableNotificationBloc(),
         ),
       ),
+      PageEntity(
+        route: AppRoutes.SIGN_UP_Create_Profile_ROUTE,
+        page: const SignUpCreateProfilePage(),
+        bloc: BlocProvider(
+          create: (context) => sl.get<SignUpCreatePrfileBloc>(),
+        ),
+      ),
+      PageEntity(
+        route: AppRoutes.Home_ROUTE,
+        page: const HomePage(),
+        bloc: BlocProvider(
+          create: (context) => HomeBloc(),
+        ),
+      ),
     ];
   }
 
@@ -94,9 +112,14 @@ class AppPages {
     final page = routes().where(
       (p) => p.route == settings.name,
     );
-    final isFirstTimeUseApp = sl.get<StorageService>().isFirstTimeAppUsed();
+    final storage = sl.get<StorageService>();
+    final isFirstTimeUseApp = storage.isFirstTimeAppUsed();
+    final isAuthenticated = storage.userToken() != null ? true : false;
     if (isFirstTimeUseApp) {
       return MaterialPageRoute(builder: (context) => const OnBoardingPage());
+    }
+    if (isAuthenticated) {
+      return MaterialPageRoute(builder: (context) => const HomePage());
     }
     if (page.isNotEmpty) {
       return MaterialPageRoute(builder: (context) => page.first.page);

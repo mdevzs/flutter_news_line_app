@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:news_line_app/core/utils/app_constants.dart';
 import 'package:news_line_app/features/auth_feature/data/models/countries_model.dart';
@@ -29,4 +31,21 @@ abstract class AuthApiProvider {
 
   @GET('/public/official-authors')
   Future<List<UserModel>> getAllOfficialAuthors();
+
+  @MultiPart()
+  @POST('/auth/signup/author')
+  Future<UserModel> signUp(
+    @Part(name: 'email') String email,
+    @Part(name: 'password') String password,
+    @Part(name: 'fullName') String fullName,
+    @Part(name: 'country') String country,
+    @Part(name: 'username') String username,
+    @Part(name: 'dateOfBirth') String dateOfBirth,
+    @Part(name: 'gender') String gender,
+    @Part(name: 'phone') String phone,
+    @Part(name: 'bio') String? bio, [
+    @Part(name: 'profileImage') File? file,
+    @Part(name: 'intrestedTags[]') List<String>? intrestedTags,
+    @Part(name: 'following[]') List<String>? following,
+  ]);
 }

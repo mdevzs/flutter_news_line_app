@@ -4,6 +4,7 @@ part of 'sign_up_select_country_bloc.dart';
 class SignUpSelectCountryState with _$SignUpSelectCountryState {
   const factory SignUpSelectCountryState({
     @Default(-1) int countrySelectedId,
+    @Default('') String countrySelectedName,
     @Default(false) bool hasReachedEnd,
     @Default(false) bool isLoadingMoreError,
     required List<CountriesDataEntity> countries,

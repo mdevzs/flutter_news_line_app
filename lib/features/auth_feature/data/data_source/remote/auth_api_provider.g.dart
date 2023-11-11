@@ -147,6 +147,101 @@ class _AuthApiProvider implements AuthApiProvider {
     return value;
   }
 
+  @override
+  Future<UserModel> signUp(
+    String email,
+    String password,
+    String fullName,
+    String country,
+    String username,
+    String dateOfBirth,
+    String gender,
+    String phone,
+    String? bio, [
+    File? file,
+    List<String>? intrestedTags,
+    List<String>? following,
+  ]) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    _data.fields.add(MapEntry(
+      'email',
+      email,
+    ));
+    _data.fields.add(MapEntry(
+      'password',
+      password,
+    ));
+    _data.fields.add(MapEntry(
+      'fullName',
+      fullName,
+    ));
+    _data.fields.add(MapEntry(
+      'country',
+      country,
+    ));
+    _data.fields.add(MapEntry(
+      'username',
+      username,
+    ));
+    _data.fields.add(MapEntry(
+      'dateOfBirth',
+      dateOfBirth,
+    ));
+    _data.fields.add(MapEntry(
+      'gender',
+      gender,
+    ));
+    _data.fields.add(MapEntry(
+      'phone',
+      phone,
+    ));
+    if (bio != null) {
+      _data.fields.add(MapEntry(
+        'bio',
+        bio,
+      ));
+    }
+    if (file != null) {
+      _data.files.add(MapEntry(
+        'profileImage',
+        MultipartFile.fromFileSync(
+          file.path,
+          filename: file.path.split(Platform.pathSeparator).last,
+        ),
+      ));
+    }
+    intrestedTags?.forEach((i) {
+      _data.fields.add(MapEntry('intrestedTags[]', i));
+    });
+    following?.forEach((i) {
+      _data.fields.add(MapEntry('following[]', i));
+    });
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<UserModel>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+      contentType: 'multipart/form-data',
+    )
+            .compose(
+              _dio.options,
+              '/auth/signup/author',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = UserModel.fromJson(_result.data!);
+    return value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

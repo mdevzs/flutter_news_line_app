@@ -20,18 +20,21 @@ mixin _$SignUpEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() obscurePasswordToggled,
     required TResult Function() agreeToTermsToggled,
+    required TResult Function() submit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? obscurePasswordToggled,
     TResult? Function()? agreeToTermsToggled,
+    TResult? Function()? submit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? obscurePasswordToggled,
     TResult Function()? agreeToTermsToggled,
+    TResult Function()? submit,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -40,18 +43,21 @@ mixin _$SignUpEvent {
     required TResult Function(_ObsecurePasswordToggled value)
         obscurePasswordToggled,
     required TResult Function(_AgreeToTermsToggled value) agreeToTermsToggled,
+    required TResult Function(_Submit value) submit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ObsecurePasswordToggled value)? obscurePasswordToggled,
     TResult? Function(_AgreeToTermsToggled value)? agreeToTermsToggled,
+    TResult? Function(_Submit value)? submit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ObsecurePasswordToggled value)? obscurePasswordToggled,
     TResult Function(_AgreeToTermsToggled value)? agreeToTermsToggled,
+    TResult Function(_Submit value)? submit,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -118,6 +124,7 @@ class _$ObsecurePasswordToggledImpl implements _ObsecurePasswordToggled {
   TResult when<TResult extends Object?>({
     required TResult Function() obscurePasswordToggled,
     required TResult Function() agreeToTermsToggled,
+    required TResult Function() submit,
   }) {
     return obscurePasswordToggled();
   }
@@ -127,6 +134,7 @@ class _$ObsecurePasswordToggledImpl implements _ObsecurePasswordToggled {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? obscurePasswordToggled,
     TResult? Function()? agreeToTermsToggled,
+    TResult? Function()? submit,
   }) {
     return obscurePasswordToggled?.call();
   }
@@ -136,6 +144,7 @@ class _$ObsecurePasswordToggledImpl implements _ObsecurePasswordToggled {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? obscurePasswordToggled,
     TResult Function()? agreeToTermsToggled,
+    TResult Function()? submit,
     required TResult orElse(),
   }) {
     if (obscurePasswordToggled != null) {
@@ -150,6 +159,7 @@ class _$ObsecurePasswordToggledImpl implements _ObsecurePasswordToggled {
     required TResult Function(_ObsecurePasswordToggled value)
         obscurePasswordToggled,
     required TResult Function(_AgreeToTermsToggled value) agreeToTermsToggled,
+    required TResult Function(_Submit value) submit,
   }) {
     return obscurePasswordToggled(this);
   }
@@ -159,6 +169,7 @@ class _$ObsecurePasswordToggledImpl implements _ObsecurePasswordToggled {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ObsecurePasswordToggled value)? obscurePasswordToggled,
     TResult? Function(_AgreeToTermsToggled value)? agreeToTermsToggled,
+    TResult? Function(_Submit value)? submit,
   }) {
     return obscurePasswordToggled?.call(this);
   }
@@ -168,6 +179,7 @@ class _$ObsecurePasswordToggledImpl implements _ObsecurePasswordToggled {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ObsecurePasswordToggled value)? obscurePasswordToggled,
     TResult Function(_AgreeToTermsToggled value)? agreeToTermsToggled,
+    TResult Function(_Submit value)? submit,
     required TResult orElse(),
   }) {
     if (obscurePasswordToggled != null) {
@@ -222,6 +234,7 @@ class _$AgreeToTermsToggledImpl implements _AgreeToTermsToggled {
   TResult when<TResult extends Object?>({
     required TResult Function() obscurePasswordToggled,
     required TResult Function() agreeToTermsToggled,
+    required TResult Function() submit,
   }) {
     return agreeToTermsToggled();
   }
@@ -231,6 +244,7 @@ class _$AgreeToTermsToggledImpl implements _AgreeToTermsToggled {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? obscurePasswordToggled,
     TResult? Function()? agreeToTermsToggled,
+    TResult? Function()? submit,
   }) {
     return agreeToTermsToggled?.call();
   }
@@ -240,6 +254,7 @@ class _$AgreeToTermsToggledImpl implements _AgreeToTermsToggled {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? obscurePasswordToggled,
     TResult Function()? agreeToTermsToggled,
+    TResult Function()? submit,
     required TResult orElse(),
   }) {
     if (agreeToTermsToggled != null) {
@@ -254,6 +269,7 @@ class _$AgreeToTermsToggledImpl implements _AgreeToTermsToggled {
     required TResult Function(_ObsecurePasswordToggled value)
         obscurePasswordToggled,
     required TResult Function(_AgreeToTermsToggled value) agreeToTermsToggled,
+    required TResult Function(_Submit value) submit,
   }) {
     return agreeToTermsToggled(this);
   }
@@ -263,6 +279,7 @@ class _$AgreeToTermsToggledImpl implements _AgreeToTermsToggled {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ObsecurePasswordToggled value)? obscurePasswordToggled,
     TResult? Function(_AgreeToTermsToggled value)? agreeToTermsToggled,
+    TResult? Function(_Submit value)? submit,
   }) {
     return agreeToTermsToggled?.call(this);
   }
@@ -272,6 +289,7 @@ class _$AgreeToTermsToggledImpl implements _AgreeToTermsToggled {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ObsecurePasswordToggled value)? obscurePasswordToggled,
     TResult Function(_AgreeToTermsToggled value)? agreeToTermsToggled,
+    TResult Function(_Submit value)? submit,
     required TResult orElse(),
   }) {
     if (agreeToTermsToggled != null) {
@@ -286,9 +304,119 @@ abstract class _AgreeToTermsToggled implements SignUpEvent {
 }
 
 /// @nodoc
+abstract class _$$SubmitImplCopyWith<$Res> {
+  factory _$$SubmitImplCopyWith(
+          _$SubmitImpl value, $Res Function(_$SubmitImpl) then) =
+      __$$SubmitImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SubmitImplCopyWithImpl<$Res>
+    extends _$SignUpEventCopyWithImpl<$Res, _$SubmitImpl>
+    implements _$$SubmitImplCopyWith<$Res> {
+  __$$SubmitImplCopyWithImpl(
+      _$SubmitImpl _value, $Res Function(_$SubmitImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SubmitImpl implements _Submit {
+  const _$SubmitImpl();
+
+  @override
+  String toString() {
+    return 'SignUpEvent.submit()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SubmitImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() obscurePasswordToggled,
+    required TResult Function() agreeToTermsToggled,
+    required TResult Function() submit,
+  }) {
+    return submit();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? obscurePasswordToggled,
+    TResult? Function()? agreeToTermsToggled,
+    TResult? Function()? submit,
+  }) {
+    return submit?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? obscurePasswordToggled,
+    TResult Function()? agreeToTermsToggled,
+    TResult Function()? submit,
+    required TResult orElse(),
+  }) {
+    if (submit != null) {
+      return submit();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ObsecurePasswordToggled value)
+        obscurePasswordToggled,
+    required TResult Function(_AgreeToTermsToggled value) agreeToTermsToggled,
+    required TResult Function(_Submit value) submit,
+  }) {
+    return submit(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ObsecurePasswordToggled value)? obscurePasswordToggled,
+    TResult? Function(_AgreeToTermsToggled value)? agreeToTermsToggled,
+    TResult? Function(_Submit value)? submit,
+  }) {
+    return submit?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ObsecurePasswordToggled value)? obscurePasswordToggled,
+    TResult Function(_AgreeToTermsToggled value)? agreeToTermsToggled,
+    TResult Function(_Submit value)? submit,
+    required TResult orElse(),
+  }) {
+    if (submit != null) {
+      return submit(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Submit implements SignUpEvent {
+  const factory _Submit() = _$SubmitImpl;
+}
+
+/// @nodoc
 mixin _$SignUpState {
   bool get obscurePassword => throw _privateConstructorUsedError;
   bool get agreeToTerms => throw _privateConstructorUsedError;
+  bool get isSubmited => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SignUpStateCopyWith<SignUpState> get copyWith =>
@@ -301,7 +429,7 @@ abstract class $SignUpStateCopyWith<$Res> {
           SignUpState value, $Res Function(SignUpState) then) =
       _$SignUpStateCopyWithImpl<$Res, SignUpState>;
   @useResult
-  $Res call({bool obscurePassword, bool agreeToTerms});
+  $Res call({bool obscurePassword, bool agreeToTerms, bool isSubmited});
 }
 
 /// @nodoc
@@ -319,6 +447,7 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
   $Res call({
     Object? obscurePassword = null,
     Object? agreeToTerms = null,
+    Object? isSubmited = null,
   }) {
     return _then(_value.copyWith(
       obscurePassword: null == obscurePassword
@@ -328,6 +457,10 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
       agreeToTerms: null == agreeToTerms
           ? _value.agreeToTerms
           : agreeToTerms // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSubmited: null == isSubmited
+          ? _value.isSubmited
+          : isSubmited // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -341,7 +474,7 @@ abstract class _$$SignUpStateImplCopyWith<$Res>
       __$$SignUpStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool obscurePassword, bool agreeToTerms});
+  $Res call({bool obscurePassword, bool agreeToTerms, bool isSubmited});
 }
 
 /// @nodoc
@@ -357,6 +490,7 @@ class __$$SignUpStateImplCopyWithImpl<$Res>
   $Res call({
     Object? obscurePassword = null,
     Object? agreeToTerms = null,
+    Object? isSubmited = null,
   }) {
     return _then(_$SignUpStateImpl(
       obscurePassword: null == obscurePassword
@@ -367,6 +501,10 @@ class __$$SignUpStateImplCopyWithImpl<$Res>
           ? _value.agreeToTerms
           : agreeToTerms // ignore: cast_nullable_to_non_nullable
               as bool,
+      isSubmited: null == isSubmited
+          ? _value.isSubmited
+          : isSubmited // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -375,7 +513,9 @@ class __$$SignUpStateImplCopyWithImpl<$Res>
 
 class _$SignUpStateImpl implements _SignUpState {
   const _$SignUpStateImpl(
-      {this.obscurePassword = true, this.agreeToTerms = false});
+      {this.obscurePassword = true,
+      this.agreeToTerms = false,
+      this.isSubmited = false});
 
   @override
   @JsonKey()
@@ -383,10 +523,13 @@ class _$SignUpStateImpl implements _SignUpState {
   @override
   @JsonKey()
   final bool agreeToTerms;
+  @override
+  @JsonKey()
+  final bool isSubmited;
 
   @override
   String toString() {
-    return 'SignUpState(obscurePassword: $obscurePassword, agreeToTerms: $agreeToTerms)';
+    return 'SignUpState(obscurePassword: $obscurePassword, agreeToTerms: $agreeToTerms, isSubmited: $isSubmited)';
   }
 
   @override
@@ -397,11 +540,14 @@ class _$SignUpStateImpl implements _SignUpState {
             (identical(other.obscurePassword, obscurePassword) ||
                 other.obscurePassword == obscurePassword) &&
             (identical(other.agreeToTerms, agreeToTerms) ||
-                other.agreeToTerms == agreeToTerms));
+                other.agreeToTerms == agreeToTerms) &&
+            (identical(other.isSubmited, isSubmited) ||
+                other.isSubmited == isSubmited));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, obscurePassword, agreeToTerms);
+  int get hashCode =>
+      Object.hash(runtimeType, obscurePassword, agreeToTerms, isSubmited);
 
   @JsonKey(ignore: true)
   @override
@@ -413,12 +559,15 @@ class _$SignUpStateImpl implements _SignUpState {
 abstract class _SignUpState implements SignUpState {
   const factory _SignUpState(
       {final bool obscurePassword,
-      final bool agreeToTerms}) = _$SignUpStateImpl;
+      final bool agreeToTerms,
+      final bool isSubmited}) = _$SignUpStateImpl;
 
   @override
   bool get obscurePassword;
   @override
   bool get agreeToTerms;
+  @override
+  bool get isSubmited;
   @override
   @JsonKey(ignore: true)
   _$$SignUpStateImplCopyWith<_$SignUpStateImpl> get copyWith =>

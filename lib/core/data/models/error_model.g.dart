@@ -9,7 +9,7 @@ part of 'error_model.dart';
 _$ErrorModelImpl _$$ErrorModelImplFromJson(Map<String, dynamic> json) =>
     _$ErrorModelImpl(
       json['statusCode'] as int,
-      json['message'] as String,
+      json['message'],
     );
 
 Map<String, dynamic> _$$ErrorModelImplToJson(_$ErrorModelImpl instance) =>

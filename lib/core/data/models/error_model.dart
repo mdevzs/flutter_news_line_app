@@ -7,7 +7,7 @@ part 'error_model.g.dart';
 class ErrorModel with _$ErrorModel {
   const factory ErrorModel(
     int statusCode,
-    String message,
+    dynamic message,
   ) = _ErrorModel;
 
   factory ErrorModel.fromJson(Map<String, Object?> json) =>

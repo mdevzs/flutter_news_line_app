@@ -21,7 +21,7 @@ ErrorModel _$ErrorModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ErrorModel {
   int get statusCode => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
+  dynamic get message => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $ErrorModelCopyWith<$Res> {
           ErrorModel value, $Res Function(ErrorModel) then) =
       _$ErrorModelCopyWithImpl<$Res, ErrorModel>;
   @useResult
-  $Res call({int statusCode, String message});
+  $Res call({int statusCode, dynamic message});
 }
 
 /// @nodoc
@@ -52,17 +52,17 @@ class _$ErrorModelCopyWithImpl<$Res, $Val extends ErrorModel>
   @override
   $Res call({
     Object? statusCode = null,
-    Object? message = null,
+    Object? message = freezed,
   }) {
     return _then(_value.copyWith(
       statusCode: null == statusCode
           ? _value.statusCode
           : statusCode // ignore: cast_nullable_to_non_nullable
               as int,
-      message: null == message
+      message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String,
+              as dynamic,
     ) as $Val);
   }
 }
@@ -75,7 +75,7 @@ abstract class _$$ErrorModelImplCopyWith<$Res>
       __$$ErrorModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int statusCode, String message});
+  $Res call({int statusCode, dynamic message});
 }
 
 /// @nodoc
@@ -90,17 +90,17 @@ class __$$ErrorModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? statusCode = null,
-    Object? message = null,
+    Object? message = freezed,
   }) {
     return _then(_$ErrorModelImpl(
       null == statusCode
           ? _value.statusCode
           : statusCode // ignore: cast_nullable_to_non_nullable
               as int,
-      null == message
+      freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String,
+              as dynamic,
     ));
   }
 }
@@ -116,7 +116,7 @@ class _$ErrorModelImpl implements _ErrorModel {
   @override
   final int statusCode;
   @override
-  final String message;
+  final dynamic message;
 
   @override
   String toString() {
@@ -130,12 +130,13 @@ class _$ErrorModelImpl implements _ErrorModel {
             other is _$ErrorModelImpl &&
             (identical(other.statusCode, statusCode) ||
                 other.statusCode == statusCode) &&
-            (identical(other.message, message) || other.message == message));
+            const DeepCollectionEquality().equals(other.message, message));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, statusCode, message);
+  int get hashCode => Object.hash(
+      runtimeType, statusCode, const DeepCollectionEquality().hash(message));
 
   @JsonKey(ignore: true)
   @override
@@ -152,7 +153,7 @@ class _$ErrorModelImpl implements _ErrorModel {
 }
 
 abstract class _ErrorModel implements ErrorModel {
-  const factory _ErrorModel(final int statusCode, final String message) =
+  const factory _ErrorModel(final int statusCode, final dynamic message) =
       _$ErrorModelImpl;
 
   factory _ErrorModel.fromJson(Map<String, dynamic> json) =
@@ -161,7 +162,7 @@ abstract class _ErrorModel implements ErrorModel {
   @override
   int get statusCode;
   @override
-  String get message;
+  dynamic get message;
   @override
   @JsonKey(ignore: true)
   _$$ErrorModelImplCopyWith<_$ErrorModelImpl> get copyWith =>

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_line_app/config/app_colors.dart';
+import 'package:news_line_app/core/routes/names.dart';
 import 'package:news_line_app/core/utils/app_constants.dart';
 import 'package:news_line_app/core/utils/gaps.dart';
 import 'package:news_line_app/core/widgets/widgets.dart';
@@ -26,7 +27,7 @@ class SignUpEnableNotificationPage extends StatelessWidget {
                 textWithIcon(
                   text: 'Enable notifications',
                   icon: 'assets/icons/notification.png',
-                  iconSize: 15,
+                  iconSize: 12,
                 ),
                 customText(
                   'Stay updated, never miss a story. Receive notifications for breaking news and personalized updates.',
@@ -89,7 +90,10 @@ class SignUpEnableNotificationPage extends StatelessWidget {
           Positioned(
             bottom: 0,
             child: continueSection(
-              onButtonPressed: () {},
+              onButtonPressed: () {
+                Navigator.of(context)
+                    .pushNamed(AppRoutes.SIGN_UP_Create_Profile_ROUTE);
+              },
             ),
           ),
         ],
