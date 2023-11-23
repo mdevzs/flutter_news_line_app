@@ -5,10 +5,10 @@ part 'failure.freezed.dart';
 @freezed
 class Failure with _$Failure {
   const factory Failure.serverFailure({
-   required String message,
+    required String message,
   }) = _ServerFailuer;
 
   const factory Failure.generalFailure({
-   required String message,
+    required String message,
   }) = _GeneralFailuer;
 }

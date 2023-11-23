@@ -13,14 +13,18 @@ import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_p
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_select_country_page/bloc/sign_up_select_country_bloc.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_select_country_page/sign_up_select_country_page.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_select_intrested_tag_page/sign_up_select_intrested_tag_page.dart';
-import 'package:news_line_app/features/home_feature/presentation/home_page/bloc/home_bloc.dart';
-import 'package:news_line_app/features/home_feature/presentation/home_page/home_page.dart';
+import 'package:news_line_app/features/dashboard_feature/presentation/page/bloc/dashboard_bloc.dart';
+import 'package:news_line_app/features/dashboard_feature/presentation/page/dashboard_page.dart';
+import 'package:news_line_app/features/home_feature/presentation/pages/trending_news_page/bloc/trending_news_bloc.dart';
+import 'package:news_line_app/features/home_feature/presentation/pages/trending_news_page/trending_news_page.dart';
 import '../../features/auth_feature/presentation/pages/auth_page/auth_page.dart';
 import '../../features/auth_feature/presentation/pages/auth_page/bloc/auth_bloc.dart';
 import '../../features/auth_feature/presentation/pages/sign_in_page/bloc/sign_in_bloc.dart';
 import '../../features/auth_feature/presentation/pages/sign_in_page/sign_in_page.dart';
 import '../../features/auth_feature/presentation/pages/sign_up_page/bloc/sign_up_bloc.dart';
 import '../../features/auth_feature/presentation/pages/sign_up_select_intrested_tag_page/bloc/sign_up_select_intrested_tag_bloc.dart';
+import '../../features/home_feature/presentation/pages/home_page/bloc/home_bloc.dart';
+import '../../features/home_feature/presentation/pages/home_page/home_page.dart';
 import '../../features/on_boarding_feature/presentation/pages/on_boarding_page/bloc/on_boarding_bloc.dart';
 import '../../features/on_boarding_feature/presentation/pages/on_boarding_page/on_boarding_page.dart';
 
@@ -91,10 +95,24 @@ class AppPages {
         ),
       ),
       PageEntity(
+        route: AppRoutes.Dashboard_ROUTE,
+        page: const DashboardPage(),
+        bloc: BlocProvider(
+          create: (context) => DashboardBloc(),
+        ),
+      ),
+      PageEntity(
         route: AppRoutes.Home_ROUTE,
         page: const HomePage(),
         bloc: BlocProvider(
-          create: (context) => HomeBloc(),
+          create: (context) => sl.get<HomeBloc>(),
+        ),
+      ),
+      PageEntity(
+        route: AppRoutes.Trending_News_ROUTE,
+        page: const TrendingNewsPage(),
+        bloc: BlocProvider(
+          create: (context) => TrendingNewsBloc(),
         ),
       ),
     ];
@@ -112,18 +130,25 @@ class AppPages {
     final page = routes().where(
       (p) => p.route == settings.name,
     );
+    final currentPage = settings.name;
     final storage = sl.get<StorageService>();
     final isFirstTimeUseApp = storage.isFirstTimeAppUsed();
     final isAuthenticated = storage.userToken() != null ? true : false;
+
     if (isFirstTimeUseApp) {
+      //debugPrint("it's first time to open the app");
       return MaterialPageRoute(builder: (context) => const OnBoardingPage());
     }
-    if (isAuthenticated) {
-      return MaterialPageRoute(builder: (context) => const HomePage());
+    if (isAuthenticated &&
+        (currentPage == AppRoutes.Dashboard_ROUTE || page.isEmpty)) {
+      //debugPrint('dashboard route called!');
+      return MaterialPageRoute(builder: (context) => const DashboardPage());
     }
     if (page.isNotEmpty) {
+      //debugPrint('route is not empty!');
       return MaterialPageRoute(builder: (context) => page.first.page);
     }
+    //debugPrint('openning the auth page!');
     return MaterialPageRoute(builder: (context) => const AuthPage());
   }
 }

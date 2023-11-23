@@ -13,7 +13,7 @@ class StorageServiceImpl implements StorageService {
   SharedPreferences prefs;
   StorageServiceImpl({
     required this.prefs,
-  });  
+  });
 
   @override
   bool isFirstTimeAppUsed() {

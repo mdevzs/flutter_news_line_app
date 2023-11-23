@@ -14,7 +14,6 @@ class SignUpParams {
   List<String>? intrestedTags;
   List<String>? following;
 
-
   SignUpParams({
     this.profileImage,
     required this.fullName,

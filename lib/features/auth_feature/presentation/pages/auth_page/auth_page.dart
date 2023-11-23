@@ -54,28 +54,29 @@ class AuthPage extends StatelessWidget {
               appIconButton(
                 icon: 'assets/icons/google.png',
                 text: 'Continue with Google',
+                onPresssed: () {},
               ),
               SizedBox(
                 height: 2.h,
               ),
               appIconButton(
-                icon: 'assets/icons/apple.png',
-                text: 'Continue with Apple',
-              ),
+                  icon: 'assets/icons/apple.png',
+                  text: 'Continue with Apple',
+                  onPresssed: () {}),
               SizedBox(
                 height: 2.h,
               ),
               appIconButton(
-                icon: 'assets/icons/facebook.png',
-                text: 'Continue with Facebook',
-              ),
+                  icon: 'assets/icons/facebook.png',
+                  text: 'Continue with Facebook',
+                  onPresssed: () {}),
               SizedBox(
                 height: 2.h,
               ),
               appIconButton(
-                icon: 'assets/icons/twitter.png',
-                text: 'Continue with Twitter',
-              ),
+                  icon: 'assets/icons/twitter.png',
+                  text: 'Continue with Twitter',
+                  onPresssed: () {}),
             ],
           ).applyConstraint(
             id: middleSectionAuthCId,

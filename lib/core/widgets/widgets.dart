@@ -68,9 +68,10 @@ Widget appButton(
 Widget appIconButton({
   required String icon,
   required String text,
+  required Function() onPresssed,
 }) {
   return TextButton.icon(
-    onPressed: () {},
+    onPressed: onPresssed,
     icon: Image.asset(
       icon,
       width: 10.sp,
@@ -187,9 +188,14 @@ Widget appPasswordTextFormField(
 
 Widget textWithIcon({
   required String text,
-  required String icon,
+  String? icon,
+  IconData? iconData,
+  double iconDataSize = 8,
+  Color iconDataColor = Colors.black,
   double fontSize = 16,
+  Color fontColor = Colors.black,
   double iconSize = 20,
+  double spaceBetween = 3,
 }) {
   return RichText(
     text: TextSpan(
@@ -198,17 +204,26 @@ Widget textWithIcon({
           text: text,
           style: TextStyle(
             fontSize: fontSize.f,
-            color: Colors.black,
+            color: fontColor,
           ),
         ),
         WidgetSpan(
           alignment: PlaceholderAlignment.middle,
           child: Padding(
-            padding: EdgeInsets.only(left: 3.sp, bottom: 5.sp),
-            child: Image.asset(
-              icon,
-              width: iconSize.sp,
+            padding: EdgeInsets.only(
+              left: spaceBetween.sp,
+              bottom: icon != null ? 5.sp : 0,
             ),
+            child: iconData != null
+                ? Icon(
+                    iconData,
+                    size: iconDataSize.sp,
+                    color: iconDataColor,
+                  )
+                : Image.asset(
+                    icon!,
+                    width: iconSize.sp,
+                  ),
           ),
         )
       ],

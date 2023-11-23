@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'home_bloc.dart';
+part of 'trending_news_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$HomeEvent {
+mixin _$TrendingNewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
@@ -51,15 +51,16 @@ mixin _$HomeEvent {
 }
 
 /// @nodoc
-abstract class $HomeEventCopyWith<$Res> {
-  factory $HomeEventCopyWith(HomeEvent value, $Res Function(HomeEvent) then) =
-      _$HomeEventCopyWithImpl<$Res, HomeEvent>;
+abstract class $TrendingNewsEventCopyWith<$Res> {
+  factory $TrendingNewsEventCopyWith(
+          TrendingNewsEvent value, $Res Function(TrendingNewsEvent) then) =
+      _$TrendingNewsEventCopyWithImpl<$Res, TrendingNewsEvent>;
 }
 
 /// @nodoc
-class _$HomeEventCopyWithImpl<$Res, $Val extends HomeEvent>
-    implements $HomeEventCopyWith<$Res> {
-  _$HomeEventCopyWithImpl(this._value, this._then);
+class _$TrendingNewsEventCopyWithImpl<$Res, $Val extends TrendingNewsEvent>
+    implements $TrendingNewsEventCopyWith<$Res> {
+  _$TrendingNewsEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -76,7 +77,7 @@ abstract class _$$StartedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$StartedImplCopyWithImpl<$Res>
-    extends _$HomeEventCopyWithImpl<$Res, _$StartedImpl>
+    extends _$TrendingNewsEventCopyWithImpl<$Res, _$StartedImpl>
     implements _$$StartedImplCopyWith<$Res> {
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
@@ -90,7 +91,7 @@ class _$StartedImpl implements _Started {
 
   @override
   String toString() {
-    return 'HomeEvent.started()';
+    return 'TrendingNewsEvent.started()';
   }
 
   @override
@@ -159,12 +160,12 @@ class _$StartedImpl implements _Started {
   }
 }
 
-abstract class _Started implements HomeEvent {
+abstract class _Started implements TrendingNewsEvent {
   const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-mixin _$HomeState {
+mixin _$TrendingNewsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -200,15 +201,16 @@ mixin _$HomeState {
 }
 
 /// @nodoc
-abstract class $HomeStateCopyWith<$Res> {
-  factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
-      _$HomeStateCopyWithImpl<$Res, HomeState>;
+abstract class $TrendingNewsStateCopyWith<$Res> {
+  factory $TrendingNewsStateCopyWith(
+          TrendingNewsState value, $Res Function(TrendingNewsState) then) =
+      _$TrendingNewsStateCopyWithImpl<$Res, TrendingNewsState>;
 }
 
 /// @nodoc
-class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
-    implements $HomeStateCopyWith<$Res> {
-  _$HomeStateCopyWithImpl(this._value, this._then);
+class _$TrendingNewsStateCopyWithImpl<$Res, $Val extends TrendingNewsState>
+    implements $TrendingNewsStateCopyWith<$Res> {
+  _$TrendingNewsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -225,7 +227,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$TrendingNewsStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -239,7 +241,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'HomeState.initial()';
+    return 'TrendingNewsState.initial()';
   }
 
   @override
@@ -308,6 +310,6 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements HomeState {
+abstract class _Initial implements TrendingNewsState {
   const factory _Initial() = _$InitialImpl;
 }

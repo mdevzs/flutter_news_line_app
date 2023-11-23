@@ -45,7 +45,7 @@ class SignInPage extends StatelessWidget {
                 loaded: (user) {
                   storageService.storeUserToken(user.token);
                   Navigator.of(context).pushNamedAndRemoveUntil(
-                      AppRoutes.Home_ROUTE, (route) => false);
+                      AppRoutes.Dashboard_ROUTE, (route) => false);
                 },
                 error: (message) {
                   showSnackBar(message);
