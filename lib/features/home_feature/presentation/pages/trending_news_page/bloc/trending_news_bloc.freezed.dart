@@ -18,33 +18,39 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TrendingNewsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() getAllTrendingNews,
+    required TResult Function(bool loadingMoreTryAgain) loadMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? getAllTrendingNews,
+    TResult? Function(bool loadingMoreTryAgain)? loadMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? getAllTrendingNews,
+    TResult Function(bool loadingMoreTryAgain)? loadMore,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_GetAllTrendingNews value) getAllTrendingNews,
+    required TResult Function(_LoadMoreTrendingNews value) loadMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_GetAllTrendingNews value)? getAllTrendingNews,
+    TResult? Function(_LoadMoreTrendingNews value)? loadMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_GetAllTrendingNews value)? getAllTrendingNews,
+    TResult Function(_LoadMoreTrendingNews value)? loadMore,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -69,35 +75,35 @@ class _$TrendingNewsEventCopyWithImpl<$Res, $Val extends TrendingNewsEvent>
 }
 
 /// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
+abstract class _$$GetAllTrendingNewsImplCopyWith<$Res> {
+  factory _$$GetAllTrendingNewsImplCopyWith(_$GetAllTrendingNewsImpl value,
+          $Res Function(_$GetAllTrendingNewsImpl) then) =
+      __$$GetAllTrendingNewsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$TrendingNewsEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
+class __$$GetAllTrendingNewsImplCopyWithImpl<$Res>
+    extends _$TrendingNewsEventCopyWithImpl<$Res, _$GetAllTrendingNewsImpl>
+    implements _$$GetAllTrendingNewsImplCopyWith<$Res> {
+  __$$GetAllTrendingNewsImplCopyWithImpl(_$GetAllTrendingNewsImpl _value,
+      $Res Function(_$GetAllTrendingNewsImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
+class _$GetAllTrendingNewsImpl implements _GetAllTrendingNews {
+  const _$GetAllTrendingNewsImpl();
 
   @override
   String toString() {
-    return 'TrendingNewsEvent.started()';
+    return 'TrendingNewsEvent.getAllTrendingNews()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType && other is _$GetAllTrendingNewsImpl);
   }
 
   @override
@@ -106,27 +112,30 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() getAllTrendingNews,
+    required TResult Function(bool loadingMoreTryAgain) loadMore,
   }) {
-    return started();
+    return getAllTrendingNews();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? getAllTrendingNews,
+    TResult? Function(bool loadingMoreTryAgain)? loadMore,
   }) {
-    return started?.call();
+    return getAllTrendingNews?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? getAllTrendingNews,
+    TResult Function(bool loadingMoreTryAgain)? loadMore,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (getAllTrendingNews != null) {
+      return getAllTrendingNews();
     }
     return orElse();
   }
@@ -134,69 +143,188 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_GetAllTrendingNews value) getAllTrendingNews,
+    required TResult Function(_LoadMoreTrendingNews value) loadMore,
   }) {
-    return started(this);
+    return getAllTrendingNews(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_GetAllTrendingNews value)? getAllTrendingNews,
+    TResult? Function(_LoadMoreTrendingNews value)? loadMore,
   }) {
-    return started?.call(this);
+    return getAllTrendingNews?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_GetAllTrendingNews value)? getAllTrendingNews,
+    TResult Function(_LoadMoreTrendingNews value)? loadMore,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (getAllTrendingNews != null) {
+      return getAllTrendingNews(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements TrendingNewsEvent {
-  const factory _Started() = _$StartedImpl;
+abstract class _GetAllTrendingNews implements TrendingNewsEvent {
+  const factory _GetAllTrendingNews() = _$GetAllTrendingNewsImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadMoreTrendingNewsImplCopyWith<$Res> {
+  factory _$$LoadMoreTrendingNewsImplCopyWith(_$LoadMoreTrendingNewsImpl value,
+          $Res Function(_$LoadMoreTrendingNewsImpl) then) =
+      __$$LoadMoreTrendingNewsImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool loadingMoreTryAgain});
+}
+
+/// @nodoc
+class __$$LoadMoreTrendingNewsImplCopyWithImpl<$Res>
+    extends _$TrendingNewsEventCopyWithImpl<$Res, _$LoadMoreTrendingNewsImpl>
+    implements _$$LoadMoreTrendingNewsImplCopyWith<$Res> {
+  __$$LoadMoreTrendingNewsImplCopyWithImpl(_$LoadMoreTrendingNewsImpl _value,
+      $Res Function(_$LoadMoreTrendingNewsImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? loadingMoreTryAgain = null,
+  }) {
+    return _then(_$LoadMoreTrendingNewsImpl(
+      loadingMoreTryAgain: null == loadingMoreTryAgain
+          ? _value.loadingMoreTryAgain
+          : loadingMoreTryAgain // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadMoreTrendingNewsImpl implements _LoadMoreTrendingNews {
+  const _$LoadMoreTrendingNewsImpl({this.loadingMoreTryAgain = false});
+
+  @override
+  @JsonKey()
+  final bool loadingMoreTryAgain;
+
+  @override
+  String toString() {
+    return 'TrendingNewsEvent.loadMore(loadingMoreTryAgain: $loadingMoreTryAgain)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadMoreTrendingNewsImpl &&
+            (identical(other.loadingMoreTryAgain, loadingMoreTryAgain) ||
+                other.loadingMoreTryAgain == loadingMoreTryAgain));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, loadingMoreTryAgain);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadMoreTrendingNewsImplCopyWith<_$LoadMoreTrendingNewsImpl>
+      get copyWith =>
+          __$$LoadMoreTrendingNewsImplCopyWithImpl<_$LoadMoreTrendingNewsImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getAllTrendingNews,
+    required TResult Function(bool loadingMoreTryAgain) loadMore,
+  }) {
+    return loadMore(loadingMoreTryAgain);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getAllTrendingNews,
+    TResult? Function(bool loadingMoreTryAgain)? loadMore,
+  }) {
+    return loadMore?.call(loadingMoreTryAgain);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getAllTrendingNews,
+    TResult Function(bool loadingMoreTryAgain)? loadMore,
+    required TResult orElse(),
+  }) {
+    if (loadMore != null) {
+      return loadMore(loadingMoreTryAgain);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetAllTrendingNews value) getAllTrendingNews,
+    required TResult Function(_LoadMoreTrendingNews value) loadMore,
+  }) {
+    return loadMore(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetAllTrendingNews value)? getAllTrendingNews,
+    TResult? Function(_LoadMoreTrendingNews value)? loadMore,
+  }) {
+    return loadMore?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetAllTrendingNews value)? getAllTrendingNews,
+    TResult Function(_LoadMoreTrendingNews value)? loadMore,
+    required TResult orElse(),
+  }) {
+    if (loadMore != null) {
+      return loadMore(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadMoreTrendingNews implements TrendingNewsEvent {
+  const factory _LoadMoreTrendingNews({final bool loadingMoreTryAgain}) =
+      _$LoadMoreTrendingNewsImpl;
+
+  bool get loadingMoreTryAgain;
+  @JsonKey(ignore: true)
+  _$$LoadMoreTrendingNewsImplCopyWith<_$LoadMoreTrendingNewsImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$TrendingNewsState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) =>
+  List<NewsEntity> get trendingNews => throw _privateConstructorUsedError;
+  TrendingNewsStatus get trendingNewsStatus =>
       throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) =>
+  bool get hasReachedEnd => throw _privateConstructorUsedError;
+  TrendingNewsLoadMoreStatus get loadMoreStatus =>
       throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) =>
+
+  @JsonKey(ignore: true)
+  $TrendingNewsStateCopyWith<TrendingNewsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -205,6 +333,15 @@ abstract class $TrendingNewsStateCopyWith<$Res> {
   factory $TrendingNewsStateCopyWith(
           TrendingNewsState value, $Res Function(TrendingNewsState) then) =
       _$TrendingNewsStateCopyWithImpl<$Res, TrendingNewsState>;
+  @useResult
+  $Res call(
+      {List<NewsEntity> trendingNews,
+      TrendingNewsStatus trendingNewsStatus,
+      bool hasReachedEnd,
+      TrendingNewsLoadMoreStatus loadMoreStatus});
+
+  $TrendingNewsStatusCopyWith<$Res> get trendingNewsStatus;
+  $TrendingNewsLoadMoreStatusCopyWith<$Res> get loadMoreStatus;
 }
 
 /// @nodoc
@@ -216,100 +353,194 @@ class _$TrendingNewsStateCopyWithImpl<$Res, $Val extends TrendingNewsState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? trendingNews = null,
+    Object? trendingNewsStatus = null,
+    Object? hasReachedEnd = null,
+    Object? loadMoreStatus = null,
+  }) {
+    return _then(_value.copyWith(
+      trendingNews: null == trendingNews
+          ? _value.trendingNews
+          : trendingNews // ignore: cast_nullable_to_non_nullable
+              as List<NewsEntity>,
+      trendingNewsStatus: null == trendingNewsStatus
+          ? _value.trendingNewsStatus
+          : trendingNewsStatus // ignore: cast_nullable_to_non_nullable
+              as TrendingNewsStatus,
+      hasReachedEnd: null == hasReachedEnd
+          ? _value.hasReachedEnd
+          : hasReachedEnd // ignore: cast_nullable_to_non_nullable
+              as bool,
+      loadMoreStatus: null == loadMoreStatus
+          ? _value.loadMoreStatus
+          : loadMoreStatus // ignore: cast_nullable_to_non_nullable
+              as TrendingNewsLoadMoreStatus,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TrendingNewsStatusCopyWith<$Res> get trendingNewsStatus {
+    return $TrendingNewsStatusCopyWith<$Res>(_value.trendingNewsStatus,
+        (value) {
+      return _then(_value.copyWith(trendingNewsStatus: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TrendingNewsLoadMoreStatusCopyWith<$Res> get loadMoreStatus {
+    return $TrendingNewsLoadMoreStatusCopyWith<$Res>(_value.loadMoreStatus,
+        (value) {
+      return _then(_value.copyWith(loadMoreStatus: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$TrendingNewsStateImplCopyWith<$Res>
+    implements $TrendingNewsStateCopyWith<$Res> {
+  factory _$$TrendingNewsStateImplCopyWith(_$TrendingNewsStateImpl value,
+          $Res Function(_$TrendingNewsStateImpl) then) =
+      __$$TrendingNewsStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {List<NewsEntity> trendingNews,
+      TrendingNewsStatus trendingNewsStatus,
+      bool hasReachedEnd,
+      TrendingNewsLoadMoreStatus loadMoreStatus});
+
+  @override
+  $TrendingNewsStatusCopyWith<$Res> get trendingNewsStatus;
+  @override
+  $TrendingNewsLoadMoreStatusCopyWith<$Res> get loadMoreStatus;
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$TrendingNewsStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$TrendingNewsStateImplCopyWithImpl<$Res>
+    extends _$TrendingNewsStateCopyWithImpl<$Res, _$TrendingNewsStateImpl>
+    implements _$$TrendingNewsStateImplCopyWith<$Res> {
+  __$$TrendingNewsStateImplCopyWithImpl(_$TrendingNewsStateImpl _value,
+      $Res Function(_$TrendingNewsStateImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? trendingNews = null,
+    Object? trendingNewsStatus = null,
+    Object? hasReachedEnd = null,
+    Object? loadMoreStatus = null,
+  }) {
+    return _then(_$TrendingNewsStateImpl(
+      trendingNews: null == trendingNews
+          ? _value._trendingNews
+          : trendingNews // ignore: cast_nullable_to_non_nullable
+              as List<NewsEntity>,
+      trendingNewsStatus: null == trendingNewsStatus
+          ? _value.trendingNewsStatus
+          : trendingNewsStatus // ignore: cast_nullable_to_non_nullable
+              as TrendingNewsStatus,
+      hasReachedEnd: null == hasReachedEnd
+          ? _value.hasReachedEnd
+          : hasReachedEnd // ignore: cast_nullable_to_non_nullable
+              as bool,
+      loadMoreStatus: null == loadMoreStatus
+          ? _value.loadMoreStatus
+          : loadMoreStatus // ignore: cast_nullable_to_non_nullable
+              as TrendingNewsLoadMoreStatus,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$TrendingNewsStateImpl implements _TrendingNewsState {
+  const _$TrendingNewsStateImpl(
+      {final List<NewsEntity> trendingNews = const [],
+      this.trendingNewsStatus = const TrendingNewsStatus.loading(),
+      this.hasReachedEnd = false,
+      this.loadMoreStatus = const TrendingNewsLoadMoreStatus.loading()})
+      : _trendingNews = trendingNews;
+
+  final List<NewsEntity> _trendingNews;
+  @override
+  @JsonKey()
+  List<NewsEntity> get trendingNews {
+    if (_trendingNews is EqualUnmodifiableListView) return _trendingNews;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_trendingNews);
+  }
+
+  @override
+  @JsonKey()
+  final TrendingNewsStatus trendingNewsStatus;
+  @override
+  @JsonKey()
+  final bool hasReachedEnd;
+  @override
+  @JsonKey()
+  final TrendingNewsLoadMoreStatus loadMoreStatus;
 
   @override
   String toString() {
-    return 'TrendingNewsState.initial()';
+    return 'TrendingNewsState(trendingNews: $trendingNews, trendingNewsStatus: $trendingNewsStatus, hasReachedEnd: $hasReachedEnd, loadMoreStatus: $loadMoreStatus)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$TrendingNewsStateImpl &&
+            const DeepCollectionEquality()
+                .equals(other._trendingNews, _trendingNews) &&
+            (identical(other.trendingNewsStatus, trendingNewsStatus) ||
+                other.trendingNewsStatus == trendingNewsStatus) &&
+            (identical(other.hasReachedEnd, hasReachedEnd) ||
+                other.hasReachedEnd == hasReachedEnd) &&
+            (identical(other.loadMoreStatus, loadMoreStatus) ||
+                other.loadMoreStatus == loadMoreStatus));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_trendingNews),
+      trendingNewsStatus,
+      hasReachedEnd,
+      loadMoreStatus);
 
+  @JsonKey(ignore: true)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
+  @pragma('vm:prefer-inline')
+  _$$TrendingNewsStateImplCopyWith<_$TrendingNewsStateImpl> get copyWith =>
+      __$$TrendingNewsStateImplCopyWithImpl<_$TrendingNewsStateImpl>(
+          this, _$identity);
 }
 
-abstract class _Initial implements TrendingNewsState {
-  const factory _Initial() = _$InitialImpl;
+abstract class _TrendingNewsState implements TrendingNewsState {
+  const factory _TrendingNewsState(
+          {final List<NewsEntity> trendingNews,
+          final TrendingNewsStatus trendingNewsStatus,
+          final bool hasReachedEnd,
+          final TrendingNewsLoadMoreStatus loadMoreStatus}) =
+      _$TrendingNewsStateImpl;
+
+  @override
+  List<NewsEntity> get trendingNews;
+  @override
+  TrendingNewsStatus get trendingNewsStatus;
+  @override
+  bool get hasReachedEnd;
+  @override
+  TrendingNewsLoadMoreStatus get loadMoreStatus;
+  @override
+  @JsonKey(ignore: true)
+  _$$TrendingNewsStateImplCopyWith<_$TrendingNewsStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

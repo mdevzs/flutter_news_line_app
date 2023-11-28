@@ -14,4 +14,5 @@ class AppRoutes {
   static const Home_ROUTE = '/home';
   static const Trending_News_ROUTE = '/trendingNews';
   static const Dashboard_ROUTE = '/dashboard';
+  static const Recent_News_ROUTE = '/recentNews';
 }

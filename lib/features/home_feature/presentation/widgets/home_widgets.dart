@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_constraintlayout/flutter_constraintlayout.dart';
@@ -10,6 +11,7 @@ import 'package:news_line_app/features/home_feature/domain/entities/home_entity/
 import 'package:news_line_app/features/home_feature/domain/entities/home_entity/news_entity.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/home_page/bloc/home_bloc.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/home_page/bloc/recent_stories_status.dart';
+import 'package:news_line_app/features/home_feature/presentation/widgets/recent_news_widgets.dart';
 import 'package:sizer_pro/sizer.dart';
 
 PreferredSizeWidget homeAppBar({
@@ -75,7 +77,7 @@ PreferredSizeWidget homeAppBar({
   );
 }
 
-Widget trendingNewsSection(
+Widget trendingNewsSectionHomePage(
     {required BuildContext context, required List<NewsEntity> trendingNews}) {
   return Column(
     children: [
@@ -249,7 +251,11 @@ Widget recentStoriesSection({
 }) {
   return Column(
     children: [
-      viewMore(title: 'Recent Stories', onPressed: () {}),
+      viewMore(
+          title: 'Recent Stories',
+          onPressed: () {
+            Navigator.of(context).pushNamed(AppRoutes.Recent_News_ROUTE);
+          }),
       gapH4,
       SizedBox(
         height: 5.h,
@@ -382,17 +388,34 @@ Widget recentStoriesListItem(NewsEntity recentSt) {
                     ),
                   ),
                   gapW4,
-                  InkWell(
-                    onTap: () {},
-                    customBorder: const CircleBorder(),
-                    child: Padding(
+                  PopUpMen(
+                    menuList: [
+                      popupMenuItem(
+                        icon: Icons.bookmark_outline,
+                        title: 'Save to Bookmark',
+                      ),
+                      popupMenuItem(
+                        icon: Icons.cancel_presentation_rounded,
+                        title: 'Hide this',
+                      ),
+                      popupMenuItem(
+                        icon: Icons.report_gmailerrorred_sharp,
+                        title: 'Report this',
+                      ),
+                      popupMenuItem(
+                        icon: Icons.message_outlined,
+                        title: 'Send Feedback',
+                        haveDivider: false,
+                      ),
+                    ],
+                    icon: Padding(
                       padding: EdgeInsets.all(1.5.sp),
                       child: Image.asset(
                         'assets/icons/menu.png',
                         width: 10.sp,
                       ),
                     ),
-                  )
+                  ),
                 ],
               )
             ],

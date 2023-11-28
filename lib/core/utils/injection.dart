@@ -20,8 +20,13 @@ import 'package:news_line_app/features/home_feature/data/repository/home_reposit
 import 'package:news_line_app/features/home_feature/domain/repository/home_repository.dart';
 import 'package:news_line_app/features/home_feature/domain/usecases/home_usecase.dart';
 import 'package:news_line_app/features/home_feature/domain/usecases/recent_stories_usecase.dart';
+import 'package:news_line_app/features/home_feature/domain/usecases/trending_news_usecase.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/home_page/bloc/home_bloc.dart';
+import 'package:news_line_app/features/home_feature/presentation/pages/recent_news_page/bloc/recent_news_bloc.dart';
+import 'package:news_line_app/features/home_feature/presentation/pages/trending_news_page/bloc/trending_news_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../features/home_feature/domain/usecases/recent_stories_tags.dart';
 
 final sl = GetIt.I;
 
@@ -48,6 +53,8 @@ Future<void> initDependencies() async {
   sl.registerSingleton<SignUpCreateProfileUseCase>(
       SignUpCreateProfileUseCase(sl()));
   sl.registerSingleton<HomeUsecase>(HomeUsecase(sl()));
+  sl.registerSingleton<TrendingUsecase>(TrendingUsecase(sl()));
+  sl.registerSingleton<RecentStoriesTagsUseCase>(RecentStoriesTagsUseCase(sl()));
   sl.registerSingleton<RecentStoriesUsecase>(RecentStoriesUsecase(sl()));
   // blocs
   sl.registerSingleton<SignInBloc>(SignInBloc(sl()));
@@ -58,6 +65,8 @@ Future<void> initDependencies() async {
       SignUpFollowOfficialAuthorBloc(sl()));
   sl.registerSingleton<SignUpCreatePrfileBloc>(SignUpCreatePrfileBloc(sl()));
   sl.registerSingleton<HomeBloc>(HomeBloc(sl(), sl()));
+  sl.registerSingleton<TrendingNewsBloc>(TrendingNewsBloc(sl()));
+  sl.registerSingleton<RecentNewsBloc>(RecentNewsBloc(sl(),sl()));
   // other
   await _initSharedPrefs();
   sl.registerSingleton<StorageService>(StorageServiceImpl(prefs: sl()));

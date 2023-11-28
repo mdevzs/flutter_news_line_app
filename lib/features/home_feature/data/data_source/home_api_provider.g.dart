@@ -48,9 +48,17 @@ class _HomeApiProvider implements HomeApiProvider {
   }
 
   @override
-  Future<RecentNewsModel> recentStories(Map<String, String> body) async {
+  Future<RecentNewsModel> recentStories(
+    Map<String, String> body,
+    String? page,
+    String? perPage,
+  ) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'page': page,
+      r'perPage': perPage,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body);
@@ -77,14 +85,15 @@ class _HomeApiProvider implements HomeApiProvider {
 
   @override
   Future<TrendingNewsModel> trendingNews(
-    String page,
-    String perPage,
+    String? page,
+    String? perPage,
   ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'page': page,
       r'perPage': perPage,
     };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio

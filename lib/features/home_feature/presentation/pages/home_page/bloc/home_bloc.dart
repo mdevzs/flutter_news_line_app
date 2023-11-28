@@ -65,7 +65,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       ),
     );
 
-    final failureOrEntity = await recentStoriesUsecase({'tag': tag});
+    final failureOrEntity = await recentStoriesUsecase(({'tag': tag},'1','10'));
     failureOrEntity.fold(
       (failure) => emit(
         state.copyWith(

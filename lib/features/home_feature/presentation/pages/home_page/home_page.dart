@@ -43,7 +43,7 @@ class HomePage extends StatelessWidget {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        trendingNewsSection(
+                        trendingNewsSectionHomePage(
                           context: context,
                           trendingNews: home.trendingNews ?? [],
                         ),

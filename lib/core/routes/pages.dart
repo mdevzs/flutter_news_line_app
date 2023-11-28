@@ -15,6 +15,8 @@ import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_s
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_select_intrested_tag_page/sign_up_select_intrested_tag_page.dart';
 import 'package:news_line_app/features/dashboard_feature/presentation/page/bloc/dashboard_bloc.dart';
 import 'package:news_line_app/features/dashboard_feature/presentation/page/dashboard_page.dart';
+import 'package:news_line_app/features/home_feature/presentation/pages/recent_news_page/bloc/recent_news_bloc.dart';
+import 'package:news_line_app/features/home_feature/presentation/pages/recent_news_page/recent_news_page.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/trending_news_page/bloc/trending_news_bloc.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/trending_news_page/trending_news_page.dart';
 import '../../features/auth_feature/presentation/pages/auth_page/auth_page.dart';
@@ -112,7 +114,14 @@ class AppPages {
         route: AppRoutes.Trending_News_ROUTE,
         page: const TrendingNewsPage(),
         bloc: BlocProvider(
-          create: (context) => TrendingNewsBloc(),
+          create: (context) => sl.get<TrendingNewsBloc>(),
+        ),
+      ),
+      PageEntity(
+        route: AppRoutes.Recent_News_ROUTE,
+        page: const RecentNewsPage(),
+        bloc: BlocProvider(
+          create: (context) => sl.get<RecentNewsBloc>(),
         ),
       ),
     ];

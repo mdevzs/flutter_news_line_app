@@ -17,11 +17,13 @@ abstract class HomeApiProvider {
   @POST('/news/recent')
   Future<RecentNewsModel> recentStories(
     @Body() Map<String,String> body,
+    @Query('page') String? page,
+    @Query('perPage') String? perPage,
   );
 
   @GET('/news/all-trending-news')
   Future<TrendingNewsModel> trendingNews(
-    @Query('page') String page,
-    @Query('perPage') String perPage,
+    @Query('page') String? page,
+    @Query('perPage') String? perPage,
   );
 }
