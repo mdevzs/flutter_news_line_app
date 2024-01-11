@@ -15,6 +15,9 @@ import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_s
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_select_intrested_tag_page/sign_up_select_intrested_tag_page.dart';
 import 'package:news_line_app/features/dashboard_feature/presentation/page/bloc/dashboard_bloc.dart';
 import 'package:news_line_app/features/dashboard_feature/presentation/page/dashboard_page.dart';
+import 'package:news_line_app/features/home_feature/presentation/pages/comments_page/comments_page.dart';
+import 'package:news_line_app/features/home_feature/presentation/pages/news_detail_page/bloc/news_detail_bloc.dart';
+import 'package:news_line_app/features/home_feature/presentation/pages/news_detail_page/news_detail_page.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/recent_news_page/bloc/recent_news_bloc.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/recent_news_page/recent_news_page.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/trending_news_page/bloc/trending_news_bloc.dart';
@@ -25,6 +28,7 @@ import '../../features/auth_feature/presentation/pages/sign_in_page/bloc/sign_in
 import '../../features/auth_feature/presentation/pages/sign_in_page/sign_in_page.dart';
 import '../../features/auth_feature/presentation/pages/sign_up_page/bloc/sign_up_bloc.dart';
 import '../../features/auth_feature/presentation/pages/sign_up_select_intrested_tag_page/bloc/sign_up_select_intrested_tag_bloc.dart';
+import '../../features/home_feature/presentation/pages/comments_page/bloc/comments_bloc.dart';
 import '../../features/home_feature/presentation/pages/home_page/bloc/home_bloc.dart';
 import '../../features/home_feature/presentation/pages/home_page/home_page.dart';
 import '../../features/on_boarding_feature/presentation/pages/on_boarding_page/bloc/on_boarding_bloc.dart';
@@ -124,6 +128,20 @@ class AppPages {
           create: (context) => sl.get<RecentNewsBloc>(),
         ),
       ),
+      PageEntity(
+        route: AppRoutes.News_Details_ROUTE,
+        page: const NewsDetailPage(),
+        bloc: BlocProvider(
+          create: (context) => sl.get<NewsDetailBloc>(),
+        ),
+      ),
+      PageEntity(
+        route: AppRoutes.Comments_ROUTE,
+        page: const CommentsPage(),
+        bloc: BlocProvider(
+          create: (context) => sl.get<CommentsBloc>(),
+        ),
+      ),
     ];
   }
 
@@ -155,7 +173,10 @@ class AppPages {
     }
     if (page.isNotEmpty) {
       //debugPrint('route is not empty!');
-      return MaterialPageRoute(builder: (context) => page.first.page);
+      return MaterialPageRoute(
+        builder: (context) => page.first.page,
+        settings: settings,
+      );
     }
     //debugPrint('openning the auth page!');
     return MaterialPageRoute(builder: (context) => const AuthPage());

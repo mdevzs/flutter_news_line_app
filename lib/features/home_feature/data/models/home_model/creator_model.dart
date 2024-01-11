@@ -10,6 +10,8 @@ class CreatorModel with _$CreatorModel {
     required int id,
     String? profileImage,
     required String fullName,
+    String? bio,
+    int? followersCount,
   }) = _CreatorModel;
 
   const CreatorModel._();
@@ -17,5 +19,11 @@ class CreatorModel with _$CreatorModel {
   factory CreatorModel.fromJson(Map<String, Object?> json) =>
       _$CreatorModelFromJson(json);
 
-  CreatorEntity toEntity() => CreatorEntity(id: id, fullName: fullName);
+  CreatorEntity toEntity() => CreatorEntity(
+        id: id,
+        fullName: fullName,
+        profileImage: profileImage,
+        bio: bio ?? '',
+        followersCount: followersCount ?? -1,
+      );
 }

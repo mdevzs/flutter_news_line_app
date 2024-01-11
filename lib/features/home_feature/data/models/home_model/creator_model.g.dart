@@ -11,6 +11,8 @@ _$CreatorModelImpl _$$CreatorModelImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as int,
       profileImage: json['profileImage'] as String?,
       fullName: json['fullName'] as String,
+      bio: json['bio'] as String?,
+      followersCount: json['followersCount'] as int?,
     );
 
 Map<String, dynamic> _$$CreatorModelImplToJson(_$CreatorModelImpl instance) =>
@@ -18,4 +20,6 @@ Map<String, dynamic> _$$CreatorModelImplToJson(_$CreatorModelImpl instance) =>
       'id': instance.id,
       'profileImage': instance.profileImage,
       'fullName': instance.fullName,
+      'bio': instance.bio,
+      'followersCount': instance.followersCount,
     };

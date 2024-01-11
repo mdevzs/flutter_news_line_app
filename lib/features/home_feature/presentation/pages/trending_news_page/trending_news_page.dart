@@ -18,7 +18,10 @@ class TrendingNewsPage extends StatelessWidget {
         builder: (context, state) {
           return trendingNewsListSection(
             context,
-            state: state
+            state: state,
+            onItemPressed: (newsId){
+              
+            }
           );
         },
       ),

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_constraintlayout/flutter_constraintlayout.dart';
@@ -11,7 +10,6 @@ import 'package:news_line_app/features/home_feature/domain/entities/home_entity/
 import 'package:news_line_app/features/home_feature/domain/entities/home_entity/news_entity.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/home_page/bloc/home_bloc.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/home_page/bloc/recent_stories_status.dart';
-import 'package:news_line_app/features/home_feature/presentation/widgets/recent_news_widgets.dart';
 import 'package:sizer_pro/sizer.dart';
 
 PreferredSizeWidget homeAppBar({
@@ -77,8 +75,11 @@ PreferredSizeWidget homeAppBar({
   );
 }
 
-Widget trendingNewsSectionHomePage(
-    {required BuildContext context, required List<NewsEntity> trendingNews}) {
+Widget trendingNewsSectionHomePage({
+  required BuildContext context,
+  required List<NewsEntity> trendingNews,
+  required Function(int newsId) onItemPressed,
+}) {
   return Column(
     children: [
       viewMore(
@@ -93,10 +94,13 @@ Widget trendingNewsSectionHomePage(
           scrollDirection: Axis.horizontal,
           itemCount: trendingNews.length,
           itemBuilder: (context, index) {
-            return Padding(
-              padding: EdgeInsets.only(right: 8.sp),
-              child: trendingNewsListItem(
-                trendingNew: trendingNews[index],
+            return GestureDetector(
+              onTap: () => onItemPressed(trendingNews[index].id),
+              child: Padding(
+                padding: EdgeInsets.only(right: 8.sp),
+                child: trendingNewsListItem(
+                  trendingNew: trendingNews[index],
+                ),
               ),
             );
           },
@@ -130,15 +134,17 @@ Widget viewMore({required String title, required Function() onPressed}) {
 }
 
 Widget trendingNewsListItem({
+  double width = 70,
   required NewsEntity trendingNew,
+  bool showReadTime = false,
 }) {
   return SizedBox(
-    width: 70.w,
+    width: width.w,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          width: 70.w,
+          width: width.w,
           height: SizerUtil.height > 670 ? 23.h : 20.h,
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -164,31 +170,38 @@ Widget trendingNewsListItem({
         ),
         Row(
           children: [
-            Expanded(child: bottomSectionListItem(trendingNew)),
-            gapW12,
-            InkWell(
-              onTap: () {},
-              customBorder: const CircleBorder(),
-              child: Padding(
-                padding: EdgeInsets.all(2.sp),
-                child: Icon(
-                  Icons.share,
-                  size: 8.sp,
-                ),
+            Expanded(
+              child: bSectionListItem(
+                trendingNew,
+                showReadTime: showReadTime,
               ),
             ),
-            gapW4,
-            InkWell(
-              onTap: () {},
-              customBorder: const CircleBorder(),
-              child: Padding(
-                padding: EdgeInsets.all(1.5.sp),
-                child: Image.asset(
-                  'assets/icons/menu.png',
-                  width: 10.sp,
+            gapW8,
+            if (!showReadTime)
+              InkWell(
+                onTap: () {},
+                customBorder: const CircleBorder(),
+                child: Padding(
+                  padding: EdgeInsets.all(2.sp),
+                  child: Icon(
+                    Icons.share,
+                    size: 8.sp,
+                  ),
                 ),
               ),
-            )
+            gapW4,
+            if (!showReadTime)
+              InkWell(
+                onTap: () {},
+                customBorder: const CircleBorder(),
+                child: Padding(
+                  padding: EdgeInsets.all(1.5.sp),
+                  child: Image.asset(
+                    'assets/icons/menu.png',
+                    width: 10.sp,
+                  ),
+                ),
+              )
           ],
         )
       ],
@@ -393,19 +406,23 @@ Widget recentStoriesListItem(NewsEntity recentSt) {
                       popupMenuItem(
                         icon: Icons.bookmark_outline,
                         title: 'Save to Bookmark',
+                        onTap: (){}
                       ),
                       popupMenuItem(
                         icon: Icons.cancel_presentation_rounded,
                         title: 'Hide this',
+                        onTap: (){}
                       ),
                       popupMenuItem(
                         icon: Icons.report_gmailerrorred_sharp,
                         title: 'Report this',
+                        onTap: (){}
                       ),
                       popupMenuItem(
                         icon: Icons.message_outlined,
                         title: 'Send Feedback',
                         haveDivider: false,
+                        onTap: (){}
                       ),
                     ],
                     icon: Padding(
@@ -435,12 +452,55 @@ Widget creatorProfileSection({
       child: SizedBox(
         width: 10.sp,
         height: 10.sp,
-        child: Image.network(creator.profileImage ?? ''),
+        child: Image.network(
+          creator.profileImage ?? '',
+          fit: BoxFit.fill,
+        ),
       ),
     ),
     title: customText(
       creator.fullName,
       fontSize: 3.sp,
     ),
+  );
+}
+
+Widget bSectionListItem(
+  NewsEntity news, {
+  bool showReadTime = false,
+}) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      if (showReadTime)
+        customText(
+          news.readTime,
+          fontSize: 5,
+        ),
+      customText(
+        news.createdAt,
+        fontSize: 5,
+      ),
+      Row(
+        children: [
+          Icon(
+            Icons.remove_red_eye_outlined,
+            size: 7.sp,
+          ),
+          gapW4,
+          customText(news.viewsCount, fontSize: 5)
+        ],
+      ),
+      Row(
+        children: [
+          Image.asset(
+            'assets/icons/comments.png',
+            width: 6.sp,
+          ),
+          gapW4,
+          customText(news.commentCounts, fontSize: 5)
+        ],
+      ),
+    ],
   );
 }

@@ -7,6 +7,7 @@ final gapW12 = SizedBox(width: 12.sp);
 
 final gapW64 = SizedBox(width: 64.sp);
 
+final gapH2 = SizedBox(height: 2.sp);
 final gapH4 = SizedBox(height: 4.sp);
 final gapH8 = SizedBox(height: 8.sp);
 final gapH12 = SizedBox(height: 12.sp);

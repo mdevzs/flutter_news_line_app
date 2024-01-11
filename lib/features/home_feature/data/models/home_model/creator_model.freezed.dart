@@ -23,6 +23,8 @@ mixin _$CreatorModel {
   int get id => throw _privateConstructorUsedError;
   String? get profileImage => throw _privateConstructorUsedError;
   String get fullName => throw _privateConstructorUsedError;
+  String? get bio => throw _privateConstructorUsedError;
+  int? get followersCount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +38,12 @@ abstract class $CreatorModelCopyWith<$Res> {
           CreatorModel value, $Res Function(CreatorModel) then) =
       _$CreatorModelCopyWithImpl<$Res, CreatorModel>;
   @useResult
-  $Res call({int id, String? profileImage, String fullName});
+  $Res call(
+      {int id,
+      String? profileImage,
+      String fullName,
+      String? bio,
+      int? followersCount});
 }
 
 /// @nodoc
@@ -55,6 +62,8 @@ class _$CreatorModelCopyWithImpl<$Res, $Val extends CreatorModel>
     Object? id = null,
     Object? profileImage = freezed,
     Object? fullName = null,
+    Object? bio = freezed,
+    Object? followersCount = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -69,6 +78,14 @@ class _$CreatorModelCopyWithImpl<$Res, $Val extends CreatorModel>
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String,
+      bio: freezed == bio
+          ? _value.bio
+          : bio // ignore: cast_nullable_to_non_nullable
+              as String?,
+      followersCount: freezed == followersCount
+          ? _value.followersCount
+          : followersCount // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -81,7 +98,12 @@ abstract class _$$CreatorModelImplCopyWith<$Res>
       __$$CreatorModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String? profileImage, String fullName});
+  $Res call(
+      {int id,
+      String? profileImage,
+      String fullName,
+      String? bio,
+      int? followersCount});
 }
 
 /// @nodoc
@@ -98,6 +120,8 @@ class __$$CreatorModelImplCopyWithImpl<$Res>
     Object? id = null,
     Object? profileImage = freezed,
     Object? fullName = null,
+    Object? bio = freezed,
+    Object? followersCount = freezed,
   }) {
     return _then(_$CreatorModelImpl(
       id: null == id
@@ -112,6 +136,14 @@ class __$$CreatorModelImplCopyWithImpl<$Res>
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String,
+      bio: freezed == bio
+          ? _value.bio
+          : bio // ignore: cast_nullable_to_non_nullable
+              as String?,
+      followersCount: freezed == followersCount
+          ? _value.followersCount
+          : followersCount // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -120,7 +152,11 @@ class __$$CreatorModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CreatorModelImpl extends _CreatorModel {
   const _$CreatorModelImpl(
-      {required this.id, this.profileImage, required this.fullName})
+      {required this.id,
+      this.profileImage,
+      required this.fullName,
+      this.bio,
+      this.followersCount})
       : super._();
 
   factory _$CreatorModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -132,10 +168,14 @@ class _$CreatorModelImpl extends _CreatorModel {
   final String? profileImage;
   @override
   final String fullName;
+  @override
+  final String? bio;
+  @override
+  final int? followersCount;
 
   @override
   String toString() {
-    return 'CreatorModel(id: $id, profileImage: $profileImage, fullName: $fullName)';
+    return 'CreatorModel(id: $id, profileImage: $profileImage, fullName: $fullName, bio: $bio, followersCount: $followersCount)';
   }
 
   @override
@@ -147,12 +187,16 @@ class _$CreatorModelImpl extends _CreatorModel {
             (identical(other.profileImage, profileImage) ||
                 other.profileImage == profileImage) &&
             (identical(other.fullName, fullName) ||
-                other.fullName == fullName));
+                other.fullName == fullName) &&
+            (identical(other.bio, bio) || other.bio == bio) &&
+            (identical(other.followersCount, followersCount) ||
+                other.followersCount == followersCount));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, profileImage, fullName);
+  int get hashCode =>
+      Object.hash(runtimeType, id, profileImage, fullName, bio, followersCount);
 
   @JsonKey(ignore: true)
   @override
@@ -172,7 +216,9 @@ abstract class _CreatorModel extends CreatorModel {
   const factory _CreatorModel(
       {required final int id,
       final String? profileImage,
-      required final String fullName}) = _$CreatorModelImpl;
+      required final String fullName,
+      final String? bio,
+      final int? followersCount}) = _$CreatorModelImpl;
   const _CreatorModel._() : super._();
 
   factory _CreatorModel.fromJson(Map<String, dynamic> json) =
@@ -184,6 +230,10 @@ abstract class _CreatorModel extends CreatorModel {
   String? get profileImage;
   @override
   String get fullName;
+  @override
+  String? get bio;
+  @override
+  int? get followersCount;
   @override
   @JsonKey(ignore: true)
   _$$CreatorModelImplCopyWith<_$CreatorModelImpl> get copyWith =>

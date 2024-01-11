@@ -49,11 +49,13 @@ class NewsModel with _$NewsModel {
       creatorId: creatorId,
       tagNews: tagNewsEntity,
       createdAt: createdAt,
-      commentCounts:commentCounts.toString(),
+      commentCounts: commentCounts.toString(),
       creator: CreatorEntity(
         id: creator.id,
         fullName: creator.fullName,
         profileImage: creator.profileImage,
+        followersCount: creator.followersCount ?? -1,
+        bio: creator.bio ?? '',
       ),
     );
   }

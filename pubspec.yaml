@@ -56,6 +56,10 @@ dependencies:
   calendar_date_picker2: ^0.5.3
   intl: ^0.18.1
   dropdown_button2: ^2.3.9
+  share_plus: ^7.2.1
+  flutter_xlider: ^3.5.0
+  custom_slider: ^0.0.3
+  fast_immutable_collections: ^9.2.0
 
 dependency_overrides:
   device_preview:

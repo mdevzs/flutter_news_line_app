@@ -18,15 +18,21 @@ import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_s
 import 'package:news_line_app/features/home_feature/data/data_source/home_api_provider.dart';
 import 'package:news_line_app/features/home_feature/data/repository/home_repository_impl.dart';
 import 'package:news_line_app/features/home_feature/domain/repository/home_repository.dart';
+import 'package:news_line_app/features/home_feature/domain/usecases/add_comment_usecase.dart';
 import 'package:news_line_app/features/home_feature/domain/usecases/home_usecase.dart';
+import 'package:news_line_app/features/home_feature/domain/usecases/like_comment_usecase.dart';
+import 'package:news_line_app/features/home_feature/domain/usecases/news_comments_usecase.dart';
+import 'package:news_line_app/features/home_feature/domain/usecases/news_details_usecase.dart';
 import 'package:news_line_app/features/home_feature/domain/usecases/recent_stories_usecase.dart';
 import 'package:news_line_app/features/home_feature/domain/usecases/trending_news_usecase.dart';
+import 'package:news_line_app/features/home_feature/presentation/pages/comments_page/bloc/comments_bloc.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/home_page/bloc/home_bloc.dart';
+import 'package:news_line_app/features/home_feature/presentation/pages/news_detail_page/bloc/news_detail_bloc.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/recent_news_page/bloc/recent_news_bloc.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/trending_news_page/bloc/trending_news_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../features/home_feature/domain/usecases/recent_stories_tags.dart';
+import '../../features/home_feature/domain/usecases/recent_stories_tags_usecase.dart';
 
 final sl = GetIt.I;
 
@@ -54,8 +60,13 @@ Future<void> initDependencies() async {
       SignUpCreateProfileUseCase(sl()));
   sl.registerSingleton<HomeUsecase>(HomeUsecase(sl()));
   sl.registerSingleton<TrendingUsecase>(TrendingUsecase(sl()));
-  sl.registerSingleton<RecentStoriesTagsUseCase>(RecentStoriesTagsUseCase(sl()));
+  sl.registerSingleton<RecentStoriesTagsUseCase>(
+      RecentStoriesTagsUseCase(sl()));
   sl.registerSingleton<RecentStoriesUsecase>(RecentStoriesUsecase(sl()));
+  sl.registerSingleton<NewsDetailsUsecase>(NewsDetailsUsecase(sl()));
+  sl.registerSingleton<NewsCommentsUsecase>(NewsCommentsUsecase(sl()));
+  sl.registerSingleton<AddCommentUsecase>(AddCommentUsecase(sl()));
+  sl.registerSingleton<LikeCommentUsecase>(LikeCommentUsecase(sl()));
   // blocs
   sl.registerSingleton<SignInBloc>(SignInBloc(sl()));
   sl.registerSingleton<SignUpSelectCountryBloc>(SignUpSelectCountryBloc(sl()));
@@ -66,7 +77,9 @@ Future<void> initDependencies() async {
   sl.registerSingleton<SignUpCreatePrfileBloc>(SignUpCreatePrfileBloc(sl()));
   sl.registerSingleton<HomeBloc>(HomeBloc(sl(), sl()));
   sl.registerSingleton<TrendingNewsBloc>(TrendingNewsBloc(sl()));
-  sl.registerSingleton<RecentNewsBloc>(RecentNewsBloc(sl(),sl()));
+  sl.registerSingleton<RecentNewsBloc>(RecentNewsBloc(sl(), sl()));
+  sl.registerSingleton<NewsDetailBloc>(NewsDetailBloc(sl()));
+  sl.registerSingleton<CommentsBloc>(CommentsBloc(sl(), sl(), sl()));
   // other
   await _initSharedPrefs();
   sl.registerSingleton<StorageService>(StorageServiceImpl(prefs: sl()));

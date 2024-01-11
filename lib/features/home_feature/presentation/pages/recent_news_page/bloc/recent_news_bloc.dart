@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:news_line_app/core/usecase/usecase.dart';
 import 'package:news_line_app/features/auth_feature/domain/entities/tags_entity.dart';
-import 'package:news_line_app/features/home_feature/domain/usecases/recent_stories_tags.dart';
+import 'package:news_line_app/features/home_feature/domain/usecases/recent_stories_tags_usecase.dart';
 import 'package:news_line_app/features/home_feature/domain/usecases/recent_stories_usecase.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/recent_news_page/bloc/recent_news_loading_more_status.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/recent_news_page/bloc/recent_news_status.dart';

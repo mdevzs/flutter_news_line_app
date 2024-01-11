@@ -28,6 +28,7 @@ PreferredSizeWidget trReNewsPageAppBar(String title) {
 Widget trendingNewsListSection(
   BuildContext context, {
   required TrendingNewsState state,
+  required Function(int newsId) onItemPressed,
 }) {
   return state.trendingNewsStatus.when(
     loading: () {
@@ -66,10 +67,13 @@ Widget trendingNewsListSection(
               },
             );
           } else {
-            return Padding(
-              padding: EdgeInsets.all(4.sp),
-              child: recentStoriesListItem(
-                state.trendingNews[index],
+            return GestureDetector(
+              onTap: onItemPressed(state.trendingNews[index].id),
+              child: Padding(
+                padding: EdgeInsets.all(4.sp),
+                child: recentStoriesListItem(
+                  state.trendingNews[index],
+                ),
               ),
             );
           }
@@ -84,7 +88,7 @@ Widget trendingNewsListSection(
                 const TrendingNewsEvent.getAllTrendingNews(),
               );
         },
-      );      
+      );
     },
   );
 }

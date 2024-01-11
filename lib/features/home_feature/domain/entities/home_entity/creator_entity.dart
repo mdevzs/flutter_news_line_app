@@ -8,5 +8,7 @@ class CreatorEntity with _$CreatorEntity {
     required int id,
     String? profileImage,
     required String fullName,
+    required String bio,
+    required int followersCount,
   }) = _CreatorModel;
 }

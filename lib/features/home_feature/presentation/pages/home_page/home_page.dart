@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_line_app/core/routes/names.dart';
 import 'package:news_line_app/core/widgets/widgets.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/home_page/bloc/home_bloc.dart';
 import 'package:news_line_app/features/home_feature/presentation/widgets/home_widgets.dart';
@@ -46,6 +47,14 @@ class HomePage extends StatelessWidget {
                         trendingNewsSectionHomePage(
                           context: context,
                           trendingNews: home.trendingNews ?? [],
+                          onItemPressed: (newsId) {
+                            Navigator.of(context).pushNamed(
+                              AppRoutes.News_Details_ROUTE,
+                              arguments: {
+                                'newsId': '$newsId',
+                              },
+                            );
+                          },
                         ),
                         gapH12,
                         recentStoriesSection(

@@ -19,6 +19,8 @@ mixin _$CreatorEntity {
   int get id => throw _privateConstructorUsedError;
   String? get profileImage => throw _privateConstructorUsedError;
   String get fullName => throw _privateConstructorUsedError;
+  String get bio => throw _privateConstructorUsedError;
+  int get followersCount => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CreatorEntityCopyWith<CreatorEntity> get copyWith =>
@@ -31,7 +33,12 @@ abstract class $CreatorEntityCopyWith<$Res> {
           CreatorEntity value, $Res Function(CreatorEntity) then) =
       _$CreatorEntityCopyWithImpl<$Res, CreatorEntity>;
   @useResult
-  $Res call({int id, String? profileImage, String fullName});
+  $Res call(
+      {int id,
+      String? profileImage,
+      String fullName,
+      String bio,
+      int followersCount});
 }
 
 /// @nodoc
@@ -50,6 +57,8 @@ class _$CreatorEntityCopyWithImpl<$Res, $Val extends CreatorEntity>
     Object? id = null,
     Object? profileImage = freezed,
     Object? fullName = null,
+    Object? bio = null,
+    Object? followersCount = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -64,6 +73,14 @@ class _$CreatorEntityCopyWithImpl<$Res, $Val extends CreatorEntity>
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String,
+      bio: null == bio
+          ? _value.bio
+          : bio // ignore: cast_nullable_to_non_nullable
+              as String,
+      followersCount: null == followersCount
+          ? _value.followersCount
+          : followersCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -76,7 +93,12 @@ abstract class _$$CreatorModelImplCopyWith<$Res>
       __$$CreatorModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String? profileImage, String fullName});
+  $Res call(
+      {int id,
+      String? profileImage,
+      String fullName,
+      String bio,
+      int followersCount});
 }
 
 /// @nodoc
@@ -93,6 +115,8 @@ class __$$CreatorModelImplCopyWithImpl<$Res>
     Object? id = null,
     Object? profileImage = freezed,
     Object? fullName = null,
+    Object? bio = null,
+    Object? followersCount = null,
   }) {
     return _then(_$CreatorModelImpl(
       id: null == id
@@ -107,6 +131,14 @@ class __$$CreatorModelImplCopyWithImpl<$Res>
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String,
+      bio: null == bio
+          ? _value.bio
+          : bio // ignore: cast_nullable_to_non_nullable
+              as String,
+      followersCount: null == followersCount
+          ? _value.followersCount
+          : followersCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -115,7 +147,11 @@ class __$$CreatorModelImplCopyWithImpl<$Res>
 
 class _$CreatorModelImpl implements _CreatorModel {
   const _$CreatorModelImpl(
-      {required this.id, this.profileImage, required this.fullName});
+      {required this.id,
+      this.profileImage,
+      required this.fullName,
+      required this.bio,
+      required this.followersCount});
 
   @override
   final int id;
@@ -123,10 +159,14 @@ class _$CreatorModelImpl implements _CreatorModel {
   final String? profileImage;
   @override
   final String fullName;
+  @override
+  final String bio;
+  @override
+  final int followersCount;
 
   @override
   String toString() {
-    return 'CreatorEntity(id: $id, profileImage: $profileImage, fullName: $fullName)';
+    return 'CreatorEntity(id: $id, profileImage: $profileImage, fullName: $fullName, bio: $bio, followersCount: $followersCount)';
   }
 
   @override
@@ -138,11 +178,15 @@ class _$CreatorModelImpl implements _CreatorModel {
             (identical(other.profileImage, profileImage) ||
                 other.profileImage == profileImage) &&
             (identical(other.fullName, fullName) ||
-                other.fullName == fullName));
+                other.fullName == fullName) &&
+            (identical(other.bio, bio) || other.bio == bio) &&
+            (identical(other.followersCount, followersCount) ||
+                other.followersCount == followersCount));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, profileImage, fullName);
+  int get hashCode =>
+      Object.hash(runtimeType, id, profileImage, fullName, bio, followersCount);
 
   @JsonKey(ignore: true)
   @override
@@ -155,7 +199,9 @@ abstract class _CreatorModel implements CreatorEntity {
   const factory _CreatorModel(
       {required final int id,
       final String? profileImage,
-      required final String fullName}) = _$CreatorModelImpl;
+      required final String fullName,
+      required final String bio,
+      required final int followersCount}) = _$CreatorModelImpl;
 
   @override
   int get id;
@@ -163,6 +209,10 @@ abstract class _CreatorModel implements CreatorEntity {
   String? get profileImage;
   @override
   String get fullName;
+  @override
+  String get bio;
+  @override
+  int get followersCount;
   @override
   @JsonKey(ignore: true)
   _$$CreatorModelImplCopyWith<_$CreatorModelImpl> get copyWith =>
