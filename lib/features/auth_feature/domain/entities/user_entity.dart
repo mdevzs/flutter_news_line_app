@@ -1,4 +1,3 @@
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_entity.freezed.dart';
@@ -17,5 +16,6 @@ class UserEntity with _$UserEntity {
     String? profileImage,
     required String userType,
     required String token,
+    bool? isFollowing,
   }) = _UserEntity;
 }

@@ -1,0 +1,44 @@
+import 'package:dartz/dartz.dart';
+import 'package:news_line_app/core/utils/failure.dart';
+import 'package:news_line_app/features/discover_feature/data/data_source/discover_api_provider.dart';
+import 'package:news_line_app/features/discover_feature/data/models/discover_model.dart';
+import 'package:news_line_app/features/discover_feature/domain/entities/discover_entity.dart';
+import 'package:news_line_app/features/discover_feature/domain/repository/discover_repository.dart';
+
+import '../../../../core/utils/api_response_handler.dart';
+
+class DiscoverRepositoryImpl implements DiscoverRepository {
+  final DiscoverApiProvider apiProvider;
+  DiscoverRepositoryImpl(this.apiProvider);
+  @override
+  Future<Either<Failure, DiscoverEntity>> discover() async {
+    //
+    late Either<Failure, DiscoverEntity> failureOrEntity;
+    await apiResponseHandler<DiscoverModel>(
+      future: apiProvider.discover(),
+      right: (result) {
+        failureOrEntity = Right(result.toEntity());
+      },
+      left: (failure) {
+        failureOrEntity = Left(failure);
+      },
+    );
+    return failureOrEntity;
+  }
+  
+  @override
+  Future<Either<Failure, void>> followAuthor(String followingId) async{
+    //
+    late Either<Failure, void> failureOrEntity;
+    await apiResponseHandler<void>(
+      future: apiProvider.followAuthor(followingId),
+      right: (result) {
+        failureOrEntity = Right(result);
+      },
+      left: (failure) {
+        failureOrEntity = Left(failure);
+      },
+    );
+    return failureOrEntity;
+  }
+}

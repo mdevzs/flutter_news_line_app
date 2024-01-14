@@ -15,6 +15,11 @@ import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_c
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_follow_official_author/bloc/sign_up_follow_official_author_bloc.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_select_country_page/bloc/sign_up_select_country_bloc.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_select_intrested_tag_page/bloc/sign_up_select_intrested_tag_bloc.dart';
+import 'package:news_line_app/features/discover_feature/data/data_source/discover_api_provider.dart';
+import 'package:news_line_app/features/discover_feature/data/repository/discover_repository_impl.dart';
+import 'package:news_line_app/features/discover_feature/domain/repository/discover_repository.dart';
+import 'package:news_line_app/features/discover_feature/domain/usecases/discover_usecase.dart';
+import 'package:news_line_app/features/discover_feature/presentation/pages/bloc/discover_bloc.dart';
 import 'package:news_line_app/features/home_feature/data/data_source/home_api_provider.dart';
 import 'package:news_line_app/features/home_feature/data/repository/home_repository_impl.dart';
 import 'package:news_line_app/features/home_feature/domain/repository/home_repository.dart';
@@ -32,6 +37,7 @@ import 'package:news_line_app/features/home_feature/presentation/pages/recent_ne
 import 'package:news_line_app/features/home_feature/presentation/pages/trending_news_page/bloc/trending_news_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../features/discover_feature/domain/usecases/follow_author_usercase.dart';
 import '../../features/home_feature/domain/usecases/recent_stories_tags_usecase.dart';
 
 final sl = GetIt.I;
@@ -45,9 +51,11 @@ Future<void> initDependencies() async {
   // api providers
   sl.registerSingleton<AuthApiProvider>(AuthApiProvider(sl()));
   sl.registerSingleton<HomeApiProvider>(HomeApiProvider(sl()));
+  sl.registerSingleton<DiscoverApiProvider>(DiscoverApiProvider(sl()));
   // repositories
   sl.registerSingleton<AuthRepository>(AuthRepositoryImpl(sl()));
   sl.registerSingleton<HomeRepository>(HomeRepositoryImpl(sl()));
+  sl.registerSingleton<DiscoverRepository>(DiscoverRepositoryImpl(sl()));
   // usecases
   sl.registerSingleton<SignInUsecase>(SignInUsecase(sl()));
   sl.registerSingleton<SignUpSelectCountryUsecase>(
@@ -67,6 +75,8 @@ Future<void> initDependencies() async {
   sl.registerSingleton<NewsCommentsUsecase>(NewsCommentsUsecase(sl()));
   sl.registerSingleton<AddCommentUsecase>(AddCommentUsecase(sl()));
   sl.registerSingleton<LikeCommentUsecase>(LikeCommentUsecase(sl()));
+  sl.registerSingleton<DiscoverUsecase>(DiscoverUsecase(sl()));
+  sl.registerSingleton<FollowAuthorUsecase>(FollowAuthorUsecase(sl()));
   // blocs
   sl.registerSingleton<SignInBloc>(SignInBloc(sl()));
   sl.registerSingleton<SignUpSelectCountryBloc>(SignUpSelectCountryBloc(sl()));
@@ -80,6 +90,7 @@ Future<void> initDependencies() async {
   sl.registerSingleton<RecentNewsBloc>(RecentNewsBloc(sl(), sl()));
   sl.registerSingleton<NewsDetailBloc>(NewsDetailBloc(sl()));
   sl.registerSingleton<CommentsBloc>(CommentsBloc(sl(), sl(), sl()));
+  sl.registerSingleton<DiscoverBloc>(DiscoverBloc(sl(),sl()));
   // other
   await _initSharedPrefs();
   sl.registerSingleton<StorageService>(StorageServiceImpl(prefs: sl()));

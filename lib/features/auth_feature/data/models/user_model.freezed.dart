@@ -31,6 +31,7 @@ mixin _$UserModel {
   String? get profileImage => throw _privateConstructorUsedError;
   String get userType => throw _privateConstructorUsedError;
   String? get token => throw _privateConstructorUsedError;
+  bool? get isFollowing => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,7 +55,8 @@ abstract class $UserModelCopyWith<$Res> {
       String? bio,
       String? profileImage,
       String userType,
-      String? token});
+      String? token,
+      bool? isFollowing});
 }
 
 /// @nodoc
@@ -81,6 +83,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? profileImage = freezed,
     Object? userType = null,
     Object? token = freezed,
+    Object? isFollowing = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -127,6 +130,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
+      isFollowing: freezed == isFollowing
+          ? _value.isFollowing
+          : isFollowing // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -150,7 +157,8 @@ abstract class _$$UserModelImplCopyWith<$Res>
       String? bio,
       String? profileImage,
       String userType,
-      String? token});
+      String? token,
+      bool? isFollowing});
 }
 
 /// @nodoc
@@ -175,6 +183,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? profileImage = freezed,
     Object? userType = null,
     Object? token = freezed,
+    Object? isFollowing = freezed,
   }) {
     return _then(_$UserModelImpl(
       id: null == id
@@ -221,6 +230,10 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
+      isFollowing: freezed == isFollowing
+          ? _value.isFollowing
+          : isFollowing // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -239,7 +252,8 @@ class _$UserModelImpl extends _UserModel {
       this.bio,
       this.profileImage,
       required this.userType,
-      this.token})
+      this.token,
+      this.isFollowing})
       : super._();
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -267,10 +281,12 @@ class _$UserModelImpl extends _UserModel {
   final String userType;
   @override
   final String? token;
+  @override
+  final bool? isFollowing;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, fullName: $fullName, username: $username, email: $email, phone: $phone, gender: $gender, dateOfBirth: $dateOfBirth, bio: $bio, profileImage: $profileImage, userType: $userType, token: $token)';
+    return 'UserModel(id: $id, fullName: $fullName, username: $username, email: $email, phone: $phone, gender: $gender, dateOfBirth: $dateOfBirth, bio: $bio, profileImage: $profileImage, userType: $userType, token: $token, isFollowing: $isFollowing)';
   }
 
   @override
@@ -293,13 +309,27 @@ class _$UserModelImpl extends _UserModel {
                 other.profileImage == profileImage) &&
             (identical(other.userType, userType) ||
                 other.userType == userType) &&
-            (identical(other.token, token) || other.token == token));
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.isFollowing, isFollowing) ||
+                other.isFollowing == isFollowing));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, fullName, username, email,
-      phone, gender, dateOfBirth, bio, profileImage, userType, token);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      fullName,
+      username,
+      email,
+      phone,
+      gender,
+      dateOfBirth,
+      bio,
+      profileImage,
+      userType,
+      token,
+      isFollowing);
 
   @JsonKey(ignore: true)
   @override
@@ -327,7 +357,8 @@ abstract class _UserModel extends UserModel {
       final String? bio,
       final String? profileImage,
       required final String userType,
-      final String? token}) = _$UserModelImpl;
+      final String? token,
+      final bool? isFollowing}) = _$UserModelImpl;
   const _UserModel._() : super._();
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
@@ -355,6 +386,8 @@ abstract class _UserModel extends UserModel {
   String get userType;
   @override
   String? get token;
+  @override
+  bool? get isFollowing;
   @override
   @JsonKey(ignore: true)
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>

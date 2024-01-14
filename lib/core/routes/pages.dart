@@ -15,6 +15,8 @@ import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_s
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_select_intrested_tag_page/sign_up_select_intrested_tag_page.dart';
 import 'package:news_line_app/features/dashboard_feature/presentation/page/bloc/dashboard_bloc.dart';
 import 'package:news_line_app/features/dashboard_feature/presentation/page/dashboard_page.dart';
+import 'package:news_line_app/features/discover_feature/presentation/pages/bloc/discover_bloc.dart';
+import 'package:news_line_app/features/discover_feature/presentation/pages/discover_page.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/comments_page/comments_page.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/news_detail_page/bloc/news_detail_bloc.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/news_detail_page/news_detail_page.dart';
@@ -140,6 +142,13 @@ class AppPages {
         page: const CommentsPage(),
         bloc: BlocProvider(
           create: (context) => sl.get<CommentsBloc>(),
+        ),
+      ),
+      PageEntity(
+        route: AppRoutes.Discover_ROUTE,
+        page: const DiscoverPage(),
+        bloc: BlocProvider(
+          create: (context) => sl.get<DiscoverBloc>(),
         ),
       ),
     ];

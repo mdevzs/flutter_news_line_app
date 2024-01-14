@@ -17,4 +17,5 @@ class AppRoutes {
   static const Recent_News_ROUTE = '/recentNews';
   static const News_Details_ROUTE = '/newsDetails';
   static const Comments_ROUTE = '/comments';
+  static const Discover_ROUTE = '/discover';
 }

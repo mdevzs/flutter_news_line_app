@@ -18,6 +18,7 @@ class UserModel with _$UserModel {
     String? profileImage,
     required String userType,
     String? token,
+    bool? isFollowing,
   }) = _UserModel;
 
   const UserModel._();
@@ -37,5 +38,6 @@ class UserModel with _$UserModel {
         dateOfBirth: dateOfBirth,
         userType: userType,
         token: token ?? '',
+        isFollowing: isFollowing,
       );
 }

@@ -27,6 +27,7 @@ mixin _$UserEntity {
   String? get profileImage => throw _privateConstructorUsedError;
   String get userType => throw _privateConstructorUsedError;
   String get token => throw _privateConstructorUsedError;
+  bool? get isFollowing => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserEntityCopyWith<UserEntity> get copyWith =>
@@ -50,7 +51,8 @@ abstract class $UserEntityCopyWith<$Res> {
       String? bio,
       String? profileImage,
       String userType,
-      String token});
+      String token,
+      bool? isFollowing});
 }
 
 /// @nodoc
@@ -77,6 +79,7 @@ class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
     Object? profileImage = freezed,
     Object? userType = null,
     Object? token = null,
+    Object? isFollowing = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -123,6 +126,10 @@ class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String,
+      isFollowing: freezed == isFollowing
+          ? _value.isFollowing
+          : isFollowing // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -146,7 +153,8 @@ abstract class _$$UserEntityImplCopyWith<$Res>
       String? bio,
       String? profileImage,
       String userType,
-      String token});
+      String token,
+      bool? isFollowing});
 }
 
 /// @nodoc
@@ -171,6 +179,7 @@ class __$$UserEntityImplCopyWithImpl<$Res>
     Object? profileImage = freezed,
     Object? userType = null,
     Object? token = null,
+    Object? isFollowing = freezed,
   }) {
     return _then(_$UserEntityImpl(
       id: null == id
@@ -217,6 +226,10 @@ class __$$UserEntityImplCopyWithImpl<$Res>
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String,
+      isFollowing: freezed == isFollowing
+          ? _value.isFollowing
+          : isFollowing // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -235,7 +248,8 @@ class _$UserEntityImpl implements _UserEntity {
       this.bio,
       this.profileImage,
       required this.userType,
-      required this.token});
+      required this.token,
+      this.isFollowing});
 
   @override
   final int id;
@@ -259,10 +273,12 @@ class _$UserEntityImpl implements _UserEntity {
   final String userType;
   @override
   final String token;
+  @override
+  final bool? isFollowing;
 
   @override
   String toString() {
-    return 'UserEntity(id: $id, fullName: $fullName, username: $username, email: $email, phone: $phone, gender: $gender, dateOfBirth: $dateOfBirth, bio: $bio, profileImage: $profileImage, userType: $userType, token: $token)';
+    return 'UserEntity(id: $id, fullName: $fullName, username: $username, email: $email, phone: $phone, gender: $gender, dateOfBirth: $dateOfBirth, bio: $bio, profileImage: $profileImage, userType: $userType, token: $token, isFollowing: $isFollowing)';
   }
 
   @override
@@ -285,12 +301,26 @@ class _$UserEntityImpl implements _UserEntity {
                 other.profileImage == profileImage) &&
             (identical(other.userType, userType) ||
                 other.userType == userType) &&
-            (identical(other.token, token) || other.token == token));
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.isFollowing, isFollowing) ||
+                other.isFollowing == isFollowing));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, fullName, username, email,
-      phone, gender, dateOfBirth, bio, profileImage, userType, token);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      fullName,
+      username,
+      email,
+      phone,
+      gender,
+      dateOfBirth,
+      bio,
+      profileImage,
+      userType,
+      token,
+      isFollowing);
 
   @JsonKey(ignore: true)
   @override
@@ -311,7 +341,8 @@ abstract class _UserEntity implements UserEntity {
       final String? bio,
       final String? profileImage,
       required final String userType,
-      required final String token}) = _$UserEntityImpl;
+      required final String token,
+      final bool? isFollowing}) = _$UserEntityImpl;
 
   @override
   int get id;
@@ -335,6 +366,8 @@ abstract class _UserEntity implements UserEntity {
   String get userType;
   @override
   String get token;
+  @override
+  bool? get isFollowing;
   @override
   @JsonKey(ignore: true)
   _$$UserEntityImplCopyWith<_$UserEntityImpl> get copyWith =>

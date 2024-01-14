@@ -19,6 +19,7 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
       profileImage: json['profileImage'] as String?,
       userType: json['userType'] as String,
       token: json['token'] as String?,
+      isFollowing: json['isFollowing'] as bool?,
     );
 
 Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
@@ -34,4 +35,5 @@ Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
       'profileImage': instance.profileImage,
       'userType': instance.userType,
       'token': instance.token,
+      'isFollowing': instance.isFollowing,
     };

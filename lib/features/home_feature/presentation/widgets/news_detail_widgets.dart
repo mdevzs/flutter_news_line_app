@@ -115,7 +115,7 @@ class NewsDetailsPageBody extends StatelessWidget {
           gapH8,
           NewsAuthorSection(
             creator: newsDetailsEntity.creator,
-            child: const FollowingButton(),
+            child: FollowingButton(onPressed: () {}),
           ),
           customText(
             newsDetailsEntity.creator.bio,
@@ -140,7 +140,9 @@ class NewsDetailsPageBody extends StatelessWidget {
           ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: 3,
+            itemCount: newsDetailsEntity.comments.top.length > 3
+                ? 3
+                : newsDetailsEntity.comments.top.length,
             itemBuilder: (context, index) {
               return Padding(
                 padding: EdgeInsets.only(bottom: 4.sp),
@@ -257,7 +259,17 @@ class MyChip extends StatelessWidget {
 }
 
 class FollowingButton extends StatefulWidget {
-  const FollowingButton({super.key});
+  final double width, hight, fontSize;
+  final bool isFollowing;
+  final Function() onPressed;
+  const FollowingButton({
+    super.key,
+    this.width = 4,
+    this.hight = 9,
+    this.fontSize = 4,
+    this.isFollowing = false,
+    required this.onPressed,
+  });
 
   @override
   State<FollowingButton> createState() => _FollowingButtonState();
@@ -265,6 +277,13 @@ class FollowingButton extends StatefulWidget {
 
 class _FollowingButtonState extends State<FollowingButton> {
   bool isSelected = false;
+
+  @override
+  void initState() {
+    isSelected = widget.isFollowing;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -272,9 +291,10 @@ class _FollowingButtonState extends State<FollowingButton> {
         setState(() {
           isSelected = !isSelected;
         });
+        widget.onPressed();
       },
       style: ElevatedButton.styleFrom(
-        minimumSize: Size(4.w, 9.w),
+        minimumSize: Size(widget.width.w, widget.hight.w),
         backgroundColor: isSelected
             ? Colors.white.withOpacity(0.95)
             : AppColors.primaryColor,
@@ -288,7 +308,7 @@ class _FollowingButtonState extends State<FollowingButton> {
       ),
       child: customText(
         isSelected ? 'Following' : 'Follow',
-        fontSize: 4.f,
+        fontSize: widget.fontSize.f,
         color: isSelected ? Colors.black : Colors.white,
       ),
     );
