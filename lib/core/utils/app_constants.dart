@@ -4,9 +4,9 @@ class AppConstatns {
   static const BASE_URL = 'http://192.168.0.103:3000';
   static const SHARED_KEY_STORAGE_FIRST_TIME_Use_APP =
       'sharedKeyStorageFirstTimeUseApp';
-
   static const SHARED_KEY_STORAGE_USER_TOKEN = 'sharedKeyStorageUserToken';
-
+  static const Error_Picture_ASSET = 'assets/icons/error_picture.png';
+  static const Profile_Picture_ASSET = 'assets/icons/profile2.png';
   static const onBoardingList = <Map<String, String>>[
     {
       'image': 'assets/images/onboarding1.png',

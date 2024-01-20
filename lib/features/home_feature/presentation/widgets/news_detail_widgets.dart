@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_line_app/core/utils/app_constants.dart';
+import 'package:news_line_app/features/discover_feature/presentation/widgets/network_image.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/comments_page/bloc/comments_bloc.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/comments_page/comment_page_cubit/comment_page_cubit.dart';
 import 'package:share_plus/share_plus.dart';
@@ -209,9 +211,9 @@ class NewsAuthorSection extends StatelessWidget {
           child: SizedBox(
             width: 25.sp,
             height: 25.sp,
-            child: Image.network(
-              creator.profileImage ?? '',
-              fit: BoxFit.fill,
+            child: AppNetworkImage(
+              url: creator.profileImage,
+              errorAsset: AppConstatns.Profile_Picture_ASSET,
             ),
           ),
         ),
@@ -368,9 +370,9 @@ class _CommentWidgetState extends State<CommentWidget>
               child: SizedBox(
                 width: 15.sp,
                 height: 15.sp,
-                child: Image.network(
-                  widget.commentsEntity.creator.profileImage ?? '',
-                  fit: BoxFit.fill,
+                child: AppNetworkImage(
+                  url: widget.commentsEntity.creator.profileImage,
+                  errorAsset: AppConstatns.Profile_Picture_ASSET,
                 ),
               ),
             ),
@@ -511,9 +513,9 @@ class _ReplyCommentWidgetState extends State<ReplyCommentWidget> {
               child: SizedBox(
                 width: 15.sp,
                 height: 15.sp,
-                child: Image.network(
-                  widget.commentsEntity.creator.profileImage ?? '',
-                  fit: BoxFit.fill,
+                child: AppNetworkImage(
+                  url: widget.commentsEntity.creator.profileImage,
+                  errorAsset: AppConstatns.Profile_Picture_ASSET,
                 ),
               ),
             ),

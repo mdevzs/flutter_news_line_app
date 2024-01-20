@@ -6,8 +6,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_constraintlayout/flutter_constraintlayout.dart';
 import 'package:news_line_app/config/app_colors.dart';
 import 'package:news_line_app/core/routes/names.dart';
+import 'package:news_line_app/core/utils/app_constants.dart';
 import 'package:news_line_app/core/utils/gaps.dart';
 import 'package:news_line_app/core/widgets/widgets.dart';
+import 'package:news_line_app/features/discover_feature/presentation/widgets/network_image.dart';
 import 'package:news_line_app/features/home_feature/domain/entities/home_entity/creator_entity.dart';
 import 'package:news_line_app/features/home_feature/domain/entities/home_entity/home_entity.dart';
 import 'package:news_line_app/features/home_feature/domain/entities/home_entity/news_entity.dart';
@@ -28,10 +30,10 @@ PreferredSizeWidget homeAppBar({
             width: 25.sp,
             height: 25.sp,
             child: image != null
-                ? Image.network(
-                    image,
+                ? AppNetworkImage(
+                    url: image,
+                    errorAsset: AppConstatns.Profile_Picture_ASSET,
                     width: 20.sp,
-                    fit: BoxFit.fill,
                   )
                 : Image.asset(
                     'assets/icons/profile.png',
@@ -490,27 +492,12 @@ Widget creatorProfileSection({
     contentPadding: const EdgeInsets.all(0),
     leading: ClipOval(
       child: SizedBox(
-        width: 10.sp,
-        height: 10.sp,
-        // child: Image.network(
-        //   creator.profileImage ?? '',
-        //   fit: BoxFit.fill,
-        // ),
-        child: CachedNetworkImage(
-          imageUrl: creator.profileImage ?? '',
-          fit: BoxFit.fill,
-          errorListener: (e) {
-            if (e is SocketException) {
-              debugPrint('Error with ${e.address} and message ${e.message}');
-            } else {
-              debugPrint('Image Exception is: ${e.runtimeType}');
-            }
-          },
-          errorWidget: (context, url, error) {
-            return Image.asset('assets/icons/profile.png');
-          },
-        ),
-      ),
+          width: 10.sp,
+          height: 10.sp,
+          child: AppNetworkImage(
+            url: creator.profileImage,
+            errorAsset: AppConstatns.Profile_Picture_ASSET,
+          )),
     ),
     title: customText(
       creator.fullName,

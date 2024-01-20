@@ -8,7 +8,9 @@ import 'package:getwidget/components/progress_bar/gf_progress_bar.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:news_line_app/config/app_colors.dart';
+import 'package:news_line_app/core/utils/app_constants.dart';
 import 'package:news_line_app/core/widgets/widgets.dart';
+import 'package:news_line_app/features/discover_feature/presentation/widgets/network_image.dart';
 import 'package:sizer_pro/sizer.dart';
 
 import '../../../../core/utils/gaps.dart';
@@ -36,9 +38,9 @@ Widget countryListItem(
         height: 30.sp,
         child: Padding(
           padding: EdgeInsets.all(2.sp),
-          child: Image.network(
-            flagUrl,
-            fit: BoxFit.fill,
+          child: AppNetworkImage(
+            url: flagUrl,
+            errorAsset: AppConstatns.Error_Picture_ASSET,
           ),
         ),
       ),
@@ -110,10 +112,10 @@ Widget officialAuthorListItem({
     child: Row(
       children: [
         ClipOval(
-          child: Image.network(
-            profileImage,
+          child: AppNetworkImage(
+            url: profileImage,
+            errorAsset: AppConstatns.Profile_Picture_ASSET,
             width: 22.sp,
-            fit: BoxFit.fill,
           ),
         ),
         gapW4,

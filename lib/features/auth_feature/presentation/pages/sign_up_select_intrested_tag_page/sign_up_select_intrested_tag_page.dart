@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_line_app/config/app_colors.dart';
 import 'package:news_line_app/core/routes/names.dart';
+import 'package:news_line_app/core/utils/app_constants.dart';
 import 'package:news_line_app/core/utils/gaps.dart';
 import 'package:news_line_app/core/widgets/widgets.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_select_intrested_tag_page/bloc/sign_up_select_intrested_tag_bloc.dart';
 import 'package:news_line_app/features/auth_feature/presentation/widgets/auth_features_widgets.dart';
+import 'package:news_line_app/features/discover_feature/presentation/widgets/network_image.dart';
 import 'package:sizer_pro/sizer.dart';
 
 class SignUpSelectIntrestedTagPage extends StatelessWidget {
@@ -87,7 +89,12 @@ class SignUpSelectIntrestedTagPage extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        Image.network(tag.image, width: 20.sp),
+                                        AppNetworkImage(
+                                          url: tag.image,
+                                          errorAsset:
+                                              AppConstatns.Error_Picture_ASSET,
+                                          width: 20.sp,
+                                        ),
                                         gapH4,
                                         customText(tag.name, fontSize: 7)
                                       ],

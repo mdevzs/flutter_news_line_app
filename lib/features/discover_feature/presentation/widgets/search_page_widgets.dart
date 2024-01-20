@@ -1,14 +1,13 @@
-import 'dart:io';
-
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_line_app/core/routes/names.dart';
+import 'package:news_line_app/core/utils/app_constants.dart';
 import 'package:news_line_app/core/utils/gaps.dart';
 import 'package:news_line_app/features/auth_feature/domain/entities/user_entity.dart';
 import 'package:news_line_app/features/discover_feature/domain/entities/discover_search_entity.dart';
 import 'package:news_line_app/features/discover_feature/presentation/pages/discover_page/bloc/discover_bloc.dart';
 import 'package:news_line_app/features/discover_feature/presentation/pages/search_page/cubit/search_text_cubit.dart';
+import 'package:news_line_app/features/discover_feature/presentation/widgets/network_image.dart';
 import 'package:news_line_app/features/home_feature/domain/entities/home_entity/tag_entity.dart';
 import 'package:news_line_app/features/home_feature/presentation/widgets/news_detail_widgets.dart';
 import 'package:sizer_pro/sizer.dart';
@@ -108,20 +107,9 @@ class _AccountsSectionItemState extends State<AccountsSectionItem>
                   child: SizedBox(
                     width: 20.sp,
                     height: 20.sp,
-                    child: CachedNetworkImage(
-                      imageUrl: widget.account.profileImage ?? '',
-                      fit: BoxFit.fill,
-                      errorListener: (e) {
-                        if (e is SocketException) {
-                          debugPrint(
-                              'Error with ${e.address} and message ${e.message}');
-                        } else {
-                          debugPrint('Image Exception is: ${e.runtimeType}');
-                        }
-                      },
-                      errorWidget: (context, url, error) {
-                        return Image.asset('assets/icons/profile.png');
-                      },
+                    child: AppNetworkImage(
+                      url: widget.account.profileImage,
+                      errorAsset: AppConstatns.Profile_Picture_ASSET,
                     ),
                   ),
                 ),
