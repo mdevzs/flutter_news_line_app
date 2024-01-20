@@ -109,58 +109,97 @@ final textFieldBorder = OutlineInputBorder(
   borderRadius: BorderRadius.circular(4.sp),
 );
 
-Widget appTextFormField({
-  TextEditingController? controller,
-  Icon? icon,
-  Icon? sufficxIcon,
-  required String hintText,
-  bool showClearIcon = false,
-  bool readOnly = false,
-  int maxLine = 1,
-  Color? suffixHighlightColor,
-  FocusNode? focusNode,
-  required Function(String value) onChangeValue,
-  required String? Function(String? value) validator,
-  Function()? onTap,
-  Function()? onClearedButtonPressed,
-  Function()? onSuffixButtonPressed,
-}) {
-  return TextFormField(
-    controller: controller,
-    readOnly: readOnly,
-    focusNode: focusNode,
-    onTap: onTap,    
-    decoration: InputDecoration(
-      prefixIcon: icon,
-      prefixIconColor: Colors.grey,
-      suffixIcon: (showClearIcon && controller!.text.isNotEmpty) ||
-              (sufficxIcon != null)
-          ? IconButton(
-              highlightColor: suffixHighlightColor,
-              icon: sufficxIcon ?? const Icon(Icons.clear),
-              onPressed: () {
-                if (showClearIcon) {
-                  controller?.clear();
-                  onClearedButtonPressed?.call();
-                } else {
-                  onSuffixButtonPressed?.call();
-                }
-              },
-            )
-          : null,
-      suffixIconColor: Colors.black,
-      hintText: hintText,
-      enabledBorder: textFieldBorder,
-      focusedBorder: textFieldBorder,
-      //prefix: const Text('@admin'),
-      filled: true,
-      fillColor: AppColors.bgTextFieldColor,
-    ),
-    minLines: maxLine,
-    maxLines: maxLine,
-    onChanged: (value) => onChangeValue(value),
-    validator: (value) => validator(value),
-  );
+class CustomTextField extends StatefulWidget {
+  final TextEditingController? controller;
+  final Icon? icon;
+  final Icon? sufficxIcon;
+  final String hintText;
+  final bool showClearIcon;
+  final bool readOnly;
+  final int maxLine;
+  final Color? suffixHighlightColor;
+  final FocusNode? focusNode;
+  final Function(String value) onChangeValue;
+  final String? Function(String? value)? validator;
+  final Function()? onTap;
+  final Function()? onClearedButtonPressed;
+  final Function()? onSuffixButtonPressed;
+  const CustomTextField({
+    super.key,
+    this.controller,
+    this.icon,
+    this.sufficxIcon,
+    required this.hintText,
+    this.showClearIcon = false,
+    this.readOnly = false,
+    this.maxLine = 1,
+    this.suffixHighlightColor,
+    this.focusNode,
+    required this.onChangeValue,
+    this.validator,
+    this.onTap,
+    this.onClearedButtonPressed,
+    this.onSuffixButtonPressed,
+  });
+
+  @override
+  State<CustomTextField> createState() => _CustomTextFieldState();
+}
+
+class _CustomTextFieldState extends State<CustomTextField> {
+  String text = '';
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      controller: widget.controller,
+      readOnly: widget.readOnly,
+      focusNode: widget.focusNode,
+      onTap: widget.onTap,
+      decoration: InputDecoration(
+        prefixIcon: widget.icon,
+        prefixIconColor: Colors.grey,
+        suffixIcon: (widget.showClearIcon && text.isNotEmpty) ||
+                (widget.sufficxIcon != null)
+            ? IconButton(
+                highlightColor: widget.suffixHighlightColor,
+                icon: widget.sufficxIcon ??
+                    Icon(
+                      Icons.clear,
+                      size: 7.sp,
+                    ),
+                onPressed: () {
+                  if (widget.showClearIcon) {
+                    widget.controller?.clear();
+                    widget.onClearedButtonPressed?.call();
+                    setState(() {
+                      text = '';
+                    });
+                  } else {
+                    widget.onSuffixButtonPressed?.call();
+                  }
+                },
+              )
+            : null,
+        suffixIconColor: Colors.black,
+        hintText: widget.hintText,
+        enabledBorder: textFieldBorder,
+        focusedBorder: textFieldBorder,
+        filled: true,
+        fillColor: AppColors.bgTextFieldColor,
+      ),
+      minLines: widget.maxLine,
+      maxLines: widget.maxLine,
+      onChanged: (value) {
+        widget.onChangeValue(value);
+        setState(() {
+          text = value;
+        });
+      },
+      validator: (value) =>
+          widget.validator != null ? widget.validator!(value) : null,
+    );
+  }
 }
 
 Widget appPasswordTextFormField(

@@ -87,7 +87,7 @@ class SignUpCreateProfilePage extends StatelessWidget {
                         'Full Name',
                         fontSize: 8,
                       ),
-                      appTextFormField(
+                      CustomTextField(
                         controller: fullNameTextController,
                         icon: null,
                         hintText: '',
@@ -99,7 +99,7 @@ class SignUpCreateProfilePage extends StatelessWidget {
                         'Username',
                         fontSize: 8,
                       ),
-                      appTextFormField(
+                      CustomTextField(
                         controller: usernameTextController,
                         icon: null,
                         hintText: '',
@@ -111,7 +111,7 @@ class SignUpCreateProfilePage extends StatelessWidget {
                         'Date of Birth',
                         fontSize: 8,
                       ),
-                      appTextFormField(
+                      CustomTextField(
                         controller: dateOfBirthTextController,
                         readOnly: true,
                         suffixHighlightColor: Colors.transparent,
@@ -160,7 +160,7 @@ class SignUpCreateProfilePage extends StatelessWidget {
                         'Bio',
                         fontSize: 8,
                       ),
-                      appTextFormField(
+                      CustomTextField(
                         controller: bioTextController,
                         icon: null,
                         hintText: '',

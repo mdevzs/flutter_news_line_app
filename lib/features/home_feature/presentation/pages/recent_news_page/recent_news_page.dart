@@ -31,7 +31,7 @@ class _RecentNewsPageState extends State<RecentNewsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: trReNewsPageAppBar('Recent Stories'),
+      appBar: trReNewsPageAppBar(context, 'Recent Stories'),
       body: Padding(
         padding: EdgeInsets.all(4.sp),
         child: BlocBuilder<RecentNewsBloc, RecentNewsState>(
@@ -87,8 +87,8 @@ class _RecentNewsPageState extends State<RecentNewsPage> {
                               } else {
                                 return Padding(
                                   padding: EdgeInsets.only(top: 4.sp),
-                                  child: recentStoriesListItem(
-                                    state.recentNews[index],
+                                  child: RecentStoriesListItem(
+                                    recentSt: state.recentNews[index],
                                   ),
                                 );
                               }

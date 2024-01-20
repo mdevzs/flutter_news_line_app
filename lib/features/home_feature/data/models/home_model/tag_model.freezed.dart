@@ -23,6 +23,7 @@ mixin _$TagModel {
   int? get id => throw _privateConstructorUsedError;
   String? get tag => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
+  int? get postsCount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,7 @@ abstract class $TagModelCopyWith<$Res> {
   factory $TagModelCopyWith(TagModel value, $Res Function(TagModel) then) =
       _$TagModelCopyWithImpl<$Res, TagModel>;
   @useResult
-  $Res call({int? id, String? tag, String? image});
+  $Res call({int? id, String? tag, String? image, int? postsCount});
 }
 
 /// @nodoc
@@ -54,6 +55,7 @@ class _$TagModelCopyWithImpl<$Res, $Val extends TagModel>
     Object? id = freezed,
     Object? tag = freezed,
     Object? image = freezed,
+    Object? postsCount = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -68,6 +70,10 @@ class _$TagModelCopyWithImpl<$Res, $Val extends TagModel>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
+      postsCount: freezed == postsCount
+          ? _value.postsCount
+          : postsCount // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -80,7 +86,7 @@ abstract class _$$TagModelImplCopyWith<$Res>
       __$$TagModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? id, String? tag, String? image});
+  $Res call({int? id, String? tag, String? image, int? postsCount});
 }
 
 /// @nodoc
@@ -97,6 +103,7 @@ class __$$TagModelImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? tag = freezed,
     Object? image = freezed,
+    Object? postsCount = freezed,
   }) {
     return _then(_$TagModelImpl(
       id: freezed == id
@@ -111,6 +118,10 @@ class __$$TagModelImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
+      postsCount: freezed == postsCount
+          ? _value.postsCount
+          : postsCount // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -118,7 +129,7 @@ class __$$TagModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$TagModelImpl extends _TagModel {
-  _$TagModelImpl({this.id, this.tag, this.image}) : super._();
+  _$TagModelImpl({this.id, this.tag, this.image, this.postsCount}) : super._();
 
   factory _$TagModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$TagModelImplFromJson(json);
@@ -129,10 +140,12 @@ class _$TagModelImpl extends _TagModel {
   final String? tag;
   @override
   final String? image;
+  @override
+  final int? postsCount;
 
   @override
   String toString() {
-    return 'TagModel(id: $id, tag: $tag, image: $image)';
+    return 'TagModel(id: $id, tag: $tag, image: $image, postsCount: $postsCount)';
   }
 
   @override
@@ -142,12 +155,14 @@ class _$TagModelImpl extends _TagModel {
             other is _$TagModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.tag, tag) || other.tag == tag) &&
-            (identical(other.image, image) || other.image == image));
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.postsCount, postsCount) ||
+                other.postsCount == postsCount));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, tag, image);
+  int get hashCode => Object.hash(runtimeType, id, tag, image, postsCount);
 
   @JsonKey(ignore: true)
   @override
@@ -164,8 +179,11 @@ class _$TagModelImpl extends _TagModel {
 }
 
 abstract class _TagModel extends TagModel {
-  factory _TagModel({final int? id, final String? tag, final String? image}) =
-      _$TagModelImpl;
+  factory _TagModel(
+      {final int? id,
+      final String? tag,
+      final String? image,
+      final int? postsCount}) = _$TagModelImpl;
   _TagModel._() : super._();
 
   factory _TagModel.fromJson(Map<String, dynamic> json) =
@@ -177,6 +195,8 @@ abstract class _TagModel extends TagModel {
   String? get tag;
   @override
   String? get image;
+  @override
+  int? get postsCount;
   @override
   @JsonKey(ignore: true)
   _$$TagModelImplCopyWith<_$TagModelImpl> get copyWith =>

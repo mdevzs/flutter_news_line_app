@@ -60,7 +60,7 @@ class SignUpPage extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                             gapH4,
-                            appTextFormField(
+                            CustomTextField(
                               controller:
                                   context.read<SignUpBloc>().emailController,
                               icon: const Icon(Icons.email),

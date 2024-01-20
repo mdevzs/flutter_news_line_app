@@ -93,7 +93,7 @@ class SignInPage extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                               ),
                               gapH4,
-                              appTextFormField(
+                              CustomTextField(
                                 controller: emailController,
                                 icon: const Icon(Icons.email),
                                 hintText: 'Email',

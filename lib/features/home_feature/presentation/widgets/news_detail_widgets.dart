@@ -115,7 +115,10 @@ class NewsDetailsPageBody extends StatelessWidget {
           gapH8,
           NewsAuthorSection(
             creator: newsDetailsEntity.creator,
-            child: FollowingButton(onPressed: () {}),
+            child: FollowingButton(
+              onPressed: () {},
+              //toggleIndex: -1,
+            ),
           ),
           customText(
             newsDetailsEntity.creator.bio,
@@ -170,7 +173,9 @@ class NewsDetailsPageBody extends StatelessWidget {
             height: SizerUtil.height < 640 ? 50.h : 45.h,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: 5,
+              itemCount: newsDetailsEntity.userNews.length > 5
+                  ? 5
+                  : newsDetailsEntity.userNews.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: EdgeInsets.only(right: 8.sp),
@@ -262,6 +267,7 @@ class FollowingButton extends StatefulWidget {
   final double width, hight, fontSize;
   final bool isFollowing;
   final Function() onPressed;
+  //final int toggleIndex;
   const FollowingButton({
     super.key,
     this.width = 4,
@@ -269,23 +275,36 @@ class FollowingButton extends StatefulWidget {
     this.fontSize = 4,
     this.isFollowing = false,
     required this.onPressed,
+    //required this.toggleIndex,
   });
 
   @override
   State<FollowingButton> createState() => _FollowingButtonState();
 }
 
-class _FollowingButtonState extends State<FollowingButton> {
+class _FollowingButtonState extends State<FollowingButton>
+    with AutomaticKeepAliveClientMixin {
   bool isSelected = false;
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
     isSelected = widget.isFollowing;
+    debugPrint('follow button init called');
     super.initState();
   }
 
   @override
+  void didUpdateWidget(covariant FollowingButton oldWidget) {
+    debugPrint('follow button did update widget called!');
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return ElevatedButton(
       onPressed: () {
         setState(() {

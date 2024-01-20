@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_line_app/core/routes/names.dart';
@@ -5,10 +8,11 @@ import 'package:news_line_app/core/utils/gaps.dart';
 import 'package:news_line_app/core/widgets/widgets.dart';
 import 'package:news_line_app/features/auth_feature/domain/entities/user_entity.dart';
 import 'package:news_line_app/features/discover_feature/domain/entities/discover_entity.dart';
-import 'package:news_line_app/features/discover_feature/presentation/pages/bloc/discover_bloc.dart';
 import 'package:news_line_app/features/home_feature/presentation/widgets/home_widgets.dart';
 import 'package:news_line_app/features/home_feature/presentation/widgets/news_detail_widgets.dart';
 import 'package:sizer_pro/sizer.dart';
+
+import '../pages/discover_page/bloc/discover_bloc.dart';
 
 class DiscoverPageBody extends StatelessWidget {
   final DiscoverEntity discoverEntity;
@@ -152,41 +156,64 @@ class _OfficialPublisherAuthorItemState
     extends State<OfficialPublisherAuthorItem> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ClipOval(
-          child: SizedBox(
-            width: 25.sp,
-            height: 25.sp,
-            child: Image.network(
-              widget.publisher.profileImage ?? '',
-              fit: BoxFit.fill,
-              errorBuilder: (context, object, stackTrace) {
-                return Image.asset('assets/icons/profile.png');
-              },
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).pushNamed(AppRoutes.Profile_ROUTE, arguments: {
+          'profileId': widget.publisher.id,
+        });
+      },
+      splashFactory: NoSplash.splashFactory,
+      child: Column(
+        children: [
+          ClipOval(
+            child: SizedBox(
+              width: 25.sp,
+              height: 25.sp,
+              // child: Image.network(
+              //   widget.publisher.profileImage ?? '',
+              //   fit: BoxFit.fill,
+              //   errorBuilder: (context, object, stackTrace) {
+              //     return Image.asset('assets/icons/profile.png');
+              //   },
+              // ),
+              child: CachedNetworkImage(
+                imageUrl: widget.publisher.profileImage ?? '',
+                fit: BoxFit.fill,
+                errorListener: (e) {
+                  if (e is SocketException) {
+                    debugPrint(
+                        'Error with ${e.address} and message ${e.message}');
+                  } else {
+                    debugPrint('Image Exception is: ${e.runtimeType}');
+                  }
+                },
+                errorWidget: (context, url, error) {
+                  return Image.asset('assets/icons/profile.png');
+                },
+              ),
             ),
           ),
-        ),
-        gapH2,
-        customText(
-          widget.publisher.fullName,
-          fontSize: 6,
-          fontWeight: FontWeight.bold,
-        ),
-        FollowingButton(
-          hight: 7,
-          fontSize: 3,
-          isFollowing: widget.publisher.isFollowing ?? false,
-          onPressed: () {
-            debugPrint('follow button pressed');
-            context.read<DiscoverBloc>().add(
-                  DiscoverEvent.followAuthor(
-                    widget.publisher.id.toString(),
-                  ),
-                );
-          },
-        ),
-      ],
+          gapH2,
+          customText(
+            widget.publisher.fullName,
+            fontSize: 6,
+            fontWeight: FontWeight.bold,
+          ),
+          FollowingButton(            
+            hight: 7,
+            fontSize: 3,
+            isFollowing: widget.publisher.isFollowing ?? false,
+            onPressed: () {
+              debugPrint('follow button pressed');
+              context.read<DiscoverBloc>().add(
+                    DiscoverEvent.followAuthor(
+                      widget.publisher.id.toString(),
+                    ),
+                  );
+            },
+          ),
+        ],
+      ),
     );
   }
 }

@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_constraintlayout/flutter_constraintlayout.dart';
@@ -116,10 +119,13 @@ Widget viewMore({required String title, required Function() onPressed}) {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        customText(
-          title,
-          fontSize: 9,
-          fontWeight: FontWeight.bold,
+        Flexible(
+          child: customText(
+            title,
+            fontSize: 9,
+            fontWeight: FontWeight.bold,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
         textWithIcon(
           text: 'View All',
@@ -324,7 +330,9 @@ Widget recentStoriesSection({
               .map(
                 (story) => Padding(
                   padding: EdgeInsets.symmetric(vertical: 6.sp),
-                  child: recentStoriesListItem(story),
+                  child: RecentStoriesListItem(
+                    recentSt: story,
+                  ),
                 ),
               )
               .toList(),
@@ -347,100 +355,132 @@ Widget recentStoriesSection({
   );
 }
 
-Widget recentStoriesListItem(NewsEntity recentSt) {
-  return SizedBox(
-    height: SizerUtil.height < 640 ? 25.h : 22.h,
-    child: Row(
-      children: [
-        Flexible(
-          flex: 2,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              customText(
-                recentSt.title,
-                fontSize: 10,
-                fontWeight: FontWeight.bold,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              ),
-              creatorProfileSection(creator: recentSt.creator),
-              bottomSectionListItem(recentSt),
-            ],
-          ),
-        ),
-        Flexible(
-          flex: 1,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                width: 45.sp,
-                height: 35.sp,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: NetworkImage(recentSt.coverImage ?? ''),
-                  ),
-                  borderRadius: BorderRadius.circular(4.sp),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+class RecentStoriesListItem extends StatefulWidget {
+  final NewsEntity recentSt;
+  const RecentStoriesListItem({super.key, required this.recentSt});
+
+  @override
+  State<RecentStoriesListItem> createState() => _RecentStoriesListItemState();
+}
+
+class _RecentStoriesListItemState extends State<RecentStoriesListItem>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    debugPrint('recent stories rebuild');
+    return InkWell(
+      onTap: () {
+        Navigator.of(context)
+            .pushNamed(AppRoutes.News_Details_ROUTE, arguments: {
+          'newsId': widget.recentSt.id.toString(),
+        });
+      },
+      splashFactory: NoSplash.splashFactory,
+      child: SizedBox(
+        height: SizerUtil.height < 640 ? 25.h : 22.h,
+        child: Row(
+          children: [
+            Flexible(
+              flex: 2,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  InkWell(
-                    onTap: () {},
-                    customBorder: const CircleBorder(),
-                    child: Padding(
-                      padding: EdgeInsets.all(2.sp),
-                      child: Icon(
-                        Icons.share,
-                        size: 8.sp,
+                  customText(
+                    widget.recentSt.title,
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  creatorProfileSection(creator: widget.recentSt.creator),
+                  bottomSectionListItem(widget.recentSt),
+                ],
+              ),
+            ),
+            Flexible(
+              flex: 1,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: 45.sp,
+                    height: 35.sp,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.fill,
+                        // image: NetworkImage(recentSt.coverImage ?? ''),
+                        image: CachedNetworkImageProvider(
+                            widget.recentSt.coverImage ?? '',
+                            errorListener: (e) {
+                          if (e is SocketException) {
+                            debugPrint(
+                                'Error with ${e.address} and message ${e.message}');
+                          } else {
+                            debugPrint('Image Exception is: ${e.runtimeType}');
+                          }
+                        }),
                       ),
+                      borderRadius: BorderRadius.circular(4.sp),
                     ),
                   ),
-                  gapW4,
-                  PopUpMen(
-                    menuList: [
-                      popupMenuItem(
-                        icon: Icons.bookmark_outline,
-                        title: 'Save to Bookmark',
-                        onTap: (){}
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      InkWell(
+                        onTap: () {},
+                        customBorder: const CircleBorder(),
+                        child: Padding(
+                          padding: EdgeInsets.all(2.sp),
+                          child: Icon(
+                            Icons.share,
+                            size: 8.sp,
+                          ),
+                        ),
                       ),
-                      popupMenuItem(
-                        icon: Icons.cancel_presentation_rounded,
-                        title: 'Hide this',
-                        onTap: (){}
-                      ),
-                      popupMenuItem(
-                        icon: Icons.report_gmailerrorred_sharp,
-                        title: 'Report this',
-                        onTap: (){}
-                      ),
-                      popupMenuItem(
-                        icon: Icons.message_outlined,
-                        title: 'Send Feedback',
-                        haveDivider: false,
-                        onTap: (){}
+                      gapW4,
+                      PopUpMen(
+                        menuList: [
+                          popupMenuItem(
+                              icon: Icons.bookmark_outline,
+                              title: 'Save to Bookmark',
+                              onTap: () {}),
+                          popupMenuItem(
+                              icon: Icons.cancel_presentation_rounded,
+                              title: 'Hide this',
+                              onTap: () {}),
+                          popupMenuItem(
+                              icon: Icons.report_gmailerrorred_sharp,
+                              title: 'Report this',
+                              onTap: () {}),
+                          popupMenuItem(
+                              icon: Icons.message_outlined,
+                              title: 'Send Feedback',
+                              haveDivider: false,
+                              onTap: () {}),
+                        ],
+                        icon: Padding(
+                          padding: EdgeInsets.all(1.5.sp),
+                          child: Image.asset(
+                            'assets/icons/menu.png',
+                            width: 10.sp,
+                          ),
+                        ),
                       ),
                     ],
-                    icon: Padding(
-                      padding: EdgeInsets.all(1.5.sp),
-                      child: Image.asset(
-                        'assets/icons/menu.png',
-                        width: 10.sp,
-                      ),
-                    ),
-                  ),
+                  )
                 ],
-              )
-            ],
-          ),
+              ),
+            ),
+          ],
         ),
-      ],
-    ),
-  );
+      ),
+    );
+  }
 }
 
 Widget creatorProfileSection({
@@ -452,9 +492,23 @@ Widget creatorProfileSection({
       child: SizedBox(
         width: 10.sp,
         height: 10.sp,
-        child: Image.network(
-          creator.profileImage ?? '',
+        // child: Image.network(
+        //   creator.profileImage ?? '',
+        //   fit: BoxFit.fill,
+        // ),
+        child: CachedNetworkImage(
+          imageUrl: creator.profileImage ?? '',
           fit: BoxFit.fill,
+          errorListener: (e) {
+            if (e is SocketException) {
+              debugPrint('Error with ${e.address} and message ${e.message}');
+            } else {
+              debugPrint('Image Exception is: ${e.runtimeType}');
+            }
+          },
+          errorWidget: (context, url, error) {
+            return Image.asset('assets/icons/profile.png');
+          },
         ),
       ),
     ),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_line_app/config/app_colors.dart';
 import 'package:news_line_app/core/utils/injection.dart';
+import 'package:news_line_app/features/discover_feature/presentation/pages/search_page/cubit/search_text_cubit.dart';
+import 'package:news_line_app/features/discover_feature/presentation/pages/search_page/cubit/toggle_section_cubit.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/comments_page/comment_page_cubit/comment_page_cubit.dart';
 import 'package:sizer_pro/sizer.dart';
 
@@ -30,6 +32,12 @@ class MyApp extends StatelessWidget {
             ...AppPages.allBlocProviders(),
             BlocProvider(
               create: (context) => CommentPageCubit(),
+            ),
+            BlocProvider(
+              create: (context) => ToggleSectionCubit(),
+            ),
+            BlocProvider(
+              create: (context) => SearchTextCubit(),
             )
           ],
           child: MaterialApp(

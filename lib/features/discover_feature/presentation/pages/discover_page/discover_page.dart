@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_line_app/core/widgets/widgets.dart';
-import 'package:news_line_app/features/discover_feature/presentation/pages/bloc/discover_bloc.dart';
 import 'package:news_line_app/features/discover_feature/presentation/widgets/discover_page_widgets.dart';
 import 'package:news_line_app/features/home_feature/presentation/widgets/trending_news_widgets.dart';
 import 'package:sizer_pro/sizer.dart';
+
+import 'bloc/discover_bloc.dart';
 
 class DiscoverPage extends StatefulWidget {
   const DiscoverPage({super.key});
@@ -25,7 +26,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: trReNewsPageAppBar('Discover'),
+      appBar: trReNewsPageAppBar(context, 'Discover'),
       body: BlocBuilder<DiscoverBloc, DiscoverState>(builder: (context, state) {
         return SizedBox(
           height: 100.h,

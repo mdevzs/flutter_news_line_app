@@ -6,7 +6,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:news_line_app/core/usecase/usecase.dart';
 import 'package:news_line_app/features/discover_feature/domain/usecases/discover_usecase.dart';
 import 'package:news_line_app/features/discover_feature/domain/usecases/follow_author_usercase.dart';
-import 'package:news_line_app/features/discover_feature/presentation/pages/bloc/discover_status.dart';
+
+import 'discover_status.dart';
 
 part 'discover_event.dart';
 part 'discover_state.dart';

@@ -10,6 +10,7 @@ class TagModel with _$TagModel {
     int? id,
     String? tag,
     String? image,
+    int? postsCount,
   }) = _TagModel;
 
   const TagModel._();
@@ -21,5 +22,6 @@ class TagModel with _$TagModel {
         id: id,
         image: image,
         tag: tag,
+        postsCount: postsCount,
       );
 }

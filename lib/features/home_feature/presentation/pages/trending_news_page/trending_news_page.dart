@@ -13,16 +13,11 @@ class TrendingNewsPage extends StatelessWidget {
         .read<TrendingNewsBloc>()
         .add(const TrendingNewsEvent.getAllTrendingNews());
     return Scaffold(
-      appBar: trReNewsPageAppBar('Trending'),
+      appBar: trReNewsPageAppBar(context, 'Trending'),
       body: BlocBuilder<TrendingNewsBloc, TrendingNewsState>(
         builder: (context, state) {
-          return trendingNewsListSection(
-            context,
-            state: state,
-            onItemPressed: (newsId){
-              
-            }
-          );
+          return trendingNewsListSection(context,
+              state: state, onItemPressed: (newsId) {});
         },
       ),
     );

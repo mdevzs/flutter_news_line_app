@@ -19,6 +19,7 @@ mixin _$TagEntity {
   int? get id => throw _privateConstructorUsedError;
   String? get tag => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
+  int? get postsCount => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TagEntityCopyWith<TagEntity> get copyWith =>
@@ -30,7 +31,7 @@ abstract class $TagEntityCopyWith<$Res> {
   factory $TagEntityCopyWith(TagEntity value, $Res Function(TagEntity) then) =
       _$TagEntityCopyWithImpl<$Res, TagEntity>;
   @useResult
-  $Res call({int? id, String? tag, String? image});
+  $Res call({int? id, String? tag, String? image, int? postsCount});
 }
 
 /// @nodoc
@@ -49,6 +50,7 @@ class _$TagEntityCopyWithImpl<$Res, $Val extends TagEntity>
     Object? id = freezed,
     Object? tag = freezed,
     Object? image = freezed,
+    Object? postsCount = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -63,6 +65,10 @@ class _$TagEntityCopyWithImpl<$Res, $Val extends TagEntity>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
+      postsCount: freezed == postsCount
+          ? _value.postsCount
+          : postsCount // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -75,7 +81,7 @@ abstract class _$$TagEntityImplCopyWith<$Res>
       __$$TagEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? id, String? tag, String? image});
+  $Res call({int? id, String? tag, String? image, int? postsCount});
 }
 
 /// @nodoc
@@ -92,6 +98,7 @@ class __$$TagEntityImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? tag = freezed,
     Object? image = freezed,
+    Object? postsCount = freezed,
   }) {
     return _then(_$TagEntityImpl(
       id: freezed == id
@@ -106,6 +113,10 @@ class __$$TagEntityImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
+      postsCount: freezed == postsCount
+          ? _value.postsCount
+          : postsCount // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -113,7 +124,7 @@ class __$$TagEntityImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$TagEntityImpl implements _TagEntity {
-  _$TagEntityImpl({this.id, this.tag, this.image});
+  _$TagEntityImpl({this.id, this.tag, this.image, this.postsCount});
 
   @override
   final int? id;
@@ -121,10 +132,12 @@ class _$TagEntityImpl implements _TagEntity {
   final String? tag;
   @override
   final String? image;
+  @override
+  final int? postsCount;
 
   @override
   String toString() {
-    return 'TagEntity(id: $id, tag: $tag, image: $image)';
+    return 'TagEntity(id: $id, tag: $tag, image: $image, postsCount: $postsCount)';
   }
 
   @override
@@ -134,11 +147,13 @@ class _$TagEntityImpl implements _TagEntity {
             other is _$TagEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.tag, tag) || other.tag == tag) &&
-            (identical(other.image, image) || other.image == image));
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.postsCount, postsCount) ||
+                other.postsCount == postsCount));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, tag, image);
+  int get hashCode => Object.hash(runtimeType, id, tag, image, postsCount);
 
   @JsonKey(ignore: true)
   @override
@@ -148,8 +163,11 @@ class _$TagEntityImpl implements _TagEntity {
 }
 
 abstract class _TagEntity implements TagEntity {
-  factory _TagEntity({final int? id, final String? tag, final String? image}) =
-      _$TagEntityImpl;
+  factory _TagEntity(
+      {final int? id,
+      final String? tag,
+      final String? image,
+      final int? postsCount}) = _$TagEntityImpl;
 
   @override
   int? get id;
@@ -157,6 +175,8 @@ abstract class _TagEntity implements TagEntity {
   String? get tag;
   @override
   String? get image;
+  @override
+  int? get postsCount;
   @override
   @JsonKey(ignore: true)
   _$$TagEntityImplCopyWith<_$TagEntityImpl> get copyWith =>

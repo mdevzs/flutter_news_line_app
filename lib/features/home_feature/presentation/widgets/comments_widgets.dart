@@ -87,7 +87,7 @@ class _SendCommentWidgetState extends State<SendCommentWidget> {
                     children: [
                       SizedBox(
                         width: 80.w,
-                        child: appTextFormField(
+                        child: CustomTextField(
                           controller: sendCommentController,
                           focusNode: widget.focusNode,
                           hintText: 'Add a comment',

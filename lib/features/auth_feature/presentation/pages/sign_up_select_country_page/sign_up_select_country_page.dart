@@ -36,7 +36,7 @@ class SignUpSelectCountryPage extends StatelessWidget {
                       fontSize: 8,
                     ),
                     gapH12,
-                    appTextFormField(
+                    CustomTextField(
                       controller: searchController,
                       showClearIcon: true,
                       icon: const Icon(Icons.search),

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_line_app/core/routes/names.dart';
 import 'package:news_line_app/core/widgets/widgets.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/trending_news_page/bloc/trending_news_bloc.dart';
 import 'package:news_line_app/features/home_feature/presentation/widgets/home_widgets.dart';
 import 'package:sizer_pro/sizer.dart';
 
-PreferredSizeWidget trReNewsPageAppBar(String title) {
+PreferredSizeWidget trReNewsPageAppBar(BuildContext context, String title) {
   return AppBar(
     title: customText(
       title,
@@ -14,11 +15,16 @@ PreferredSizeWidget trReNewsPageAppBar(String title) {
     ),
     centerTitle: true,
     actions: [
-      Padding(
-        padding: EdgeInsets.all(4.sp),
-        child: Image.asset(
-          'assets/icons/search.png',
-          width: 11.sp,
+      GestureDetector(
+        onTap: () {
+          Navigator.of(context).pushNamed(AppRoutes.Search_ROUTE);
+        },
+        child: Padding(
+          padding: EdgeInsets.all(4.sp),
+          child: Image.asset(
+            'assets/icons/search.png',
+            width: 11.sp,
+          ),
         ),
       )
     ],
@@ -71,8 +77,8 @@ Widget trendingNewsListSection(
               onTap: onItemPressed(state.trendingNews[index].id),
               child: Padding(
                 padding: EdgeInsets.all(4.sp),
-                child: recentStoriesListItem(
-                  state.trendingNews[index],
+                child: RecentStoriesListItem(
+                  recentSt: state.trendingNews[index],
                 ),
               ),
             );

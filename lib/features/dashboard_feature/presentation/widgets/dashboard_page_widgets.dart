@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_line_app/core/widgets/widgets.dart';
-import 'package:news_line_app/features/discover_feature/presentation/pages/discover_page.dart';
+import 'package:news_line_app/features/discover_feature/presentation/pages/discover_page/discover_page.dart';
 import 'package:sizer_pro/sizer.dart';
 
 import '../../../../config/app_colors.dart';

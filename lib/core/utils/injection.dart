@@ -18,8 +18,11 @@ import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_s
 import 'package:news_line_app/features/discover_feature/data/data_source/discover_api_provider.dart';
 import 'package:news_line_app/features/discover_feature/data/repository/discover_repository_impl.dart';
 import 'package:news_line_app/features/discover_feature/domain/repository/discover_repository.dart';
+import 'package:news_line_app/features/discover_feature/domain/usecases/discover_search_usecase.dart';
 import 'package:news_line_app/features/discover_feature/domain/usecases/discover_usecase.dart';
-import 'package:news_line_app/features/discover_feature/presentation/pages/bloc/discover_bloc.dart';
+import 'package:news_line_app/features/discover_feature/domain/usecases/profile_usecase.dart';
+import 'package:news_line_app/features/discover_feature/presentation/pages/profile_page/bloc/profile_bloc.dart';
+import 'package:news_line_app/features/discover_feature/presentation/pages/search_page/bloc/search_bloc.dart';
 import 'package:news_line_app/features/home_feature/data/data_source/home_api_provider.dart';
 import 'package:news_line_app/features/home_feature/data/repository/home_repository_impl.dart';
 import 'package:news_line_app/features/home_feature/domain/repository/home_repository.dart';
@@ -38,6 +41,7 @@ import 'package:news_line_app/features/home_feature/presentation/pages/trending_
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../features/discover_feature/domain/usecases/follow_author_usercase.dart';
+import '../../features/discover_feature/presentation/pages/discover_page/bloc/discover_bloc.dart';
 import '../../features/home_feature/domain/usecases/recent_stories_tags_usecase.dart';
 
 final sl = GetIt.I;
@@ -77,6 +81,8 @@ Future<void> initDependencies() async {
   sl.registerSingleton<LikeCommentUsecase>(LikeCommentUsecase(sl()));
   sl.registerSingleton<DiscoverUsecase>(DiscoverUsecase(sl()));
   sl.registerSingleton<FollowAuthorUsecase>(FollowAuthorUsecase(sl()));
+  sl.registerSingleton<DiscoverSearchUsecase>(DiscoverSearchUsecase(sl()));
+  sl.registerSingleton<ProfileUsecase>(ProfileUsecase(sl()));
   // blocs
   sl.registerSingleton<SignInBloc>(SignInBloc(sl()));
   sl.registerSingleton<SignUpSelectCountryBloc>(SignUpSelectCountryBloc(sl()));
@@ -90,7 +96,9 @@ Future<void> initDependencies() async {
   sl.registerSingleton<RecentNewsBloc>(RecentNewsBloc(sl(), sl()));
   sl.registerSingleton<NewsDetailBloc>(NewsDetailBloc(sl()));
   sl.registerSingleton<CommentsBloc>(CommentsBloc(sl(), sl(), sl()));
-  sl.registerSingleton<DiscoverBloc>(DiscoverBloc(sl(),sl()));
+  sl.registerSingleton<DiscoverBloc>(DiscoverBloc(sl(), sl()));
+  sl.registerSingleton<SearchBloc>(SearchBloc(sl()));
+  sl.registerSingleton<ProfileBloc>(ProfileBloc(sl()));
   // other
   await _initSharedPrefs();
   sl.registerSingleton<StorageService>(StorageServiceImpl(prefs: sl()));

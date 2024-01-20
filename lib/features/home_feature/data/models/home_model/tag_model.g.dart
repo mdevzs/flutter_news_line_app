@@ -11,6 +11,7 @@ _$TagModelImpl _$$TagModelImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as int?,
       tag: json['tag'] as String?,
       image: json['image'] as String?,
+      postsCount: json['postsCount'] as int?,
     );
 
 Map<String, dynamic> _$$TagModelImplToJson(_$TagModelImpl instance) =>
@@ -18,4 +19,5 @@ Map<String, dynamic> _$$TagModelImplToJson(_$TagModelImpl instance) =>
       'id': instance.id,
       'tag': instance.tag,
       'image': instance.image,
+      'postsCount': instance.postsCount,
     };

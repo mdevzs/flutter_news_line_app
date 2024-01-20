@@ -18,4 +18,6 @@ class AppRoutes {
   static const News_Details_ROUTE = '/newsDetails';
   static const Comments_ROUTE = '/comments';
   static const Discover_ROUTE = '/discover';
+  static const Search_ROUTE = '/search';
+  static const Profile_ROUTE = '/profile';
 }

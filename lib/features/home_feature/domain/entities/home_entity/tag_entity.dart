@@ -8,5 +8,6 @@ class TagEntity with _$TagEntity {
     int? id,
     String? tag,
     String? image,
+    int? postsCount,
   }) = _TagEntity;
 }
