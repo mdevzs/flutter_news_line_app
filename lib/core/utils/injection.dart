@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:news_line_app/core/data/local/app_db.dart';
 import 'package:news_line_app/core/services/storage_service.dart';
 import 'package:news_line_app/core/utils/token_interceptor.dart';
 import 'package:news_line_app/features/auth_feature/data/data_source/remote/auth_api_provider.dart';
@@ -15,6 +16,14 @@ import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_c
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_follow_official_author/bloc/sign_up_follow_official_author_bloc.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_select_country_page/bloc/sign_up_select_country_bloc.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_select_intrested_tag_page/bloc/sign_up_select_intrested_tag_bloc.dart';
+import 'package:news_line_app/features/bookmark_feature/data/repository/bookmark_repository_impl.dart';
+import 'package:news_line_app/features/bookmark_feature/domain/repository/bookmark_repository.dart';
+import 'package:news_line_app/features/bookmark_feature/domain/usecases/add_new_collection_usecase.dart';
+import 'package:news_line_app/features/bookmark_feature/domain/usecases/add_news_to_collection_usecase.dart';
+import 'package:news_line_app/features/bookmark_feature/domain/usecases/get_all_collections_usecase.dart';
+import 'package:news_line_app/features/bookmark_feature/domain/usecases/get_all_news_of_collection.dart';
+import 'package:news_line_app/features/bookmark_feature/domain/usecases/remove_news_from_collection.dart';
+import 'package:news_line_app/features/bookmark_feature/presentation/pages/bloc/bookmark_bloc.dart';
 import 'package:news_line_app/features/discover_feature/data/data_source/discover_api_provider.dart';
 import 'package:news_line_app/features/discover_feature/data/repository/discover_repository_impl.dart';
 import 'package:news_line_app/features/discover_feature/domain/repository/discover_repository.dart';
@@ -52,6 +61,10 @@ Future<void> initDependencies() async {
     receiveTimeout: const Duration(seconds: 10),
   ));
   sl.registerSingleton<Dio>(dio);
+
+  //localdb
+  sl.registerSingleton<AppDb>(await AppDb.create());
+
   // api providers
   sl.registerSingleton<AuthApiProvider>(AuthApiProvider(sl()));
   sl.registerSingleton<HomeApiProvider>(HomeApiProvider(sl()));
@@ -60,6 +73,7 @@ Future<void> initDependencies() async {
   sl.registerSingleton<AuthRepository>(AuthRepositoryImpl(sl()));
   sl.registerSingleton<HomeRepository>(HomeRepositoryImpl(sl()));
   sl.registerSingleton<DiscoverRepository>(DiscoverRepositoryImpl(sl()));
+  sl.registerSingleton<BookmarkRepository>(BookmarkRepositoryImpl(sl()));
   // usecases
   sl.registerSingleton<SignInUsecase>(SignInUsecase(sl()));
   sl.registerSingleton<SignUpSelectCountryUsecase>(
@@ -83,6 +97,16 @@ Future<void> initDependencies() async {
   sl.registerSingleton<FollowAuthorUsecase>(FollowAuthorUsecase(sl()));
   sl.registerSingleton<DiscoverSearchUsecase>(DiscoverSearchUsecase(sl()));
   sl.registerSingleton<ProfileUsecase>(ProfileUsecase(sl()));
+  sl.registerSingleton<AddNewCollectionUsecase>(AddNewCollectionUsecase(sl()));
+  sl.registerSingleton<GetAllCollectionsUsecase>(
+      GetAllCollectionsUsecase(sl()));
+  sl.registerSingleton<AddNewsToCollectionUsecase>(
+      AddNewsToCollectionUsecase(sl()));
+  sl.registerSingleton<GetAllNewsOfCollectionUsecase>(
+      GetAllNewsOfCollectionUsecase(sl()));
+  sl.registerSingleton<RemoveNewsFromCollectionUsecase>(
+      RemoveNewsFromCollectionUsecase(sl()));
+
   // blocs
   sl.registerSingleton<SignInBloc>(SignInBloc(sl()));
   sl.registerSingleton<SignUpSelectCountryBloc>(SignUpSelectCountryBloc(sl()));
@@ -99,6 +123,7 @@ Future<void> initDependencies() async {
   sl.registerSingleton<DiscoverBloc>(DiscoverBloc(sl(), sl()));
   sl.registerSingleton<SearchBloc>(SearchBloc(sl()));
   sl.registerSingleton<ProfileBloc>(ProfileBloc(sl()));
+  sl.registerSingleton<BookmarkBloc>(BookmarkBloc(sl(), sl(), sl(), sl(),sl()));
   // other
   await _initSharedPrefs();
   sl.registerSingleton<StorageService>(StorageServiceImpl(prefs: sl()));

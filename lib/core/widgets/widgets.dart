@@ -1,14 +1,18 @@
-import 'dart:typed_data';
 import 'dart:ui' as ui;
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_xlider/flutter_xlider.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:news_line_app/core/widgets/slider_widget.dart';
+import 'package:news_line_app/features/bookmark_feature/presentation/pages/bloc/bookmark_bloc.dart';
+import 'package:news_line_app/features/home_feature/domain/entities/home_entity/news_entity.dart';
 import 'package:sizer_pro/sizer.dart';
 
 import 'package:news_line_app/config/app_colors.dart';
 import 'package:news_line_app/core/utils/gaps.dart';
+
+import '../../features/bookmark_feature/domain/entities/bookmarks.dart';
 
 Widget customText(
   String text, {
@@ -118,6 +122,7 @@ class CustomTextField extends StatefulWidget {
   final bool readOnly;
   final int maxLine;
   final Color? suffixHighlightColor;
+  final Color fillColor;
   final FocusNode? focusNode;
   final Function(String value) onChangeValue;
   final String? Function(String? value)? validator;
@@ -134,6 +139,7 @@ class CustomTextField extends StatefulWidget {
     this.readOnly = false,
     this.maxLine = 1,
     this.suffixHighlightColor,
+    this.fillColor = AppColors.bgTextFieldColor,
     this.focusNode,
     required this.onChangeValue,
     this.validator,
@@ -186,7 +192,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         enabledBorder: textFieldBorder,
         focusedBorder: textFieldBorder,
         filled: true,
-        fillColor: AppColors.bgTextFieldColor,
+        fillColor: widget.fillColor,
       ),
       minLines: widget.maxLine,
       maxLines: widget.maxLine,
@@ -367,6 +373,8 @@ class PopUpMen extends StatelessWidget {
 PopupMenuItem popupMenuItem({
   required IconData icon,
   required String title,
+  Color? iconColor,
+  Color titleColor = Colors.black,
   bool haveDivider = true,
   required Function() onTap,
 }) {
@@ -375,10 +383,14 @@ PopupMenuItem popupMenuItem({
     child: Column(
       children: [
         ListTile(
-          leading: Icon(icon),
+          leading: Icon(
+            icon,
+            color: iconColor,
+          ),
           title: customText(
             title,
             fontSize: 6,
+            color: titleColor,
           ),
         ),
         if (haveDivider) const Divider(),
@@ -813,5 +825,265 @@ class CustomSliderShape extends SliderComponentShape {
       Radius.circular(8.sp),
     );
     canvas.drawRRect(rrect, paint);
+  }
+}
+
+addNewCollectionBottomNav(BuildContext context) {
+  final formKey = GlobalKey<FormState>();
+  final titleFieldController = TextEditingController();
+  return showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    builder: (context) {
+      return Padding(
+        padding: EdgeInsets.only(
+          left: 8.sp,
+          right: 8.sp,
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            gapH8,
+            Center(
+              child: customText(
+                'Add New Collection',
+                fontSize: 10,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            gapH2,
+            Divider(
+              color: Colors.grey.withOpacity(0.3),
+            ),
+            gapH4,
+            customText(
+              'Collection title',
+              fontSize: 8,
+              fontWeight: FontWeight.bold,
+            ),
+            gapH2,
+            Form(
+              key: formKey,
+              child: CustomTextField(
+                controller: titleFieldController,
+                hintText: 'Title',
+                fillColor: Colors.grey.withOpacity(0.1),
+                validator: FormBuilderValidators.required(),
+                onChangeValue: (value) {},
+              ),
+            ),
+            gapH4,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                appButton(
+                  'Cancel',
+                  width: 43,
+                  height: 5,
+                  fontSize: 8,
+                  bgColor: AppColors.bgButtonColor,
+                  textColor: AppColors.primaryColor,
+                  onButtonPress: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                appButton(
+                  'Done',
+                  width: 43,
+                  height: 5,
+                  fontSize: 8,
+                  textColor: Colors.white,
+                  onButtonPress: () {
+                    if (formKey.currentState!.validate()) {
+                      context.read<BookmarkBloc>().add(
+                            BookmarkEvent.addNewCollection(
+                              titleFieldController.text,
+                            ),
+                          );
+                      Navigator.pop(context);
+                    }
+                  },
+                ),
+              ],
+            ),
+            gapH8,
+          ],
+        ),
+      );
+    },
+  );
+}
+
+saveNewsToBookmark(
+  BuildContext context,
+  NewsEntity news,
+) {
+  context.read<BookmarkBloc>().add(
+        const BookmarkEvent.getAllCollection(),
+      );
+  List<int> selectedCollectionsId = [];
+  return showModalBottomSheet(
+    context: context,
+    builder: (context) {
+      return Padding(
+        padding: EdgeInsets.only(
+          left: 8.sp,
+          right: 8.sp,
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
+        child: SizedBox(
+          height: 50.h,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            //mainAxisSize: MainAxisSize.min,
+            children: [
+              gapH8,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  customText(
+                    'Add New Collection',
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  TextButton(
+                    child: customText(
+                      '+ New',
+                      fontSize: 9,
+                      color: AppColors.primaryColor,
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      addNewCollectionBottomNav(context);
+                    },
+                  ),
+                ],
+              ),
+              gapH2,
+              Divider(
+                color: Colors.grey.withOpacity(0.3),
+              ),
+              gapH4,
+              Expanded(
+                child: BlocBuilder<BookmarkBloc, BookmarkState>(
+                  builder: (context, state) {
+                    return SizedBox(
+                      child: state.getAllCollectionStatus.when(
+                        initial: () {
+                          return null;
+                        },
+                        success: (collections) {
+                          return ListView.builder(
+                            itemCount: collections.length,
+                            itemBuilder: (context, index) {
+                              if (index != 0) {
+                                return SaveBookmarkCollectionItem(
+                                  collection: collections[index],
+                                  onSelected: (collectionId) {
+                                    //* if unselect the collection the id will
+                                    //* remove from the selectedCollectionsId list
+                                    if (!selectedCollectionsId
+                                        .contains(collectionId)) {
+                                      selectedCollectionsId.add(collectionId);
+                                    } else {
+                                      selectedCollectionsId
+                                          .remove(collectionId);
+                                    }
+                                  },
+                                );
+                              } else {
+                                return const SizedBox();
+                              }
+                            },
+                          );
+                        },
+                        error: (errorMessage) {
+                          return null;
+                        },
+                      ),
+                    );
+                  },
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  appButton(
+                    'Cancel',
+                    width: 43,
+                    height: 5,
+                    fontSize: 8,
+                    bgColor: AppColors.bgButtonColor,
+                    textColor: AppColors.primaryColor,
+                    onButtonPress: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  appButton(
+                    'Done',
+                    width: 43,
+                    height: 5,
+                    fontSize: 8,
+                    textColor: Colors.white,
+                    onButtonPress: () {
+                      context.read<BookmarkBloc>().add(
+                            BookmarkEvent.addNewsToCollection(
+                              selectedCollectionsId,
+                              news,
+                            ),
+                          );
+                      Navigator.pop(context);
+                      debugPrint(selectedCollectionsId.toString());
+                    },
+                  ),
+                ],
+              ),
+              gapH8,
+            ],
+          ),
+        ),
+      );
+    },
+  );
+}
+
+class SaveBookmarkCollectionItem extends StatefulWidget {
+  final Bookmarks collection;
+  final Function(int collectionId) onSelected;
+  const SaveBookmarkCollectionItem({
+    super.key,
+    required this.collection,
+    required this.onSelected,
+  });
+
+  @override
+  State<SaveBookmarkCollectionItem> createState() =>
+      _SaveBookmarkCollectionItemState();
+}
+
+class _SaveBookmarkCollectionItemState
+    extends State<SaveBookmarkCollectionItem> {
+  bool isSelected = false;
+  @override
+  Widget build(BuildContext context) {
+    return CheckboxListTile(
+      controlAffinity: ListTileControlAffinity.leading,
+      contentPadding: EdgeInsetsDirectional.zero,
+      title: customText(
+        widget.collection.name,
+        fontSize: 7,
+      ),
+      value: isSelected,
+      onChanged: (value) {
+        setState(() {
+          isSelected = value ?? false;
+        });
+        widget.onSelected(
+          widget.collection.id!,
+        );
+      },
+    );
   }
 }

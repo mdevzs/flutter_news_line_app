@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CreatorEntity {
+  @Id(assignable: true)
   int get id => throw _privateConstructorUsedError;
   String? get profileImage => throw _privateConstructorUsedError;
   String get fullName => throw _privateConstructorUsedError;
@@ -34,7 +35,7 @@ abstract class $CreatorEntityCopyWith<$Res> {
       _$CreatorEntityCopyWithImpl<$Res, CreatorEntity>;
   @useResult
   $Res call(
-      {int id,
+      {@Id(assignable: true) int id,
       String? profileImage,
       String fullName,
       String bio,
@@ -94,7 +95,7 @@ abstract class _$$CreatorModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {@Id(assignable: true) int id,
       String? profileImage,
       String fullName,
       String bio,
@@ -145,15 +146,17 @@ class __$$CreatorModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 
+@Entity(realClass: CreatorEntity)
 class _$CreatorModelImpl implements _CreatorModel {
-  const _$CreatorModelImpl(
-      {required this.id,
+  _$CreatorModelImpl(
+      {@Id(assignable: true) required this.id,
       this.profileImage,
       required this.fullName,
       required this.bio,
       required this.followersCount});
 
   @override
+  @Id(assignable: true)
   final int id;
   @override
   final String? profileImage;
@@ -196,14 +199,15 @@ class _$CreatorModelImpl implements _CreatorModel {
 }
 
 abstract class _CreatorModel implements CreatorEntity {
-  const factory _CreatorModel(
-      {required final int id,
+  factory _CreatorModel(
+      {@Id(assignable: true) required final int id,
       final String? profileImage,
       required final String fullName,
       required final String bio,
       required final int followersCount}) = _$CreatorModelImpl;
 
   @override
+  @Id(assignable: true)
   int get id;
   @override
   String? get profileImage;

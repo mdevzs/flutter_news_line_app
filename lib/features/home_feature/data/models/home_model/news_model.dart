@@ -1,7 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:news_line_app/features/bookmark_feature/domain/entities/bookmarks.dart';
 import 'package:news_line_app/features/home_feature/domain/entities/home_entity/creator_entity.dart';
 import 'package:news_line_app/features/home_feature/domain/entities/home_entity/news_entity.dart';
 import 'package:news_line_app/features/home_feature/domain/entities/home_entity/tag_news_entity.dart';
+import 'package:objectbox/objectbox.dart';
 
 import 'creator_model.dart';
 import 'tag_news_model.dart';
@@ -57,6 +59,8 @@ class NewsModel with _$NewsModel {
         followersCount: creator.followersCount ?? -1,
         bio: creator.bio ?? '',
       ),
+      bookmarks: ToMany<Bookmarks>(),
+      creatorRelation: ToOne<CreatorEntity>()
     );
   }
 }

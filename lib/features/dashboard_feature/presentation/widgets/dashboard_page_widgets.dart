@@ -4,13 +4,14 @@ import 'package:news_line_app/features/discover_feature/presentation/pages/disco
 import 'package:sizer_pro/sizer.dart';
 
 import '../../../../config/app_colors.dart';
+import '../../../bookmark_feature/presentation/pages/bookmark_page.dart';
 import '../../../home_feature/presentation/pages/home_page/home_page.dart';
 
 Widget buildPage(int index) {
   final pages = [
     const HomePage(),
     const DiscoverPage(),
-    Center(child: customText('Bookmark Page')),
+    const BookmarkPage(),
     Center(child: customText('Profile Page')),
   ];
   return pages[index];

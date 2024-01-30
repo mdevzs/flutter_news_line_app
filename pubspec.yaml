@@ -61,6 +61,11 @@ dependencies:
   custom_slider: ^0.0.3
   fast_immutable_collections: ^9.2.0
   cached_network_image: ^3.3.1
+  floor: ^1.4.2
+  path_provider: ^2.1.2
+  objectbox: ^2.4.0
+  objectbox_flutter_libs: any
+  path: ^1.8.3
 
 dependency_overrides:
   device_preview:
@@ -88,6 +93,8 @@ dev_dependencies:
   freezed: ^2.4.3
   json_serializable: ^6.7.1
   retrofit_generator: ^8.0.3
+  floor_generator: ^1.4.2
+  objectbox_generator: any
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

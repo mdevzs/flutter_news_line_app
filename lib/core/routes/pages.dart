@@ -13,6 +13,8 @@ import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_p
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_select_country_page/bloc/sign_up_select_country_bloc.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_select_country_page/sign_up_select_country_page.dart';
 import 'package:news_line_app/features/auth_feature/presentation/pages/sign_up_select_intrested_tag_page/sign_up_select_intrested_tag_page.dart';
+import 'package:news_line_app/features/bookmark_feature/presentation/pages/bloc/bookmark_bloc.dart';
+import 'package:news_line_app/features/bookmark_feature/presentation/pages/bookmark_page.dart';
 import 'package:news_line_app/features/dashboard_feature/presentation/page/bloc/dashboard_bloc.dart';
 import 'package:news_line_app/features/dashboard_feature/presentation/page/dashboard_page.dart';
 import 'package:news_line_app/features/discover_feature/presentation/pages/discover_page/discover_page.dart';
@@ -167,6 +169,13 @@ class AppPages {
         page: const ProfilePage(),
         bloc: BlocProvider(
           create: (context) => sl.get<ProfileBloc>(),
+        ),
+      ),
+      PageEntity(
+        route: AppRoutes.Bookmark_ROUTE,
+        page: const BookmarkPage(),
+        bloc: BlocProvider(
+          create: (context) => sl.get<BookmarkBloc>(),
         ),
       ),
     ];

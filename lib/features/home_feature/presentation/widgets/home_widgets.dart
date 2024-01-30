@@ -9,6 +9,8 @@ import 'package:news_line_app/core/routes/names.dart';
 import 'package:news_line_app/core/utils/app_constants.dart';
 import 'package:news_line_app/core/utils/gaps.dart';
 import 'package:news_line_app/core/widgets/widgets.dart';
+import 'package:news_line_app/features/bookmark_feature/presentation/pages/bloc/bookmark_bloc.dart';
+import 'package:news_line_app/features/bookmark_feature/presentation/pages/cubit/toggle_collection_item_cubit.dart';
 import 'package:news_line_app/features/discover_feature/presentation/widgets/network_image.dart';
 import 'package:news_line_app/features/home_feature/domain/entities/home_entity/creator_entity.dart';
 import 'package:news_line_app/features/home_feature/domain/entities/home_entity/home_entity.dart';
@@ -174,7 +176,7 @@ Widget trendingNewsListItem({
         ),
         const Spacer(),
         creatorProfileSection(
-          creator: trendingNew.creator,
+          creator: trendingNew.creator!,
         ),
         Row(
           children: [
@@ -359,7 +361,12 @@ Widget recentStoriesSection({
 
 class RecentStoriesListItem extends StatefulWidget {
   final NewsEntity recentSt;
-  const RecentStoriesListItem({super.key, required this.recentSt});
+  final bool isBookmarked;
+  const RecentStoriesListItem({
+    super.key,
+    required this.recentSt,
+    this.isBookmarked = false,
+  });
 
   @override
   State<RecentStoriesListItem> createState() => _RecentStoriesListItemState();
@@ -398,7 +405,10 @@ class _RecentStoriesListItemState extends State<RecentStoriesListItem>
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  creatorProfileSection(creator: widget.recentSt.creator),
+                  creatorProfileSection(
+                    creator: widget.recentSt.creator ??
+                        widget.recentSt.creatorTarget!,
+                  ),
                   bottomSectionListItem(widget.recentSt),
                 ],
               ),
@@ -415,7 +425,6 @@ class _RecentStoriesListItemState extends State<RecentStoriesListItem>
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.fill,
-                        // image: NetworkImage(recentSt.coverImage ?? ''),
                         image: CachedNetworkImageProvider(
                             widget.recentSt.coverImage ?? '',
                             errorListener: (e) {
@@ -446,25 +455,63 @@ class _RecentStoriesListItemState extends State<RecentStoriesListItem>
                       ),
                       gapW4,
                       PopUpMen(
-                        menuList: [
-                          popupMenuItem(
-                              icon: Icons.bookmark_outline,
-                              title: 'Save to Bookmark',
-                              onTap: () {}),
-                          popupMenuItem(
-                              icon: Icons.cancel_presentation_rounded,
-                              title: 'Hide this',
-                              onTap: () {}),
-                          popupMenuItem(
-                              icon: Icons.report_gmailerrorred_sharp,
-                              title: 'Report this',
-                              onTap: () {}),
-                          popupMenuItem(
-                              icon: Icons.message_outlined,
-                              title: 'Send Feedback',
-                              haveDivider: false,
-                              onTap: () {}),
-                        ],
+                        menuList: widget.isBookmarked
+                            ? [
+                                popupMenuItem(
+                                  icon: Icons.bookmark_outline,
+                                  iconColor: Colors.red,
+                                  title: 'Remove from Bookmark',
+                                  titleColor: Colors.red,
+                                  onTap: () {
+                                    final collectionId = context
+                                        .read<ToggleCollectionItemCubit>()
+                                        .state
+                                        .index;
+                                    context.read<BookmarkBloc>().add(
+                                          BookmarkEvent.removeNewFromCollection(
+                                            collectionId,
+                                            widget.recentSt,
+                                          ),
+                                        );
+                                  },
+                                ),
+                                popupMenuItem(
+                                  icon: Icons.report_gmailerrorred_sharp,
+                                  title: 'Report this',
+                                  onTap: () {},
+                                ),
+                                popupMenuItem(
+                                  icon: Icons.message_outlined,
+                                  title: 'Send Feedback',
+                                  haveDivider: false,
+                                  onTap: () {},
+                                ),
+                              ]
+                            : [
+                                popupMenuItem(
+                                  icon: Icons.bookmark_outline,
+                                  title: 'Save to Bookmark',
+                                  onTap: () {
+                                    saveNewsToBookmark(
+                                      context,
+                                      widget.recentSt,
+                                    );
+                                  },
+                                ),
+                                popupMenuItem(
+                                    icon: Icons.cancel_presentation_rounded,
+                                    title: 'Hide this',
+                                    onTap: () {}),
+                                popupMenuItem(
+                                    icon: Icons.report_gmailerrorred_sharp,
+                                    title: 'Report this',
+                                    onTap: () {}),
+                                popupMenuItem(
+                                    icon: Icons.message_outlined,
+                                    title: 'Send Feedback',
+                                    haveDivider: false,
+                                    onTap: () {}),
+                              ],
                         icon: Padding(
                           padding: EdgeInsets.all(1.5.sp),
                           child: Image.asset(

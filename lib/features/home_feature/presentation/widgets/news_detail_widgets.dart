@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_line_app/core/utils/app_constants.dart';
+import 'package:news_line_app/features/bookmark_feature/domain/entities/bookmarks.dart';
 import 'package:news_line_app/features/discover_feature/presentation/widgets/network_image.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/comments_page/bloc/comments_bloc.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/comments_page/comment_page_cubit/comment_page_cubit.dart';
@@ -16,6 +17,7 @@ import 'package:news_line_app/features/home_feature/domain/entities/home_entity/
 import 'package:news_line_app/features/home_feature/domain/entities/home_entity/news_entity.dart';
 import 'package:news_line_app/features/home_feature/presentation/widgets/home_widgets.dart';
 import '../../../../core/widgets/widgets.dart';
+import '../../../../objectbox.g.dart';
 
 PreferredSizeWidget newsDetailPageAppbar(BuildContext context) {
   return AppBar(
@@ -90,6 +92,8 @@ class NewsDetailsPageBody extends StatelessWidget {
                 createdAt: newsDetailsEntity.createdAt,
                 commentCounts: newsDetailsEntity.commentsCount.toString(),
                 creator: newsDetailsEntity.creator,
+                bookmarks: ToMany<Bookmarks>(),
+                creatorRelation: ToOne<CreatorEntity>()
               ),
             ),
           ),

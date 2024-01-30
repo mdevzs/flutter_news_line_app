@@ -20,4 +20,5 @@ class AppRoutes {
   static const Discover_ROUTE = '/discover';
   static const Search_ROUTE = '/search';
   static const Profile_ROUTE = '/profile';
+  static const Bookmark_ROUTE = '/bookmark';
 }
