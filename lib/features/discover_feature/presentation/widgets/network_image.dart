@@ -7,12 +7,14 @@ class AppNetworkImage extends StatelessWidget {
   final String? url;
   final String errorAsset;
   final double? width, height;
+  final BoxFit? fit;
   const AppNetworkImage({
     super.key,
     required this.url,
     required this.errorAsset,
     this.width,
     this.height,
+    this.fit = BoxFit.cover,
   });
 
   @override
@@ -21,7 +23,7 @@ class AppNetworkImage extends StatelessWidget {
       width: width,
       height: height,
       imageUrl: url ?? '',
-      fit: BoxFit.fill,
+      fit: fit,
       errorListener: (e) {
         if (e is SocketException) {
           debugPrint('Error with ${e.address} and message ${e.message}');

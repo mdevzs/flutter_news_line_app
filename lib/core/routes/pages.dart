@@ -18,8 +18,6 @@ import 'package:news_line_app/features/bookmark_feature/presentation/pages/bookm
 import 'package:news_line_app/features/dashboard_feature/presentation/page/bloc/dashboard_bloc.dart';
 import 'package:news_line_app/features/dashboard_feature/presentation/page/dashboard_page.dart';
 import 'package:news_line_app/features/discover_feature/presentation/pages/discover_page/discover_page.dart';
-import 'package:news_line_app/features/discover_feature/presentation/pages/profile_page/bloc/profile_bloc.dart';
-import 'package:news_line_app/features/discover_feature/presentation/pages/profile_page/profile_page.dart';
 import 'package:news_line_app/features/discover_feature/presentation/pages/search_page/bloc/search_bloc.dart';
 import 'package:news_line_app/features/discover_feature/presentation/pages/search_page/search_page.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/comments_page/comments_page.dart';
@@ -29,6 +27,8 @@ import 'package:news_line_app/features/home_feature/presentation/pages/recent_ne
 import 'package:news_line_app/features/home_feature/presentation/pages/recent_news_page/recent_news_page.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/trending_news_page/bloc/trending_news_bloc.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/trending_news_page/trending_news_page.dart';
+import 'package:news_line_app/features/profile_feature/presentation/pages/edit_profile_page/bloc/edit_profile_bloc.dart';
+import 'package:news_line_app/features/profile_feature/presentation/pages/edit_profile_page/edit_profile_page.dart';
 import '../../features/auth_feature/presentation/pages/auth_page/auth_page.dart';
 import '../../features/auth_feature/presentation/pages/auth_page/bloc/auth_bloc.dart';
 import '../../features/auth_feature/presentation/pages/sign_in_page/bloc/sign_in_bloc.dart';
@@ -41,6 +41,8 @@ import '../../features/home_feature/presentation/pages/home_page/bloc/home_bloc.
 import '../../features/home_feature/presentation/pages/home_page/home_page.dart';
 import '../../features/on_boarding_feature/presentation/pages/on_boarding_page/bloc/on_boarding_bloc.dart';
 import '../../features/on_boarding_feature/presentation/pages/on_boarding_page/on_boarding_page.dart';
+import '../../features/profile_feature/presentation/pages/profile_page/bloc/profile_bloc.dart';
+import '../../features/profile_feature/presentation/pages/profile_page/profile_page.dart';
 
 class AppPages {
   static List<PageEntity> routes() {
@@ -176,6 +178,13 @@ class AppPages {
         page: const BookmarkPage(),
         bloc: BlocProvider(
           create: (context) => sl.get<BookmarkBloc>(),
+        ),
+      ),
+      PageEntity(
+        route: AppRoutes.Edit_Profile_ROUTE,
+        page: const EditProfilePage(),
+        bloc: BlocProvider(
+          create: (context) => sl.get<EditProfileBloc>(),
         ),
       ),
     ];

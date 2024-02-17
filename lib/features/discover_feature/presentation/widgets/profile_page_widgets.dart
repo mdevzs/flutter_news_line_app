@@ -3,41 +3,54 @@ import 'package:news_line_app/core/routes/names.dart';
 import 'package:news_line_app/core/utils/gaps.dart';
 import 'package:news_line_app/core/widgets/widgets.dart';
 import 'package:news_line_app/features/auth_feature/domain/entities/user_entity.dart';
-import 'package:news_line_app/features/discover_feature/domain/entities/profile_entity.dart';
 import 'package:news_line_app/features/discover_feature/presentation/widgets/search_page_widgets.dart';
 import 'package:news_line_app/features/home_feature/presentation/widgets/home_widgets.dart';
 import 'package:sizer_pro/sizer.dart';
 
-class ProfilePageBody extends StatelessWidget {
-  final ProfileEntity profile;
-  const ProfilePageBody({super.key, required this.profile});
+import '../../../profile_feature/domain/entities/profile_entity.dart';
 
+class ProfilePageBody extends StatefulWidget {
+  final ProfileEntity profile;
+  final bool isCurrentUserProifle;
+  const ProfilePageBody({
+    super.key,
+    required this.profile,
+    required this.isCurrentUserProifle,
+  });
+
+  @override
+  State<ProfilePageBody> createState() => _ProfilePageBodyState();
+}
+
+class _ProfilePageBodyState extends State<ProfilePageBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(6.sp),
+      padding: EdgeInsets.symmetric(horizontal: 6.sp),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AccountsSectionItem(
+              isCurrentUserProfile: widget.isCurrentUserProifle,
               account: UserEntity(
-                id: profile.id,
-                fullName: profile.fullName,
-                username: profile.username,
-                email: profile.email,
-                phone: profile.phone,
-                profileImage: profile.profileImage,
-                gender: profile.gender,
-                dateOfBirth: profile.dateOfBirth,
-                userType: profile.userType,
+                id: widget.profile.id,
+                fullName: widget.profile.fullName,
+                username: widget.profile.username,
+                email: widget.profile.email,
+                phone: widget.profile.phone,
+                profileImage: widget.profile.profileImage,
+                bio: widget.profile.bio,
+                gender: widget.profile.gender,
+                dateOfBirth: widget.profile.dateOfBirth,
+                userType: widget.profile.userType,
                 token: '',
-                isFollowing: profile.isFollowing,
+                isFollowing: widget.profile.isFollowing,
               ),
             ),
             gapH4,
             customText(
-              profile.bio ?? '',
+              widget.profile.bio ?? '',
               fontSize: 9,
             ),
             gapH4,
@@ -47,17 +60,17 @@ class ProfilePageBody extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TitileSubtitleWidget(
-                    title: profile.storiesCount.toString(),
+                    title: widget.profile.storiesCount.toString(),
                     subtitle: 'Stories',
                   ),
                   const VerticalDivider(),
                   TitileSubtitleWidget(
-                    title: profile.followersCount.toString(),
+                    title: widget.profile.followersCount.toString(),
                     subtitle: 'Followers',
                   ),
                   const VerticalDivider(),
                   TitileSubtitleWidget(
-                    title: profile.followingCount.toString(),
+                    title: widget.profile.followingCount.toString(),
                     subtitle: 'Following',
                   ),
                 ],
@@ -66,7 +79,7 @@ class ProfilePageBody extends StatelessWidget {
             const Divider(),
             gapH4,
             Column(
-              children: profile.userNews
+              children: widget.profile.userNews
                   .map(
                     (recentSt) => InkWell(
                       onTap: () {

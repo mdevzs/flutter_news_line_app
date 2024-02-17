@@ -3,8 +3,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:news_line_app/core/utils/app_constants.dart';
 
 abstract class StorageService {
-  void storeUserToken(String token);
+  void storeUserInformation(String token, int userId);
   String? userToken();
+  int? userId();
   void setIsFirstTimeUseTheApp(bool isFirstTime);
   bool isFirstTimeAppUsed();
 }
@@ -32,10 +33,14 @@ class StorageServiceImpl implements StorageService {
   }
 
   @override
-  void storeUserToken(String token) {
+  void storeUserInformation(String token, int userId) {
     prefs.setString(
       AppConstatns.SHARED_KEY_STORAGE_USER_TOKEN,
       token,
+    );
+    prefs.setInt(
+      AppConstatns.SHARED_KEY_STORAGE_USER_Id,
+      userId,
     );
   }
 
@@ -43,6 +48,13 @@ class StorageServiceImpl implements StorageService {
   String? userToken() {
     return prefs.getString(
       AppConstatns.SHARED_KEY_STORAGE_USER_TOKEN,
+    );
+  }
+
+  @override
+  int? userId() {
+    return prefs.getInt(
+      AppConstatns.SHARED_KEY_STORAGE_USER_Id,
     );
   }
 }

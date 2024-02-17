@@ -41,21 +41,21 @@ mixin _$ProfileStatus {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ProfileStatusLoading value) loading,
-    required TResult Function(_ProfileStatusSuccess value) success,
+    required TResult Function(ProfileStatusSuccess value) success,
     required TResult Function(_ProfileStatusError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ProfileStatusLoading value)? loading,
-    TResult? Function(_ProfileStatusSuccess value)? success,
+    TResult? Function(ProfileStatusSuccess value)? success,
     TResult? Function(_ProfileStatusError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ProfileStatusLoading value)? loading,
-    TResult Function(_ProfileStatusSuccess value)? success,
+    TResult Function(ProfileStatusSuccess value)? success,
     TResult Function(_ProfileStatusError value)? error,
     required TResult orElse(),
   }) =>
@@ -154,7 +154,7 @@ class _$ProfileStatusLoadingImpl implements _ProfileStatusLoading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ProfileStatusLoading value) loading,
-    required TResult Function(_ProfileStatusSuccess value) success,
+    required TResult Function(ProfileStatusSuccess value) success,
     required TResult Function(_ProfileStatusError value) error,
   }) {
     return loading(this);
@@ -164,7 +164,7 @@ class _$ProfileStatusLoadingImpl implements _ProfileStatusLoading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ProfileStatusLoading value)? loading,
-    TResult? Function(_ProfileStatusSuccess value)? success,
+    TResult? Function(ProfileStatusSuccess value)? success,
     TResult? Function(_ProfileStatusError value)? error,
   }) {
     return loading?.call(this);
@@ -174,7 +174,7 @@ class _$ProfileStatusLoadingImpl implements _ProfileStatusLoading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ProfileStatusLoading value)? loading,
-    TResult Function(_ProfileStatusSuccess value)? success,
+    TResult Function(ProfileStatusSuccess value)? success,
     TResult Function(_ProfileStatusError value)? error,
     required TResult orElse(),
   }) {
@@ -232,7 +232,7 @@ class __$$ProfileStatusSuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ProfileStatusSuccessImpl implements _ProfileStatusSuccess {
+class _$ProfileStatusSuccessImpl implements ProfileStatusSuccess {
   const _$ProfileStatusSuccessImpl(this.profileEntity);
 
   @override
@@ -301,7 +301,7 @@ class _$ProfileStatusSuccessImpl implements _ProfileStatusSuccess {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ProfileStatusLoading value) loading,
-    required TResult Function(_ProfileStatusSuccess value) success,
+    required TResult Function(ProfileStatusSuccess value) success,
     required TResult Function(_ProfileStatusError value) error,
   }) {
     return success(this);
@@ -311,7 +311,7 @@ class _$ProfileStatusSuccessImpl implements _ProfileStatusSuccess {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ProfileStatusLoading value)? loading,
-    TResult? Function(_ProfileStatusSuccess value)? success,
+    TResult? Function(ProfileStatusSuccess value)? success,
     TResult? Function(_ProfileStatusError value)? error,
   }) {
     return success?.call(this);
@@ -321,7 +321,7 @@ class _$ProfileStatusSuccessImpl implements _ProfileStatusSuccess {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ProfileStatusLoading value)? loading,
-    TResult Function(_ProfileStatusSuccess value)? success,
+    TResult Function(ProfileStatusSuccess value)? success,
     TResult Function(_ProfileStatusError value)? error,
     required TResult orElse(),
   }) {
@@ -332,8 +332,8 @@ class _$ProfileStatusSuccessImpl implements _ProfileStatusSuccess {
   }
 }
 
-abstract class _ProfileStatusSuccess implements ProfileStatus {
-  const factory _ProfileStatusSuccess(final ProfileEntity profileEntity) =
+abstract class ProfileStatusSuccess implements ProfileStatus {
+  const factory ProfileStatusSuccess(final ProfileEntity profileEntity) =
       _$ProfileStatusSuccessImpl;
 
   ProfileEntity get profileEntity;
@@ -442,7 +442,7 @@ class _$ProfileStatusErrorImpl implements _ProfileStatusError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ProfileStatusLoading value) loading,
-    required TResult Function(_ProfileStatusSuccess value) success,
+    required TResult Function(ProfileStatusSuccess value) success,
     required TResult Function(_ProfileStatusError value) error,
   }) {
     return error(this);
@@ -452,7 +452,7 @@ class _$ProfileStatusErrorImpl implements _ProfileStatusError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ProfileStatusLoading value)? loading,
-    TResult? Function(_ProfileStatusSuccess value)? success,
+    TResult? Function(ProfileStatusSuccess value)? success,
     TResult? Function(_ProfileStatusError value)? error,
   }) {
     return error?.call(this);
@@ -462,7 +462,7 @@ class _$ProfileStatusErrorImpl implements _ProfileStatusError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ProfileStatusLoading value)? loading,
-    TResult Function(_ProfileStatusSuccess value)? success,
+    TResult Function(ProfileStatusSuccess value)? success,
     TResult Function(_ProfileStatusError value)? error,
     required TResult orElse(),
   }) {

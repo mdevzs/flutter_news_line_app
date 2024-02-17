@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'discover_api_provider.dart';
+part of 'profile_api_provider.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'discover_api_provider.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _DiscoverApiProvider implements DiscoverApiProvider {
-  _DiscoverApiProvider(
+class _ProfileApiProvider implements ProfileApiProvider {
+  _ProfileApiProvider(
     this._dio, {
     this.baseUrl,
   }) {
@@ -21,20 +21,20 @@ class _DiscoverApiProvider implements DiscoverApiProvider {
   String? baseUrl;
 
   @override
-  Future<DiscoverModel> discover() async {
+  Future<ProfileModel> profile(int profileId) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<DiscoverModel>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<ProfileModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/discover',
+              '/profile/${profileId}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -43,49 +43,67 @@ class _DiscoverApiProvider implements DiscoverApiProvider {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = DiscoverModel.fromJson(_result.data!);
+    final value = ProfileModel.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<void> followAuthor(String followingId) async {
+  Future<UserModel> editProfile(
+    int profileId,
+    String? fullName,
+    String? username,
+    String? bio,
+    String? website, [
+    File? file,
+  ]) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
-    await _dio.fetch<void>(_setStreamType<void>(Options(
-      method: 'GET',
+    final _data = FormData();
+    if (fullName != null) {
+      _data.fields.add(MapEntry(
+        'fullName',
+        fullName,
+      ));
+    }
+    if (username != null) {
+      _data.fields.add(MapEntry(
+        'username',
+        username,
+      ));
+    }
+    if (bio != null) {
+      _data.fields.add(MapEntry(
+        'bio',
+        bio,
+      ));
+    }
+    if (website != null) {
+      _data.fields.add(MapEntry(
+        'website',
+        website,
+      ));
+    }
+    if (file != null) {
+      _data.files.add(MapEntry(
+        'profileImage',
+        MultipartFile.fromFileSync(
+          file.path,
+          filename: file.path.split(Platform.pathSeparator).last,
+        ),
+      ));
+    }
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<UserModel>(Options(
+      method: 'PUT',
       headers: _headers,
       extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/auth/follow/${followingId}',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        ))));
-  }
-
-  @override
-  Future<DiscoverSearchModel> search(String s) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'search': s};
-    final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<DiscoverSearchModel>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
+      contentType: 'multipart/form-data',
     )
             .compose(
               _dio.options,
-              '/discover',
+              '/profile/${profileId}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -94,7 +112,7 @@ class _DiscoverApiProvider implements DiscoverApiProvider {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = DiscoverSearchModel.fromJson(_result.data!);
+    final value = UserModel.fromJson(_result.data!);
     return value;
   }
 

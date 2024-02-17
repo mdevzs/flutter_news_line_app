@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:news_line_app/core/widgets/widgets.dart';
 import 'package:news_line_app/features/discover_feature/presentation/pages/discover_page/discover_page.dart';
 import 'package:sizer_pro/sizer.dart';
-
 import '../../../../config/app_colors.dart';
 import '../../../bookmark_feature/presentation/pages/bookmark_page.dart';
 import '../../../home_feature/presentation/pages/home_page/home_page.dart';
+import '../../../profile_feature/presentation/pages/profile_page/profile_page.dart';
 
 Widget buildPage(int index) {
   final pages = [
     const HomePage(),
     const DiscoverPage(),
     const BookmarkPage(),
-    Center(child: customText('Profile Page')),
+    const ProfilePage(),
   ];
   return pages[index];
 }

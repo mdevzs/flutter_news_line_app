@@ -143,7 +143,7 @@ class SignUpCreateProfilePage extends StatelessWidget {
                       customText(
                         'Gender',
                         fontSize: 8,
-                      ),                      
+                      ),
                       genderDropDownFormField(
                         onChangeValue: (selectedGender) {
                           gender = selectedGender;
@@ -187,7 +187,7 @@ class SignUpCreateProfilePage extends StatelessWidget {
               listener: (context, state) {
                 state.createProfileState?.when(
                   success: (user) {
-                    storageService.storeUserToken(user.token);
+                    storageService.storeUserInformation(user.token, user.id);
                     Navigator.of(context).pushNamedAndRemoveUntil(
                         AppRoutes.Home_ROUTE, (route) => false);
                   },

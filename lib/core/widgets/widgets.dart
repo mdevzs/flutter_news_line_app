@@ -419,7 +419,7 @@ Future displaySettingsButtomSheet(BuildContext context) async {
                 fontWeight: FontWeight.bold,
               ),
               SliderTheme(
-                data: SliderThemeData(
+                data: const SliderThemeData(
                     //trackShape: BrightnessSliderShape(),
                     ),
                 child: FlutterSlider(
@@ -440,8 +440,8 @@ Future displaySettingsButtomSheet(BuildContext context) async {
                     ),
                   ),
                   handler: FlutterSliderHandler(
-                    child: Icon(Icons.light_mode_outlined),
-                    decoration: BoxDecoration(
+                    child: const Icon(Icons.light_mode_outlined),
+                    decoration: const BoxDecoration(
                       color: Colors.transparent,
                     ),
                   ),

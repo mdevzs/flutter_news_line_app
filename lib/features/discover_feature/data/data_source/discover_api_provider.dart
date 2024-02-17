@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:news_line_app/features/discover_feature/data/models/discover_model.dart';
 import 'package:news_line_app/features/discover_feature/data/models/discover_search_model.dart';
-import 'package:news_line_app/features/discover_feature/data/models/profile_model.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../../../core/utils/app_constants.dart';
@@ -23,10 +22,5 @@ abstract class DiscoverApiProvider {
   @GET('/discover')
   Future<DiscoverSearchModel> search(
     @Query('search') String s,
-  );
-
-  @GET('/profile/{profileId}')
-  Future<ProfileModel> profile(
-    @Path('profileId') int profileId,
   );
 }

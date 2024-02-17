@@ -5,6 +5,7 @@ class AppConstatns {
   static const SHARED_KEY_STORAGE_FIRST_TIME_Use_APP =
       'sharedKeyStorageFirstTimeUseApp';
   static const SHARED_KEY_STORAGE_USER_TOKEN = 'sharedKeyStorageUserToken';
+  static const SHARED_KEY_STORAGE_USER_Id = 'sharedKeyStorageUserId';
   static const Error_Picture_ASSET = 'assets/icons/error_picture.png';
   static const Profile_Picture_ASSET = 'assets/icons/profile2.png';
   static const onBoardingList = <Map<String, String>>[

@@ -43,7 +43,7 @@ class SignInPage extends StatelessWidget {
             listener: (context, state) {
               state.signInSubmittedState?.when(
                 loaded: (user) {
-                  storageService.storeUserToken(user.token);
+                  storageService.storeUserInformation(user.token, user.id);
                   Navigator.of(context).pushNamedAndRemoveUntil(
                       AppRoutes.Dashboard_ROUTE, (route) => false);
                 },

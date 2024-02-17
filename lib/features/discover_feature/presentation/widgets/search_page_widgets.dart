@@ -75,7 +75,12 @@ class _SearchSelectionState extends State<SearchSelection> {
 
 class AccountsSectionItem extends StatefulWidget {
   final UserEntity account;
-  const AccountsSectionItem({super.key, required this.account});
+  final bool isCurrentUserProfile;
+  const AccountsSectionItem({
+    super.key,
+    required this.account,
+    required this.isCurrentUserProfile,
+  });
 
   @override
   State<AccountsSectionItem> createState() => _AccountsSectionItemState();
@@ -135,17 +140,41 @@ class _AccountsSectionItemState extends State<AccountsSectionItem>
             ),
           ),
           Flexible(
-            child: FollowingButton(
-              isFollowing: widget.account.isFollowing ?? false,
-              fontSize: 3,
-              onPressed: () {
-                context.read<DiscoverBloc>().add(
-                      DiscoverEvent.followAuthor(
-                        widget.account.id.toString(),
+            child: widget.isCurrentUserProfile
+                ? ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        AppRoutes.Edit_Profile_ROUTE,
+                        arguments: widget.account,
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.zero,
+                      minimumSize: Size(double.infinity, 5.h),
+                      surfaceTintColor: Colors.white,
+                      side: const BorderSide(
+                        color: Colors.grey,
+                        width: 0.5,
                       ),
-                    );
-              },
-            ),
+                    ),
+                    child: customText(
+                      'Edit Profile',
+                      fontSize: 8,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
+                : FollowingButton(
+                    isFollowing: widget.account.isFollowing ?? false,
+                    fontSize: 3,
+                    onPressed: () {
+                      context.read<DiscoverBloc>().add(
+                            DiscoverEvent.followAuthor(
+                              widget.account.id.toString(),
+                            ),
+                          );
+                    },
+                  ),
           ),
         ],
       ),
@@ -243,6 +272,7 @@ class _AccountSectionBodyState extends State<AccountSectionBody>
             },
             child: AccountsSectionItem(
               account: widget.searchEntity.accounts[index],
+              isCurrentUserProfile: false,
             ),
           ),
         );
@@ -368,6 +398,7 @@ class SearchTabAccountBody extends StatelessWidget {
                       padding: EdgeInsets.only(bottom: 4.sp),
                       child: AccountsSectionItem(
                         account: state.searchEntity!.accounts[index],
+                        isCurrentUserProfile: false,
                       ),
                     );
                   },

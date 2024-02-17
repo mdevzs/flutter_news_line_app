@@ -29,8 +29,6 @@ import 'package:news_line_app/features/discover_feature/data/repository/discover
 import 'package:news_line_app/features/discover_feature/domain/repository/discover_repository.dart';
 import 'package:news_line_app/features/discover_feature/domain/usecases/discover_search_usecase.dart';
 import 'package:news_line_app/features/discover_feature/domain/usecases/discover_usecase.dart';
-import 'package:news_line_app/features/discover_feature/domain/usecases/profile_usecase.dart';
-import 'package:news_line_app/features/discover_feature/presentation/pages/profile_page/bloc/profile_bloc.dart';
 import 'package:news_line_app/features/discover_feature/presentation/pages/search_page/bloc/search_bloc.dart';
 import 'package:news_line_app/features/home_feature/data/data_source/home_api_provider.dart';
 import 'package:news_line_app/features/home_feature/data/repository/home_repository_impl.dart';
@@ -47,11 +45,18 @@ import 'package:news_line_app/features/home_feature/presentation/pages/home_page
 import 'package:news_line_app/features/home_feature/presentation/pages/news_detail_page/bloc/news_detail_bloc.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/recent_news_page/bloc/recent_news_bloc.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/trending_news_page/bloc/trending_news_bloc.dart';
+import 'package:news_line_app/features/profile_feature/data/data_source/profile_api_provider.dart';
+import 'package:news_line_app/features/profile_feature/data/repository/profile_repository_impl.dart';
+import 'package:news_line_app/features/profile_feature/domain/repository/profile_repository.dart';
+import 'package:news_line_app/features/profile_feature/domain/usecases/edit_profile_usecase.dart';
+import 'package:news_line_app/features/profile_feature/presentation/pages/edit_profile_page/bloc/edit_profile_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../features/discover_feature/domain/usecases/follow_author_usercase.dart';
 import '../../features/discover_feature/presentation/pages/discover_page/bloc/discover_bloc.dart';
 import '../../features/home_feature/domain/usecases/recent_stories_tags_usecase.dart';
+import '../../features/profile_feature/domain/usecases/profile_usecase.dart';
+import '../../features/profile_feature/presentation/pages/profile_page/bloc/profile_bloc.dart';
 
 final sl = GetIt.I;
 
@@ -69,11 +74,13 @@ Future<void> initDependencies() async {
   sl.registerSingleton<AuthApiProvider>(AuthApiProvider(sl()));
   sl.registerSingleton<HomeApiProvider>(HomeApiProvider(sl()));
   sl.registerSingleton<DiscoverApiProvider>(DiscoverApiProvider(sl()));
+  sl.registerSingleton<ProfileApiProvider>(ProfileApiProvider(sl()));
   // repositories
   sl.registerSingleton<AuthRepository>(AuthRepositoryImpl(sl()));
   sl.registerSingleton<HomeRepository>(HomeRepositoryImpl(sl()));
   sl.registerSingleton<DiscoverRepository>(DiscoverRepositoryImpl(sl()));
   sl.registerSingleton<BookmarkRepository>(BookmarkRepositoryImpl(sl()));
+  sl.registerSingleton<ProfileRepository>(ProfileRepositoryImpl(sl()));
   // usecases
   sl.registerSingleton<SignInUsecase>(SignInUsecase(sl()));
   sl.registerSingleton<SignUpSelectCountryUsecase>(
@@ -106,6 +113,7 @@ Future<void> initDependencies() async {
       GetAllNewsOfCollectionUsecase(sl()));
   sl.registerSingleton<RemoveNewsFromCollectionUsecase>(
       RemoveNewsFromCollectionUsecase(sl()));
+  sl.registerSingleton<EditProfileUsecase>(EditProfileUsecase(sl()));
 
   // blocs
   sl.registerSingleton<SignInBloc>(SignInBloc(sl()));
@@ -123,7 +131,10 @@ Future<void> initDependencies() async {
   sl.registerSingleton<DiscoverBloc>(DiscoverBloc(sl(), sl()));
   sl.registerSingleton<SearchBloc>(SearchBloc(sl()));
   sl.registerSingleton<ProfileBloc>(ProfileBloc(sl()));
-  sl.registerSingleton<BookmarkBloc>(BookmarkBloc(sl(), sl(), sl(), sl(),sl()));
+  sl.registerSingleton<BookmarkBloc>(
+      BookmarkBloc(sl(), sl(), sl(), sl(), sl()));
+  sl.registerSingleton<EditProfileBloc>(EditProfileBloc(sl()));
+
   // other
   await _initSharedPrefs();
   sl.registerSingleton<StorageService>(StorageServiceImpl(prefs: sl()));

@@ -1,7 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:news_line_app/features/discover_feature/domain/usecases/profile_usecase.dart';
-import 'package:news_line_app/features/discover_feature/presentation/pages/profile_page/bloc/profile_status.dart';
+
+import '../../../../domain/usecases/profile_usecase.dart';
+import 'profile_status.dart';
 
 part 'profile_event.dart';
 part 'profile_state.dart';

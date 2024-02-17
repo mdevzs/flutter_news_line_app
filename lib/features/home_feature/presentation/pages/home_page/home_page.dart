@@ -8,8 +8,22 @@ import 'package:sizer_pro/sizer.dart';
 
 import '../../../../../core/utils/gaps.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<HomeBloc>().add(const HomeEvent.getHome());
+    Future.delayed(const Duration(seconds: 2), () {
+      context.read<HomeBloc>().add(const HomeEvent.getRecentStories('all'));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +31,6 @@ class HomePage extends StatelessWidget {
       return SizedBox(
         child: state.homeStatus.when(
           initial: () {
-            context.read<HomeBloc>().add(const HomeEvent.getHome());
-            Future.delayed(const Duration(seconds: 5), () {
-              context
-                  .read<HomeBloc>()
-                  .add(const HomeEvent.getRecentStories('all'));
-            });
             return null;
           },
           loading: () {

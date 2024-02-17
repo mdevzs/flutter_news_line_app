@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:news_line_app/features/discover_feature/domain/entities/profile_entity.dart';
 import 'package:news_line_app/features/home_feature/data/models/home_model/news_model.dart';
 
 import '../../../home_feature/domain/entities/home_entity/news_entity.dart';
+import '../../domain/entities/profile_entity.dart';
 
 part 'profile_model.freezed.dart';
 part 'profile_model.g.dart';
