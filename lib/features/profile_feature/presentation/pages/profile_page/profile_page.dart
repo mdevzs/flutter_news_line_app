@@ -7,6 +7,7 @@ import 'package:news_line_app/features/discover_feature/presentation/widgets/pro
 import 'package:sizer_pro/sizer.dart';
 
 import '../../../../../config/app_colors.dart';
+import '../../../../../core/routes/names.dart';
 import 'bloc/profile_bloc.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -87,7 +88,9 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           floatingActionButton: isCurrentUserProfile
               ? FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, AppRoutes.Write_Story_ROUTE);
+                  },
                   backgroundColor: AppColors.primaryColor,
                   shape: const CircleBorder(),
                   child: const Icon(

@@ -5,6 +5,7 @@ import 'package:news_line_app/features/bookmark_feature/domain/entities/bookmark
 import 'package:news_line_app/features/discover_feature/presentation/widgets/network_image.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/comments_page/bloc/comments_bloc.dart';
 import 'package:news_line_app/features/home_feature/presentation/pages/comments_page/comment_page_cubit/comment_page_cubit.dart';
+import 'package:objectbox/objectbox.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:sizer_pro/sizer.dart';
 import 'package:news_line_app/config/app_colors.dart';
@@ -17,7 +18,7 @@ import 'package:news_line_app/features/home_feature/domain/entities/home_entity/
 import 'package:news_line_app/features/home_feature/domain/entities/home_entity/news_entity.dart';
 import 'package:news_line_app/features/home_feature/presentation/widgets/home_widgets.dart';
 import '../../../../core/widgets/widgets.dart';
-import '../../../../objectbox.g.dart';
+
 
 PreferredSizeWidget newsDetailPageAppbar(BuildContext context) {
   return AppBar(
@@ -64,9 +65,9 @@ PreferredSizeWidget newsDetailPageAppbar(BuildContext context) {
 class NewsDetailsPageBody extends StatelessWidget {
   final NewsDetailsEntity newsDetailsEntity;
   const NewsDetailsPageBody({
-    Key? key,
+    super.key,
     required this.newsDetailsEntity,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -202,10 +203,10 @@ class NewsAuthorSection extends StatelessWidget {
   final CreatorEntity creator;
   final Widget child;
   const NewsAuthorSection({
-    Key? key,
+    super.key,
     required this.creator,
     required this.child,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -247,9 +248,9 @@ class NewsAuthorSection extends StatelessWidget {
 class MyChip extends StatelessWidget {
   final String text;
   const MyChip({
-    Key? key,
+    super.key,
     required this.text,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -344,10 +345,10 @@ class CommentWidget extends StatefulWidget {
   final CommentsEntity commentsEntity;
   final Function(int parentId, String username) onReplyButtonPressed;
   const CommentWidget({
-    Key? key,
+    super.key,
     required this.commentsEntity,
     required this.onReplyButtonPressed,
-  }) : super(key: key);
+  });
 
   @override
   State<CommentWidget> createState() => _CommentWidgetState();
@@ -495,10 +496,10 @@ class ReplyCommentWidget extends StatefulWidget {
   final CommentsEntity commentsEntity;
   final bool showReplies;
   const ReplyCommentWidget({
-    Key? key,
+    super.key,
     required this.commentsEntity,
     required this.showReplies,
-  }) : super(key: key);
+  });
 
   @override
   State<ReplyCommentWidget> createState() => _ReplyCommentWidgetState();
@@ -569,11 +570,11 @@ class LikeButtonWidget extends StatefulWidget {
   final bool isLiked;
   final int commentId;
   const LikeButtonWidget({
-    Key? key,
+    super.key,
     required this.likeCounts,
     required this.isLiked,
     required this.commentId,
-  }) : super(key: key);
+  });
 
   @override
   State<LikeButtonWidget> createState() => _LikeButtonWidgetState();

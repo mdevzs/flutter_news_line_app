@@ -10,8 +10,9 @@
 import 'dart:typed_data';
 
 import 'package:flat_buffers/flat_buffers.dart' as fb;
-import 'package:objectbox/internal.dart'; // generated code can access "internal" functionality
-import 'package:objectbox/objectbox.dart';
+import 'package:objectbox/internal.dart'
+    as obx_int; // generated code can access "internal" functionality
+import 'package:objectbox/objectbox.dart' as obx;
 import 'package:objectbox_flutter_libs/objectbox_flutter_libs.dart';
 
 import 'features/bookmark_feature/domain/entities/bookmarks.dart';
@@ -20,133 +21,134 @@ import 'features/home_feature/domain/entities/home_entity/news_entity.dart';
 
 export 'package:objectbox/objectbox.dart'; // so that callers only have to import this file
 
-final _entities = <ModelEntity>[
-  ModelEntity(
-      id: const IdUid(1, 6236657037543739591),
+final _entities = <obx_int.ModelEntity>[
+  obx_int.ModelEntity(
+      id: const obx_int.IdUid(1, 6236657037543739591),
       name: 'Bookmarks',
-      lastPropertyId: const IdUid(2, 6092407334764722919),
+      lastPropertyId: const obx_int.IdUid(2, 6092407334764722919),
       flags: 0,
-      properties: <ModelProperty>[
-        ModelProperty(
-            id: const IdUid(1, 8417831439332682993),
+      properties: <obx_int.ModelProperty>[
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(1, 8417831439332682993),
             name: 'id',
             type: 6,
             flags: 1),
-        ModelProperty(
-            id: const IdUid(2, 6092407334764722919),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(2, 6092407334764722919),
             name: 'name',
             type: 9,
             flags: 0)
       ],
-      relations: <ModelRelation>[],
-      backlinks: <ModelBacklink>[
-        ModelBacklink(name: 'news', srcEntity: 'NewsEntity', srcField: '')
-      ]),
-  ModelEntity(
-      id: const IdUid(7, 5594225138108022625),
+      relations: <obx_int.ModelRelation>[
+        obx_int.ModelRelation(
+            id: const obx_int.IdUid(4, 2033506876696968707),
+            name: 'news',
+            targetId: const obx_int.IdUid(7, 5594225138108022625))
+      ],
+      backlinks: <obx_int.ModelBacklink>[]),
+  obx_int.ModelEntity(
+      id: const obx_int.IdUid(7, 5594225138108022625),
       name: 'NewsEntity',
-      lastPropertyId: const IdUid(11, 7751936382838075506),
+      lastPropertyId: const obx_int.IdUid(11, 7751936382838075506),
       flags: 0,
-      properties: <ModelProperty>[
-        ModelProperty(
-            id: const IdUid(1, 4007447624373037644),
+      properties: <obx_int.ModelProperty>[
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(1, 4007447624373037644),
             name: 'id',
             type: 6,
             flags: 129),
-        ModelProperty(
-            id: const IdUid(2, 3874893387154646051),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(2, 3874893387154646051),
             name: 'title',
             type: 9,
             flags: 0),
-        ModelProperty(
-            id: const IdUid(3, 7818907606116470380),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(3, 7818907606116470380),
             name: 'coverImage',
             type: 9,
             flags: 0),
-        ModelProperty(
-            id: const IdUid(4, 5719513308517103121),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(4, 5719513308517103121),
             name: 'readTime',
             type: 9,
             flags: 0),
-        ModelProperty(
-            id: const IdUid(5, 1015367588126171491),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(5, 1015367588126171491),
             name: 'viewsCount',
             type: 9,
             flags: 0),
-        ModelProperty(
-            id: const IdUid(6, 5166479923325259100),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(6, 5166479923325259100),
             name: 'description',
             type: 9,
             flags: 0),
-        ModelProperty(
-            id: const IdUid(7, 3340437213869934406),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(7, 3340437213869934406),
             name: 'isTrending',
             type: 1,
             flags: 0),
-        ModelProperty(
-            id: const IdUid(8, 1832845643948775232),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(8, 1832845643948775232),
             name: 'creatorId',
             type: 6,
             flags: 0),
-        ModelProperty(
-            id: const IdUid(9, 8625531752221711285),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(9, 8625531752221711285),
             name: 'createdAt',
             type: 9,
             flags: 0),
-        ModelProperty(
-            id: const IdUid(10, 2829202174313748711),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(10, 2829202174313748711),
             name: 'commentCounts',
             type: 9,
             flags: 0),
-        ModelProperty(
-            id: const IdUid(11, 7751936382838075506),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(11, 7751936382838075506),
             name: 'creatorRelationId',
             type: 11,
             flags: 520,
-            indexId: const IdUid(2, 688628656768422124),
+            indexId: const obx_int.IdUid(2, 688628656768422124),
             relationTarget: 'CreatorEntity')
       ],
-      relations: <ModelRelation>[
-        ModelRelation(
-            id: const IdUid(3, 5888085178471399297),
-            name: 'bookmarks',
-            targetId: const IdUid(1, 6236657037543739591))
-      ],
-      backlinks: <ModelBacklink>[]),
-  ModelEntity(
-      id: const IdUid(10, 6269190140227142296),
+      relations: <obx_int.ModelRelation>[],
+      backlinks: <obx_int.ModelBacklink>[
+        obx_int.ModelBacklink(
+            name: 'bookmarks', srcEntity: 'Bookmarks', srcField: '')
+      ]),
+  obx_int.ModelEntity(
+      id: const obx_int.IdUid(10, 6269190140227142296),
       name: 'CreatorEntity',
-      lastPropertyId: const IdUid(5, 1286398653284896562),
+      lastPropertyId: const obx_int.IdUid(5, 1286398653284896562),
       flags: 0,
-      properties: <ModelProperty>[
-        ModelProperty(
-            id: const IdUid(1, 4098548567250146585),
+      properties: <obx_int.ModelProperty>[
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(1, 4098548567250146585),
             name: 'id',
             type: 6,
             flags: 129),
-        ModelProperty(
-            id: const IdUid(2, 7509022576170717001),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(2, 7509022576170717001),
             name: 'profileImage',
             type: 9,
             flags: 0),
-        ModelProperty(
-            id: const IdUid(3, 8134046605400692560),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(3, 8134046605400692560),
             name: 'fullName',
             type: 9,
             flags: 0),
-        ModelProperty(
-            id: const IdUid(4, 6848563509794303843),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(4, 6848563509794303843),
             name: 'bio',
             type: 9,
             flags: 0),
-        ModelProperty(
-            id: const IdUid(5, 1286398653284896562),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(5, 1286398653284896562),
             name: 'followersCount',
             type: 6,
             flags: 0)
       ],
-      relations: <ModelRelation>[],
-      backlinks: <ModelBacklink>[])
+      relations: <obx_int.ModelRelation>[],
+      backlinks: <obx_int.ModelBacklink>[])
 ];
 
 /// Shortcut for [Store.new] that passes [getObjectBoxModel] and for Flutter
@@ -156,30 +158,38 @@ final _entities = <ModelEntity>[
 /// Note: for desktop apps it is recommended to specify a unique [directory].
 ///
 /// See [Store.new] for an explanation of all parameters.
-Future<Store> openStore(
-        {String? directory,
-        int? maxDBSizeInKB,
-        int? fileMode,
-        int? maxReaders,
-        bool queriesCaseSensitiveDefault = true,
-        String? macosApplicationGroup}) async =>
-    Store(getObjectBoxModel(),
-        directory: directory ?? (await defaultStoreDirectory()).path,
-        maxDBSizeInKB: maxDBSizeInKB,
-        fileMode: fileMode,
-        maxReaders: maxReaders,
-        queriesCaseSensitiveDefault: queriesCaseSensitiveDefault,
-        macosApplicationGroup: macosApplicationGroup);
+///
+/// For Flutter apps, also calls `loadObjectBoxLibraryAndroidCompat()` from
+/// the ObjectBox Flutter library to fix loading the native ObjectBox library
+/// on Android 6 and older.
+Future<obx.Store> openStore(
+    {String? directory,
+    int? maxDBSizeInKB,
+    int? maxDataSizeInKB,
+    int? fileMode,
+    int? maxReaders,
+    bool queriesCaseSensitiveDefault = true,
+    String? macosApplicationGroup}) async {
+  await loadObjectBoxLibraryAndroidCompat();
+  return obx.Store(getObjectBoxModel(),
+      directory: directory ?? (await defaultStoreDirectory()).path,
+      maxDBSizeInKB: maxDBSizeInKB,
+      maxDataSizeInKB: maxDataSizeInKB,
+      fileMode: fileMode,
+      maxReaders: maxReaders,
+      queriesCaseSensitiveDefault: queriesCaseSensitiveDefault,
+      macosApplicationGroup: macosApplicationGroup);
+}
 
 /// Returns the ObjectBox model definition for this project for use with
 /// [Store.new].
-ModelDefinition getObjectBoxModel() {
-  final model = ModelInfo(
+obx_int.ModelDefinition getObjectBoxModel() {
+  final model = obx_int.ModelInfo(
       entities: _entities,
-      lastEntityId: const IdUid(10, 6269190140227142296),
-      lastIndexId: const IdUid(2, 688628656768422124),
-      lastRelationId: const IdUid(3, 5888085178471399297),
-      lastSequenceId: const IdUid(0, 0),
+      lastEntityId: const obx_int.IdUid(10, 6269190140227142296),
+      lastIndexId: const obx_int.IdUid(2, 688628656768422124),
+      lastRelationId: const obx_int.IdUid(4, 2033506876696968707),
+      lastSequenceId: const obx_int.IdUid(0, 0),
       retiredEntityUids: const [
         4456243254405832064,
         8895463230068155344,
@@ -247,17 +257,17 @@ ModelDefinition getObjectBoxModel() {
         63863830978515204,
         7760333652372518441
       ],
-      retiredRelationUids: const [4005392264867980145],
+      retiredRelationUids: const [4005392264867980145, 5888085178471399297],
       modelVersion: 5,
       modelVersionParserMinimum: 5,
       version: 1);
 
-  final bindings = <Type, EntityDefinition>{
-    Bookmarks: EntityDefinition<Bookmarks>(
+  final bindings = <Type, obx_int.EntityDefinition>{
+    Bookmarks: obx_int.EntityDefinition<Bookmarks>(
         model: _entities[0],
         toOneRelations: (Bookmarks object) => [],
         toManyRelations: (Bookmarks object) =>
-            {RelInfo<NewsEntity>.toManyBacklink(3, object.id!): object.news},
+            {obx_int.RelInfo<Bookmarks>.toMany(4, object.id!): object.news},
         getId: (Bookmarks object) => object.id,
         setId: (Bookmarks object, int id) {
           object.id = id;
@@ -270,7 +280,7 @@ ModelDefinition getObjectBoxModel() {
           fbb.finish(fbb.endTable());
           return object.id ?? 0;
         },
-        objectFromFB: (Store store, ByteData fbData) {
+        objectFromFB: (obx.Store store, ByteData fbData) {
           final buffer = fb.BufferContext(fbData);
           final rootOffset = buffer.derefObject(0);
           final idParam =
@@ -278,15 +288,17 @@ ModelDefinition getObjectBoxModel() {
           final nameParam = const fb.StringReader(asciiOptimization: true)
               .vTableGet(buffer, rootOffset, 6, '');
           final object = Bookmarks(id: idParam, name: nameParam);
-          InternalToManyAccess.setRelInfo<Bookmarks>(object.news, store,
-              RelInfo<NewsEntity>.toManyBacklink(3, object.id!));
+          obx_int.InternalToManyAccess.setRelInfo<Bookmarks>(object.news, store,
+              obx_int.RelInfo<Bookmarks>.toMany(4, object.id!));
           return object;
         }),
-    NewsEntity: EntityDefinition<NewsEntity>(
+    NewsEntity: obx_int.EntityDefinition<NewsEntity>(
         model: _entities[1],
         toOneRelations: (NewsEntity object) => [object.creatorRelation],
-        toManyRelations: (NewsEntity object) =>
-            {RelInfo<NewsEntity>.toMany(3, object.id): object.bookmarks},
+        toManyRelations: (NewsEntity object) => {
+              obx_int.RelInfo<Bookmarks>.toManyBacklink(4, object.id):
+                  object.bookmarks
+            },
         getId: (NewsEntity object) => object.id,
         setId: (NewsEntity object, int id) {
           if (object.id != id) {
@@ -324,7 +336,7 @@ ModelDefinition getObjectBoxModel() {
           fbb.finish(fbb.endTable());
           return object.id;
         },
-        objectFromFB: (Store store, ByteData fbData) {
+        objectFromFB: (obx.Store store, ByteData fbData) {
           final buffer = fb.BufferContext(fbData);
           final rootOffset = buffer.derefObject(0);
           final idParam =
@@ -349,8 +361,8 @@ ModelDefinition getObjectBoxModel() {
           final commentCountsParam =
               const fb.StringReader(asciiOptimization: true)
                   .vTableGet(buffer, rootOffset, 22, '');
-          final bookmarksParam = ToMany<Bookmarks>();
-          final creatorRelationParam = ToOne<CreatorEntity>(
+          final bookmarksParam = obx.ToMany<Bookmarks>();
+          final creatorRelationParam = obx.ToOne<CreatorEntity>(
               targetId:
                   const fb.Int64Reader().vTableGet(buffer, rootOffset, 24, 0));
           final object = NewsEntity(
@@ -367,11 +379,11 @@ ModelDefinition getObjectBoxModel() {
               bookmarks: bookmarksParam,
               creatorRelation: creatorRelationParam);
           object.creatorRelation.attach(store);
-          InternalToManyAccess.setRelInfo<NewsEntity>(object.bookmarks, store,
-              RelInfo<NewsEntity>.toMany(3, object.id));
+          obx_int.InternalToManyAccess.setRelInfo<NewsEntity>(object.bookmarks,
+              store, obx_int.RelInfo<Bookmarks>.toManyBacklink(4, object.id));
           return object;
         }),
-    CreatorEntity: EntityDefinition<CreatorEntity>(
+    CreatorEntity: obx_int.EntityDefinition<CreatorEntity>(
         model: _entities[2],
         toOneRelations: (CreatorEntity object) => [],
         toManyRelations: (CreatorEntity object) => {},
@@ -400,7 +412,7 @@ ModelDefinition getObjectBoxModel() {
           fbb.finish(fbb.endTable());
           return object.id;
         },
-        objectFromFB: (Store store, ByteData fbData) {
+        objectFromFB: (obx.Store store, ByteData fbData) {
           final buffer = fb.BufferContext(fbData);
           final rootOffset = buffer.derefObject(0);
           final idParam =
@@ -425,89 +437,91 @@ ModelDefinition getObjectBoxModel() {
         })
   };
 
-  return ModelDefinition(model, bindings);
+  return obx_int.ModelDefinition(model, bindings);
 }
 
 /// [Bookmarks] entity fields to define ObjectBox queries.
 class Bookmarks_ {
   /// see [Bookmarks.id]
-  static final id = QueryIntegerProperty<Bookmarks>(_entities[0].properties[0]);
+  static final id =
+      obx.QueryIntegerProperty<Bookmarks>(_entities[0].properties[0]);
 
   /// see [Bookmarks.name]
   static final name =
-      QueryStringProperty<Bookmarks>(_entities[0].properties[1]);
+      obx.QueryStringProperty<Bookmarks>(_entities[0].properties[1]);
+
+  /// see [Bookmarks.news]
+  static final news =
+      obx.QueryRelationToMany<Bookmarks, NewsEntity>(_entities[0].relations[0]);
 }
 
 /// [NewsEntity] entity fields to define ObjectBox queries.
 class NewsEntity_ {
   /// see [NewsEntity.id]
   static final id =
-      QueryIntegerProperty<NewsEntity>(_entities[1].properties[0]);
+      obx.QueryIntegerProperty<NewsEntity>(_entities[1].properties[0]);
 
   /// see [NewsEntity.title]
   static final title =
-      QueryStringProperty<NewsEntity>(_entities[1].properties[1]);
+      obx.QueryStringProperty<NewsEntity>(_entities[1].properties[1]);
 
   /// see [NewsEntity.coverImage]
   static final coverImage =
-      QueryStringProperty<NewsEntity>(_entities[1].properties[2]);
+      obx.QueryStringProperty<NewsEntity>(_entities[1].properties[2]);
 
   /// see [NewsEntity.readTime]
   static final readTime =
-      QueryStringProperty<NewsEntity>(_entities[1].properties[3]);
+      obx.QueryStringProperty<NewsEntity>(_entities[1].properties[3]);
 
   /// see [NewsEntity.viewsCount]
   static final viewsCount =
-      QueryStringProperty<NewsEntity>(_entities[1].properties[4]);
+      obx.QueryStringProperty<NewsEntity>(_entities[1].properties[4]);
 
   /// see [NewsEntity.description]
   static final description =
-      QueryStringProperty<NewsEntity>(_entities[1].properties[5]);
+      obx.QueryStringProperty<NewsEntity>(_entities[1].properties[5]);
 
   /// see [NewsEntity.isTrending]
   static final isTrending =
-      QueryBooleanProperty<NewsEntity>(_entities[1].properties[6]);
+      obx.QueryBooleanProperty<NewsEntity>(_entities[1].properties[6]);
 
   /// see [NewsEntity.creatorId]
   static final creatorId =
-      QueryIntegerProperty<NewsEntity>(_entities[1].properties[7]);
+      obx.QueryIntegerProperty<NewsEntity>(_entities[1].properties[7]);
 
   /// see [NewsEntity.createdAt]
   static final createdAt =
-      QueryStringProperty<NewsEntity>(_entities[1].properties[8]);
+      obx.QueryStringProperty<NewsEntity>(_entities[1].properties[8]);
 
   /// see [NewsEntity.commentCounts]
   static final commentCounts =
-      QueryStringProperty<NewsEntity>(_entities[1].properties[9]);
+      obx.QueryStringProperty<NewsEntity>(_entities[1].properties[9]);
 
   /// see [NewsEntity.creatorRelation]
-  static final creatorRelation = QueryRelationToOne<NewsEntity, CreatorEntity>(
-      _entities[1].properties[10]);
-
-  /// see [NewsEntity.bookmarks]
-  static final bookmarks =
-      QueryRelationToMany<NewsEntity, Bookmarks>(_entities[1].relations[0]);
+  static final creatorRelation =
+      obx.QueryRelationToOne<NewsEntity, CreatorEntity>(
+          _entities[1].properties[10]);
 }
 
 /// [CreatorEntity] entity fields to define ObjectBox queries.
 class CreatorEntity_ {
   /// see [CreatorEntity.id]
   static final id =
-      QueryIntegerProperty<CreatorEntity>(_entities[2].properties[0]);
+      obx.QueryIntegerProperty<CreatorEntity>(_entities[2].properties[0]);
 
   /// see [CreatorEntity.profileImage]
   static final profileImage =
-      QueryStringProperty<CreatorEntity>(_entities[2].properties[1]);
+      obx.QueryStringProperty<CreatorEntity>(_entities[2].properties[1]);
 
   /// see [CreatorEntity.fullName]
   static final fullName =
-      QueryStringProperty<CreatorEntity>(_entities[2].properties[2]);
+      obx.QueryStringProperty<CreatorEntity>(_entities[2].properties[2]);
 
   /// see [CreatorEntity.bio]
   static final bio =
-      QueryStringProperty<CreatorEntity>(_entities[2].properties[3]);
+      obx.QueryStringProperty<CreatorEntity>(_entities[2].properties[3]);
 
   /// see [CreatorEntity.followersCount]
   static final followersCount =
-      QueryIntegerProperty<CreatorEntity>(_entities[2].properties[4]);
+      obx.QueryIntegerProperty<CreatorEntity>(_entities[2].properties[4]);
 }

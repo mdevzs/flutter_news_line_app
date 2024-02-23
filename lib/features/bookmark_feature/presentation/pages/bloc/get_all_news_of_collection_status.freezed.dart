@@ -12,7 +12,7 @@ part of 'get_all_news_of_collection_status.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$GetAllNewsOfCollectionStatus {
@@ -116,7 +116,7 @@ class _$GetAllNewsOfCollectionStatusInitialImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetAllNewsOfCollectionStatusInitialImpl);
@@ -257,7 +257,7 @@ class _$GetAllNewsOfCollectionStatusSuccessImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetAllNewsOfCollectionStatusSuccessImpl &&
@@ -408,7 +408,7 @@ class _$GetAllNewsOfCollectionStatusErrorImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetAllNewsOfCollectionStatusErrorImpl &&

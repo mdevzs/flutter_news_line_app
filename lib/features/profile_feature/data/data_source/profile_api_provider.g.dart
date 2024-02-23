@@ -22,10 +22,10 @@ class _ProfileApiProvider implements ProfileApiProvider {
 
   @override
   Future<ProfileModel> profile(int profileId) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ProfileModel>(Options(
       method: 'GET',
@@ -56,7 +56,7 @@ class _ProfileApiProvider implements ProfileApiProvider {
     String? website, [
     File? file,
   ]) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};

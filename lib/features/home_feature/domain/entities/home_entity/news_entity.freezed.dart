@@ -12,7 +12,7 @@ part of 'news_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$NewsEntity {
@@ -31,6 +31,7 @@ mixin _$NewsEntity {
   List<TagNewsEntity>? get tagNews => throw _privateConstructorUsedError;
   @Transient()
   CreatorEntity? get creator => throw _privateConstructorUsedError;
+  @Backlink()
   ToMany<Bookmarks> get bookmarks => throw _privateConstructorUsedError;
   ToOne<CreatorEntity> get creatorRelation =>
       throw _privateConstructorUsedError;
@@ -59,7 +60,7 @@ abstract class $NewsEntityCopyWith<$Res> {
       String commentCounts,
       @Transient() List<TagNewsEntity>? tagNews,
       @Transient() CreatorEntity? creator,
-      ToMany<Bookmarks> bookmarks,
+      @Backlink() ToMany<Bookmarks> bookmarks,
       ToOne<CreatorEntity> creatorRelation});
 
   $CreatorEntityCopyWith<$Res>? get creator;
@@ -187,7 +188,7 @@ abstract class _$$NewsEntityImplCopyWith<$Res>
       String commentCounts,
       @Transient() List<TagNewsEntity>? tagNews,
       @Transient() CreatorEntity? creator,
-      ToMany<Bookmarks> bookmarks,
+      @Backlink() ToMany<Bookmarks> bookmarks,
       ToOne<CreatorEntity> creatorRelation});
 
   @override
@@ -298,7 +299,7 @@ class _$NewsEntityImpl extends _NewsEntity {
       required this.commentCounts,
       @Transient() final List<TagNewsEntity>? tagNews,
       @Transient() this.creator,
-      required this.bookmarks,
+      @Backlink() required this.bookmarks,
       required this.creatorRelation})
       : _tagNews = tagNews,
         super._();
@@ -339,6 +340,7 @@ class _$NewsEntityImpl extends _NewsEntity {
   @Transient()
   final CreatorEntity? creator;
   @override
+  @Backlink()
   final ToMany<Bookmarks> bookmarks;
   @override
   final ToOne<CreatorEntity> creatorRelation;
@@ -349,7 +351,7 @@ class _$NewsEntityImpl extends _NewsEntity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NewsEntityImpl &&
@@ -417,7 +419,7 @@ abstract class _NewsEntity extends NewsEntity {
       required final String commentCounts,
       @Transient() final List<TagNewsEntity>? tagNews,
       @Transient() final CreatorEntity? creator,
-      required final ToMany<Bookmarks> bookmarks,
+      @Backlink() required final ToMany<Bookmarks> bookmarks,
       required final ToOne<CreatorEntity> creatorRelation}) = _$NewsEntityImpl;
   const _NewsEntity._() : super._();
 
@@ -449,6 +451,7 @@ abstract class _NewsEntity extends NewsEntity {
   @Transient()
   CreatorEntity? get creator;
   @override
+  @Backlink()
   ToMany<Bookmarks> get bookmarks;
   @override
   ToOne<CreatorEntity> get creatorRelation;

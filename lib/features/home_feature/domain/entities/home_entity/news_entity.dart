@@ -24,6 +24,7 @@ class NewsEntity with _$NewsEntity {
     required String commentCounts,
     @Transient() List<TagNewsEntity>? tagNews,
     @Transient() CreatorEntity? creator,
+    @Backlink()
     required ToMany<Bookmarks> bookmarks,
     required ToOne<CreatorEntity> creatorRelation,
   }) = _NewsEntity;

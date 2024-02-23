@@ -187,7 +187,12 @@ class SignUpCreateProfilePage extends StatelessWidget {
               listener: (context, state) {
                 state.createProfileState?.when(
                   success: (user) {
-                    storageService.storeUserInformation(user.token, user.id);
+                    storageService.storeUserInformation(
+                      user.token,
+                      user.id,
+                      user.profileImage,
+                      user.fullName,
+                    );
                     Navigator.of(context).pushNamedAndRemoveUntil(
                         AppRoutes.Home_ROUTE, (route) => false);
                   },

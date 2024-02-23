@@ -25,7 +25,7 @@ class _AuthApiProvider implements AuthApiProvider {
     Map<String, dynamic> body,
     CancelToken? cancelToken,
   ) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
@@ -59,7 +59,7 @@ class _AuthApiProvider implements AuthApiProvider {
     String? perPage,
     String? q,
   ) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'page': page,
       r'perPage': perPage,
@@ -67,7 +67,7 @@ class _AuthApiProvider implements AuthApiProvider {
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<CountriesModel>(Options(
       method: 'GET',
@@ -91,10 +91,10 @@ class _AuthApiProvider implements AuthApiProvider {
 
   @override
   Future<List<TagsModel>> getAllTags() async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result =
         await _dio.fetch<List<dynamic>>(_setStreamType<List<TagsModel>>(Options(
       method: 'GET',
@@ -120,10 +120,10 @@ class _AuthApiProvider implements AuthApiProvider {
 
   @override
   Future<List<UserModel>> getAllOfficialAuthors() async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result =
         await _dio.fetch<List<dynamic>>(_setStreamType<List<UserModel>>(Options(
       method: 'GET',
@@ -162,7 +162,7 @@ class _AuthApiProvider implements AuthApiProvider {
     List<String>? intrestedTags,
     List<String>? following,
   ]) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};

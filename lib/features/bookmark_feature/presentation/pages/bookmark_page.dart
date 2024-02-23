@@ -29,6 +29,7 @@ class _BookmarkPageState extends State<BookmarkPage> {
     return Scaffold(
       appBar: trReNewsPageAppBar(context, 'Bookmark'),
       body: const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SelectCollectionWidget(),
           BookmarkBody(),

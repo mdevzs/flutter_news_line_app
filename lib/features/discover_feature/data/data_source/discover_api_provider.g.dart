@@ -22,10 +22,10 @@ class _DiscoverApiProvider implements DiscoverApiProvider {
 
   @override
   Future<DiscoverModel> discover() async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<DiscoverModel>(Options(
       method: 'GET',
@@ -49,10 +49,10 @@ class _DiscoverApiProvider implements DiscoverApiProvider {
 
   @override
   Future<void> followAuthor(String followingId) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     await _dio.fetch<void>(_setStreamType<void>(Options(
       method: 'GET',
       headers: _headers,
@@ -73,10 +73,10 @@ class _DiscoverApiProvider implements DiscoverApiProvider {
 
   @override
   Future<DiscoverSearchModel> search(String s) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'search': s};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<DiscoverSearchModel>(Options(
       method: 'GET',

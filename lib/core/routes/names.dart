@@ -22,4 +22,7 @@ class AppRoutes {
   static const Profile_ROUTE = '/profile';
   static const Bookmark_ROUTE = '/bookmark';
   static const Edit_Profile_ROUTE = '/editProfile';
+  static const Write_Story_ROUTE = '/writeStory';
+  static const Preview_Story_ROUTE = '/previewStory';
+  static const Publish_Story_ROUTE = '/publishStory';
 }

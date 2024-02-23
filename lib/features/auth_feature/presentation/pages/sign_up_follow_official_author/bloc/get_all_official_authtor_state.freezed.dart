@@ -12,7 +12,7 @@ part of 'get_all_official_authtor_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$GetAllOfficialAuthorState {
@@ -117,7 +117,7 @@ class _$AllOfficialAuthorInitialImpl implements _AllOfficialAuthorInitial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AllOfficialAuthorInitialImpl);
@@ -235,7 +235,7 @@ class _$AllOfficialAuthorLoadingImpl implements _AllOfficialAuthorLoading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AllOfficialAuthorLoadingImpl);
@@ -377,7 +377,7 @@ class _$AllOfficialAuthorSuccessImpl implements _AllOfficialAuthorSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AllOfficialAuthorSuccessImpl &&
@@ -529,7 +529,7 @@ class _$AllOfficialAuthorErrorImpl implements _AllOfficialAuthorError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AllOfficialAuthorErrorImpl &&

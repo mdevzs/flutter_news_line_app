@@ -12,7 +12,7 @@ part of 'edit_profile_status.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$EditProfileStatus {
@@ -116,7 +116,7 @@ class _$EditProfileStatusInitialImpl implements _EditProfileStatusInitial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EditProfileStatusInitialImpl);
@@ -234,7 +234,7 @@ class _$EditProfileStatusLoadingImpl implements EditProfileStatusLoading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EditProfileStatusLoadingImpl);
@@ -352,7 +352,7 @@ class _$EditProfileStatusSuccessImpl implements _EditProfileStatusSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EditProfileStatusSuccessImpl);
@@ -487,7 +487,7 @@ class _$EditProfileStatusErrorImpl implements _EditProfileStatusError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EditProfileStatusErrorImpl &&

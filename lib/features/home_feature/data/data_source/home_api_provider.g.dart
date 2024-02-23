@@ -22,10 +22,10 @@ class _HomeApiProvider implements HomeApiProvider {
 
   @override
   Future<HomeModel> home() async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<HomeModel>(Options(
       method: 'GET',
@@ -53,7 +53,7 @@ class _HomeApiProvider implements HomeApiProvider {
     String? page,
     String? perPage,
   ) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'page': page,
       r'perPage': perPage,
@@ -88,14 +88,14 @@ class _HomeApiProvider implements HomeApiProvider {
     String? page,
     String? perPage,
   ) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'page': page,
       r'perPage': perPage,
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<TrendingNewsModel>(Options(
       method: 'GET',
@@ -119,10 +119,10 @@ class _HomeApiProvider implements HomeApiProvider {
 
   @override
   Future<DetailsNewsModel> getNewsById(String newsId) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<DetailsNewsModel>(Options(
       method: 'GET',
@@ -146,10 +146,10 @@ class _HomeApiProvider implements HomeApiProvider {
 
   @override
   Future<GetAllCommentsModel> getAllNewsComments(String newsId) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<GetAllCommentsModel>(Options(
       method: 'GET',
@@ -176,7 +176,7 @@ class _HomeApiProvider implements HomeApiProvider {
     String newsId,
     Map<String, dynamic> body,
   ) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
@@ -204,10 +204,10 @@ class _HomeApiProvider implements HomeApiProvider {
 
   @override
   Future<LikeCommentModel> likeComment(String commentId) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<LikeCommentModel>(Options(
       method: 'GET',

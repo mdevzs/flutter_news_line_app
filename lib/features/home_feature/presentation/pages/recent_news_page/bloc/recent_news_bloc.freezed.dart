@@ -12,7 +12,7 @@ part of 'recent_news_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$RecentNewsEvent {
@@ -113,7 +113,7 @@ class _$GetAllTagsImpl implements _GetAllTags {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$GetAllTagsImpl);
   }
@@ -255,7 +255,7 @@ class _$SelectTagIdImpl implements _SelectTagId {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SelectTagIdImpl &&
@@ -401,7 +401,7 @@ class _$GetAllRecentNewsImpl implements _GetAllRecentNews {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetAllRecentNewsImpl &&
@@ -548,7 +548,7 @@ class _$LoadMoreNewsImpl implements _LoadMoreNews {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadMoreNewsImpl &&
@@ -873,7 +873,7 @@ class _$RecentNewsStateImpl implements _RecentNewsState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RecentNewsStateImpl &&

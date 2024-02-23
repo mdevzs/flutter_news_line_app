@@ -6,7 +6,6 @@ import 'package:objectbox/objectbox.dart';
 class Bookmarks {
   int? id;
   final String name;
-  @Backlink()
   final news = ToMany<NewsEntity>();
   Bookmarks({this.id, required this.name});
 

@@ -5,8 +5,11 @@
 list(APPEND FLUTTER_PLUGIN_LIST
   connectivity_plus
   file_selector_windows
+  gal
+  irondash_engine_context
   objectbox_flutter_libs
   share_plus
+  super_native_extensions
   url_launcher_windows
 )
 

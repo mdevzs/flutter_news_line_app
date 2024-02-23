@@ -601,9 +601,9 @@ class _AlignTextWidgetState extends State<AlignTextWidget> {
 class FontsWidget extends StatefulWidget {
   final Function(String font) selectedFont;
   const FontsWidget({
-    Key? key,
+    super.key,
     required this.selectedFont,
-  }) : super(key: key);
+  });
 
   @override
   State<FontsWidget> createState() => _FontsWidgetState();
@@ -672,9 +672,9 @@ class _FontsWidgetState extends State<FontsWidget> {
 class BackgroundColorGridView extends StatefulWidget {
   final Function(int index) selectedColorIndex;
   const BackgroundColorGridView({
-    Key? key,
+    super.key,
     required this.selectedColorIndex,
-  }) : super(key: key);
+  });
 
   @override
   State<BackgroundColorGridView> createState() =>

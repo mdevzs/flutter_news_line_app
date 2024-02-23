@@ -20,7 +20,13 @@
           "type": 9
         }
       ],
-      "relations": []
+      "relations": [
+        {
+          "id": "4:2033506876696968707",
+          "name": "news",
+          "targetId": "7:5594225138108022625"
+        }
+      ]
     },
     {
       "id": "7:5594225138108022625",
@@ -87,13 +93,7 @@
           "relationTarget": "CreatorEntity"
         }
       ],
-      "relations": [
-        {
-          "id": "3:5888085178471399297",
-          "name": "bookmarks",
-          "targetId": "1:6236657037543739591"
-        }
-      ]
+      "relations": []
     },
     {
       "id": "10:6269190140227142296",
@@ -132,7 +132,7 @@
   ],
   "lastEntityId": "10:6269190140227142296",
   "lastIndexId": "2:688628656768422124",
-  "lastRelationId": "3:5888085178471399297",
+  "lastRelationId": "4:2033506876696968707",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
   "modelVersionParserMinimum": 5,
@@ -206,7 +206,8 @@
     7760333652372518441
   ],
   "retiredRelationUids": [
-    4005392264867980145
+    4005392264867980145,
+    5888085178471399297
   ],
   "version": 1
 }

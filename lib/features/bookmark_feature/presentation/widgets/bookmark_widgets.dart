@@ -165,29 +165,32 @@ class _BookmarkBodyState extends State<BookmarkBody> {
                     },
                   );
                 } else {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/icons/clipboard1.png',
-                      ),
-                      gapH4,
-                      customText(
-                        'Empty',
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      gapH4,
-                      customText(
-                        //* when there is no collection yet == length is 1
-                        //* else we have collection but there is no news in it.
-                        state.collections.length == 1
-                            ? 'You have not saved any stories'
-                            : 'You have not saved any stories to this collections.',
-                        fontSize: 8,
-                        textAlign: TextAlign.center,
-                      )
-                    ],
+                  return SizedBox(
+                    width: 100.w,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/icons/clipboard1.png',
+                        ),
+                        gapH4,
+                        customText(
+                          'Empty',
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        gapH4,
+                        customText(
+                          //* when there is no collection yet == length is 1
+                          //* else we have collection but there is no news in it.
+                          state.collections.length == 1
+                              ? 'You have not saved any stories'
+                              : 'You have not saved any stories to this collections.',
+                          fontSize: 8,
+                          textAlign: TextAlign.center,
+                        )
+                      ],
+                    ),
                   );
                 }
               },
